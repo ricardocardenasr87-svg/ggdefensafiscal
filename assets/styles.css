@@ -12,13 +12,20 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--gray-text);
   background: var(--white);
   line-height: 1.6;
+  overflow-x: hidden; /* evita scroll horizontal raro en móvil */
+}
+
+/* Evita que textos/links largos rompan el layout */
+a, p, h1, h2, h3, h4, h5, h6, td, th {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
 }
 
 .container {
@@ -30,9 +37,7 @@ body {
 /* Header */
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 1000;
   padding: 14px 0;
   background: rgba(15,42,68,0.92);
@@ -97,7 +102,7 @@ body {
   padding: 8px 14px !important;
 }
 
-/* Mobile nav button */
+/* Mobile nav */
 .hamburger {
   display: none;
   background: rgba(255,255,255,0.10);
@@ -170,7 +175,7 @@ body {
   text-shadow: 0 10px 24px rgba(0,0,0,0.30);
 }
 
-/* Buttons */
+/* Botones */
 .btn-primary {
   display: inline-block;
   margin-top: 18px;
@@ -181,8 +186,22 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: transform 0.2s ease, filter 0.2s ease;
+  white-space: nowrap; /* evita “Wh / ats / App” */
 }
 .btn-primary:hover { transform: translateY(-1px); filter: brightness(0.96); }
+
+/* Si usas btn-secondary en el HOME */
+.btn-secondary{
+  display:inline-block;
+  padding: 14px 18px;
+  border-radius: 12px;
+  text-decoration:none;
+  font-weight: 700;
+  color:#fff;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
+  white-space: nowrap; /* evita cortes raros */
+}
 
 /* Sections */
 section { scroll-margin-top: 110px; }
@@ -205,7 +224,7 @@ section { scroll-margin-top: 110px; }
   margin: 0 0 30px;
 }
 
-/* Grid / Cards */
+/* Grid + Cards */
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -334,12 +353,14 @@ table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
   font-weight: 700;
 }
 
-/* Responsive base */
+/* =========================
+   Responsive general
+   ========================= */
 @media (max-width: 920px) {
   .card { grid-column: span 12; }
 }
 
-/* Mobile nav */
+/* Menú móvil */
 @media (max-width: 760px) {
   .hamburger { display: inline-flex; }
   .nav { display: none; }
@@ -348,55 +369,122 @@ table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
     display: flex;
     position: absolute;
     top: 88px;
-    right: 20px;
+    right: 14px;
+    left: 14px;
     flex-direction: column;
     background: rgba(15,42,68,0.98);
     border: 1px solid rgba(255,255,255,0.12);
     padding: 10px;
     border-radius: 16px;
-    min-width: 220px;
+    min-width: 0;
     box-shadow: 0 14px 40px rgba(0,0,0,0.25);
   }
   .nav.mobile-open a { padding: 10px 12px; }
+}
+
+/* =========================
+   MOBILE FIXES HOME
+   (corrige lo que muestras en capturas)
+   ========================= */
+@media (max-width: 760px){
+
+  .container { padding: 0 16px; }
+
+  /* Ajusta separación por header fijo */
+  .page-top { padding-top: 92px; }
+
+  /* HERO: menos alto y texto más controlado */
+  .hero{
+    min-height: 520px;
+    padding: 108px 0 46px;
+  }
+
+  .logo{
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    flex: 0 0 52px;
+  }
+
+  .hero h1{
+    max-width: 24ch;
+    font-size: 2.0rem;
+    line-height: 1.10;
+  }
+
+  .hero p{
+    font-size: 1rem;
+    max-width: 46ch;
+  }
+
+  /* Botones del hero: que no se rompan y se apilen bonito */
+  .hero-content > div{
+    width: 100%;
+    max-width: 360px;
+    margin: 10px auto 0;
+  }
+  .hero-content .btn-primary,
+  .hero-content .btn-secondary{
+    width: 100%;
+    text-align: center;
+    padding: 13px 16px;
+    border-radius: 14px;
+  }
+
+  /* IMPORTANTÍSIMO: arregla tus “Últimas publicaciones”
+     porque en tu HTML traen inline grid-column: span 4 */
+  .article-card{
+    grid-column: span 12 !important;
+    width: 100%;
+  }
+
+  /* Si tus article-card estaban en una grid de 12, esto los apila */
+  .grid{
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .card{
+    grid-column: auto;
+    padding: 18px;
+  }
+
+  /* CTA band: evita botones mini donde el texto se parte */
+  .cta-band{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 18px;
+  }
+  .cta-actions{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cta-actions .btn-primary,
+  .cta-actions .btn-secondary{
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* WhatsApp flotante más compacto */
+  .fab-wa{
+    right: 14px;
+    bottom: 14px;
+    padding: 10px 12px;
+    font-size: .95rem;
+    gap: 8px;
+  }
+}
+
+/* XS phones (muy pequeño) */
+@media (max-width: 380px){
+  .hero h1{ font-size: 1.82rem; }
+  .hero{ min-height: 500px; }
 }
 
 /* Accesibilidad */
 @media (prefers-reduced-motion: reduce) {
   .hero-video { display: none; }
 }
-
-/* =========================
-   MOBILE FIXES (Responsive)
-   ========================= */
-@media (max-width: 760px){
-
-  .page-top { padding-top: 92px; }
-
-  * { max-width: 100%; }
-  body { overflow-x: hidden; }
-  p, a, h1, h2, h3, td, th { word-break: break-word; }
-
-  .hero{
-    min-height: 520px;
-    padding: 108px 0 46px;
-  }
-
-  .hero-content h1{
-    max-width: 22ch;
-    font-size: 2.05rem;
-    line-height: 1.08;
-  }
-
-  .hero-content p{
-    font-size: 1rem;
-    max-width: 44ch;
-  }
-}
-
-/* XS phones (muy pequeño) */
-@media (max-width: 380px){
-  .hero-content h1{ font-size: 1.85rem; }
-  .hero{ min-height: 500px; }
-}
-
-
