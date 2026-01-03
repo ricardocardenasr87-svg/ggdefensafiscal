@@ -14,9 +14,6 @@
 
   <!-- Estilos extra SOLO para el Home -->
   <style>
-    /* Separación correcta por header fijo */
-    .page-top { padding-top: 110px; }
-
     /* Barra de confianza (tipo “sellos”) */
     .trust-strip{
       margin-top: -34px;
@@ -44,6 +41,7 @@
       border-radius: 14px;
       background: rgba(15,42,68,0.03);
       border: 1px solid rgba(15,42,68,0.06);
+      min-width: 0;
     }
     .trust-icon{
       width: 38px; height: 38px;
@@ -59,12 +57,18 @@
       font-size: .95rem;
       color: var(--blue-navy);
       font-family: Montserrat, Inter, sans-serif;
+      line-height: 1.2;
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
     .trust-item span{
       display:block;
       font-size: .85rem;
       color: var(--gray-muted);
-      margin-top: 1px;
+      margin-top: 2px;
+      line-height: 1.25;
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
 
     /* Tarjetas con icono */
@@ -111,12 +115,16 @@
       border:1px solid var(--gray-line);
       border-radius: var(--radius);
       padding: 22px;
+      grid-column: span 4;
+      min-width: 0;
     }
     .article-card a{
       text-decoration:none;
       color: var(--blue-navy);
       font-weight: 800;
       font-family: Montserrat, Inter, sans-serif;
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
     .article-card a:hover{ text-decoration: underline; }
     .meta{
@@ -160,6 +168,7 @@
       color:#fff;
       border: 1px solid rgba(255,255,255,0.18);
       background: rgba(255,255,255,0.08);
+      text-align:center;
     }
     .btn-secondary:hover{ filter: brightness(1.05); }
 
@@ -210,6 +219,45 @@
     @media (max-width: 920px){
       .trust-item{ grid-column: span 6; }
       .step{ grid-column: span 12; }
+      .article-card{ grid-column: span 6; }
+    }
+
+    /* ✅ CELULAR: trust strip 1x1 vertical + blog 1x1 */
+    @media (max-width: 760px){
+      .trust-grid{
+        display:flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .trust-item{
+        width: 100%;
+        grid-column: unset;
+      }
+
+      .steps{ grid-template-columns: 1fr; }
+      .step{ grid-column: unset; }
+
+      .article-card{
+        grid-column: 1 / -1;
+      }
+
+      /* Botones hero/cta a full width */
+      .btn-primary, .btn-secondary{
+        width: 100%;
+        text-align:center;
+      }
+
+      .cta-band{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .cta-actions{
+        width:100%;
+        justify-content:flex-start;
+      }
+      .cta-actions a{
+        width:100%;
+      }
     }
   </style>
 </head>
@@ -248,9 +296,9 @@
     <h1>GG Contabilidad y Defensa Fiscal</h1>
     <p>Soluciones contables, fiscales y legales con enfoque estratégico, preventivo y técnico.</p>
 
-    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:16px;">
-      <a href="servicios.html" class="btn-primary">Ver servicios</a>
-      <a href="contacto.html" class="btn-secondary">Agendar consulta</a>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:16px; width:min(420px,100%);">
+      <a href="servicios.html" class="btn-primary" style="flex:1; min-width:160px;">Ver servicios</a>
+      <a href="contacto.html" class="btn-secondary" style="flex:1; min-width:160px;">Agendar consulta</a>
     </div>
   </div>
 </main>
@@ -346,7 +394,7 @@
   </div>
 </section>
 
-<!-- Recursos tipo “competencia”: indicadores + enlaces + INPC -->
+<!-- Recursos -->
 <section class="section" style="background: var(--blue-light);">
   <div class="container">
     <h2 class="section-title">Recursos de consulta</h2>
@@ -379,7 +427,7 @@
   </div>
 </section>
 
-<!-- Proceso (esto lo tienen mucho las webs top) -->
+<!-- Proceso -->
 <section class="section">
   <div class="container">
     <h2 class="section-title">Cómo trabajamos</h2>
@@ -407,7 +455,7 @@
   </div>
 </section>
 
-<!-- Preview de Blog (aunque esté vacío aún) -->
+<!-- Blog preview -->
 <section class="section" style="background: var(--blue-light);">
   <div class="container">
     <h2 class="section-title">Últimas publicaciones</h2>
@@ -416,19 +464,19 @@
     </p>
 
     <div class="grid">
-      <div class="article-card" style="grid-column: span 4;">
+      <div class="article-card">
         <a href="Blog.html">CFDI 4.0: errores comunes y cómo evitarlos</a>
         <div class="meta">Guía práctica • 5 min</div>
         <p style="margin:10px 0 0; color:var(--gray-muted);">Checklist para reducir rechazos y diferencias en conciliación.</p>
       </div>
 
-      <div class="article-card" style="grid-column: span 4;">
+      <div class="article-card">
         <a href="Blog.html">INPC y actualización de contribuciones: cómo se calcula</a>
         <div class="meta">Explicación • 6 min</div>
         <p style="margin:10px 0 0; color:var(--gray-muted);">Qué considerar al usar índices y por qué importa la fecha de DOF.</p>
       </div>
 
-      <div class="article-card" style="grid-column: span 4;">
+      <div class="article-card">
         <a href="Blog.html">Recargos y multas: diferencias y cuándo aplican</a>
         <div class="meta">Resumen • 4 min</div>
         <p style="margin:10px 0 0; color:var(--gray-muted);">Lo básico para entender costos por incumplimiento y prórrogas.</p>
@@ -441,7 +489,7 @@
   </div>
 </section>
 
-<!-- FAQ (muy “competencia” porque reduce dudas) -->
+<!-- FAQ -->
 <section class="section">
   <div class="container">
     <h2 class="section-title">Preguntas frecuentes</h2>
@@ -464,7 +512,7 @@
   </div>
 </section>
 
-<!-- CTA banda final -->
+<!-- CTA -->
 <section class="section">
   <div class="container">
     <div class="cta-band">
@@ -511,6 +559,3 @@
 
 </body>
 </html>
-
-
-
