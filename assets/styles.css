@@ -12,6 +12,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -96,7 +97,7 @@ body {
   padding: 8px 14px !important;
 }
 
-/* Mobile nav */
+/* Mobile nav button */
 .hamburger {
   display: none;
   background: rgba(255,255,255,0.10);
@@ -108,7 +109,7 @@ body {
   font-weight: 600;
 }
 
-/* HERO con VIDEO (tamaño mediano) */
+/* HERO */
 .hero {
   position: relative;
   min-height: clamp(420px, 68vh, 640px);
@@ -169,6 +170,7 @@ body {
   text-shadow: 0 10px 24px rgba(0,0,0,0.30);
 }
 
+/* Buttons */
 .btn-primary {
   display: inline-block;
   margin-top: 18px;
@@ -203,7 +205,7 @@ section { scroll-margin-top: 110px; }
   margin: 0 0 30px;
 }
 
-/* Services grid */
+/* Grid / Cards */
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -332,141 +334,12 @@ table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
   font-weight: 700;
 }
 
-/* Responsive */
+/* Responsive base */
 @media (max-width: 920px) {
   .card { grid-column: span 12; }
 }
-<style>
-  /* ...todo tu CSS actual... */
 
-  /* =========================
-     MOBILE FIXES (Responsive)
-     ========================= */
-  @media (max-width: 760px){
-
-    /* separa bien por header fijo */
-    .page-top { padding-top: 92px; }
-
-    /* evita desbordes raros por palabras largas/links */
-    * { max-width: 100%; }
-    body { overflow-x: hidden; }
-    p, a, h1, h2, h3, td, th { word-break: break-word; }
-
-    /* Hero: menos alto + mejor padding */
-    .hero{
-      min-height: 520px;             /* baja un poco la altura */
-      padding: 108px 0 46px;         /* menos espacio */
-    }
-
-    .hero-content h1{
-      max-width: 22ch;
-      font-size: 2.05rem;            /* evita que se salga */
-      line-height: 1.08;
-    }
-
-    .hero-content p{
-      font-size: 1rem;
-      max-width: 44ch;
-    }
-
-    /* Botones en hero y CTAs: full width */
-    .btn-primary,
-    .btn-secondary{
-      width: 100%;
-      text-align: center;
-      padding: 13px 16px;
-      border-radius: 14px;
-    }
-
-    /* contenedor de botones del hero */
-    .hero-content > div{
-      width: 100%;
-      max-width: 360px;              /* para que no se vea gigante */
-      margin: 10px auto 0;
-    }
-
-    /* Trust strip: que no choque con hero */
-    .trust-strip{
-      margin-top: -18px;
-    }
-    .trust-card{
-      padding: 12px;
-      border-radius: 16px;
-    }
-    .trust-item{
-      grid-column: span 12;          /* 1 por fila */
-      padding: 10px 12px;
-    }
-
-    /* Grid general: 1 columna */
-    .grid{
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-    .card{
-      grid-column: auto;
-      padding: 18px;
-    }
-
-    /* Iconos */
-    .card-icon{
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      font-size: 19px;
-    }
-
-    /* Steps (cómo trabajamos) */
-    .steps{
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-    .step{
-      grid-column: auto;
-      padding: 18px;
-    }
-
-    /* Artículos del blog: 1 columna y sin “span 4” */
-    .article-card{
-      grid-column: auto !important;
-      padding: 18px;
-    }
-
-    /* CTA band: apilado */
-    .cta-band{
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 18px;
-    }
-    .cta-actions{
-      width: 100%;
-      justify-content: flex-start;
-    }
-    .cta-actions .btn-primary,
-    .cta-actions .btn-secondary{
-      width: 100%;
-    }
-
-    /* WhatsApp flotante: más pequeño en cel */
-    .fab-wa{
-      right: 14px;
-      bottom: 14px;
-      padding: 11px 12px;
-      font-size: .95rem;
-      gap: 8px;
-    }
-  }
-
-  /* XS phones (muy pequeño) */
-  @media (max-width: 380px){
-    .hero-content h1{ font-size: 1.85rem; }
-    .hero{ min-height: 500px; }
-    .trust-icon{ width: 34px; height: 34px; border-radius: 12px; }
-  }
-</style>
-
-
+/* Mobile nav */
 @media (max-width: 760px) {
   .hamburger { display: inline-flex; }
   .nav { display: none; }
@@ -491,4 +364,39 @@ table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
 @media (prefers-reduced-motion: reduce) {
   .hero-video { display: none; }
 }
+
+/* =========================
+   MOBILE FIXES (Responsive)
+   ========================= */
+@media (max-width: 760px){
+
+  .page-top { padding-top: 92px; }
+
+  * { max-width: 100%; }
+  body { overflow-x: hidden; }
+  p, a, h1, h2, h3, td, th { word-break: break-word; }
+
+  .hero{
+    min-height: 520px;
+    padding: 108px 0 46px;
+  }
+
+  .hero-content h1{
+    max-width: 22ch;
+    font-size: 2.05rem;
+    line-height: 1.08;
+  }
+
+  .hero-content p{
+    font-size: 1rem;
+    max-width: 44ch;
+  }
+}
+
+/* XS phones (muy pequeño) */
+@media (max-width: 380px){
+  .hero-content h1{ font-size: 1.85rem; }
+  .hero{ min-height: 500px; }
+}
+
 
