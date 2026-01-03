@@ -11,22 +11,20 @@
 }
 
 * { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--gray-text);
   background: var(--white);
   line-height: 1.6;
-  overflow-x: hidden; /* evita scroll horizontal raro en móvil */
+  overflow-x: hidden;
 }
 
-/* Evita que textos/links largos rompan el layout */
-a, p, h1, h2, h3, h4, h5, h6, td, th {
-  overflow-wrap: anywhere;
-  word-break: normal;
-  hyphens: auto;
-}
+img, video { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
 
 .container {
   max-width: var(--container);
@@ -34,7 +32,9 @@ a, p, h1, h2, h3, h4, h5, h6, td, th {
   padding: 0 20px;
 }
 
-/* Header */
+/* =========================
+   HEADER + NAV
+   ========================= */
 .header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -53,7 +53,6 @@ a, p, h1, h2, h3, h4, h5, h6, td, th {
   position: relative;
 }
 
-/* Logo */
 .logo {
   width: 60px;
   height: 60px;
@@ -72,7 +71,6 @@ a, p, h1, h2, h3, h4, h5, h6, td, th {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
 .nav {
@@ -102,7 +100,6 @@ a, p, h1, h2, h3, h4, h5, h6, td, th {
   padding: 8px 14px !important;
 }
 
-/* Mobile nav */
 .hamburger {
   display: none;
   background: rgba(255,255,255,0.10);
@@ -114,7 +111,9 @@ a, p, h1, h2, h3, h4, h5, h6, td, th {
   font-weight: 600;
 }
 
-/* HERO */
+/* =========================
+   HERO (Video)
+   ========================= */
 .hero {
   position: relative;
   min-height: clamp(420px, 68vh, 640px);
@@ -175,7 +174,9 @@ a, p, h1, h2, h3, h4, h5, h6, td, th {
   text-shadow: 0 10px 24px rgba(0,0,0,0.30);
 }
 
-/* Botones */
+/* =========================
+   BUTTONS
+   ========================= */
 .btn-primary {
   display: inline-block;
   margin-top: 18px;
@@ -184,32 +185,32 @@ a, p, h1, h2, h3, h4, h5, h6, td, th {
   padding: 14px 22px;
   border-radius: 12px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   transition: transform 0.2s ease, filter 0.2s ease;
-  white-space: nowrap; /* evita “Wh / ats / App” */
 }
+
 .btn-primary:hover { transform: translateY(-1px); filter: brightness(0.96); }
 
-/* Si usas btn-secondary en el HOME */
-.btn-secondary{
-  display:inline-block;
+.btn-secondary {
+  display: inline-block;
   padding: 14px 18px;
   border-radius: 12px;
-  text-decoration:none;
-  font-weight: 700;
-  color:#fff;
+  text-decoration: none;
+  font-weight: 800;
+  color: #fff;
   border: 1px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.08);
-  white-space: nowrap; /* evita cortes raros */
 }
 
-/* Sections */
+.btn-secondary:hover { filter: brightness(1.05); }
+
+/* =========================
+   SECTIONS + GRID
+   ========================= */
 section { scroll-margin-top: 110px; }
 .section { padding: 80px 0; }
 
-.page-top {
-  padding-top: 140px; /* para que no lo tape el header fijo */
-}
+.page-top { padding-top: 140px; } /* para header fijo */
 
 .section-title {
   font-family: Montserrat, Inter, sans-serif;
@@ -224,10 +225,9 @@ section { scroll-margin-top: 110px; }
   margin: 0 0 30px;
 }
 
-/* Grid + Cards */
 .grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -238,7 +238,9 @@ section { scroll-margin-top: 110px; }
   border: 1px solid rgba(15,42,68,0.06);
   grid-column: span 6;
   transition: transform 0.2s ease;
+  min-width: 0;
 }
+
 .card:hover { transform: translateY(-2px); }
 
 .card h3 {
@@ -247,10 +249,22 @@ section { scroll-margin-top: 110px; }
   color: var(--blue-navy);
   font-size: 1.08rem;
 }
+
 .card p { margin: 0; }
+
+.card-icon{
+  width: 44px; height: 44px;
+  border-radius: 16px;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(26,167,225,0.12);
+  border: 1px solid rgba(26,167,225,0.18);
+  font-size: 20px;
+  margin-bottom: 10px;
+}
 
 /* About */
 .about { background: var(--blue-light); }
+
 .about-card {
   background: #fff;
   padding: 36px;
@@ -261,7 +275,9 @@ section { scroll-margin-top: 110px; }
 /* Contact */
 .contact { background: var(--blue-light); }
 
-/* INPC */
+/* =========================
+   INPC
+   ========================= */
 .inpc-wrap { background: var(--blue-light); }
 
 .year-tabs {
@@ -278,10 +294,11 @@ section { scroll-margin-top: 110px; }
   padding: 10px 14px;
   border-radius: 12px;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 800;
   font-family: Montserrat, Inter, sans-serif;
   transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
 }
+
 .year-tab:hover { transform: translateY(-1px); }
 
 .year-tab.active {
@@ -322,7 +339,7 @@ table.inpc th {
   color: #fff;
   z-index: 1;
   font-family: Montserrat, Inter, sans-serif;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.2px;
 }
 
@@ -331,7 +348,7 @@ table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
 .inpc-title {
   font-family: Montserrat, Inter, sans-serif;
   color: var(--blue-navy);
-  font-weight: 800;
+  font-weight: 900;
   margin: 0 0 10px;
 }
 
@@ -341,27 +358,275 @@ table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
   font-size: 0.95rem;
 }
 
-/* Footer */
+/* =========================
+   INDICADORES (tablas)
+   ========================= */
+.indicator-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.indicator-table th, .indicator-table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--gray-line);
+  text-align: left;
+  font-size: 0.95rem;
+  vertical-align: top;
+}
+
+.indicator-table th {
+  color: var(--blue-navy);
+  font-weight: 800;
+  background: #F8FAFC;
+  font-family: Montserrat, Inter, sans-serif;
+}
+
+.value-highlight {
+  font-family: Montserrat, Inter, sans-serif;
+  font-weight: 900;
+  color: var(--blue-main);
+}
+
+.source-link {
+  font-size: 0.85rem;
+  color: var(--gray-muted);
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: underline;
+}
+
+/* =========================
+   HOME EXTRAS (trust / steps / blog / cta / faq / fab)
+   ========================= */
+/* Trust strip */
+.trust-strip{
+  margin-top: -34px;
+  position: relative;
+  z-index: 5;
+}
+
+.trust-card{
+  background:#fff;
+  border:1px solid var(--gray-line);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+}
+
+.trust-grid{
+  display:grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.trust-item{
+  grid-column: span 3;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(15,42,68,0.03);
+  border: 1px solid rgba(15,42,68,0.06);
+  min-width: 0;              /* FIX overflow */
+  overflow: hidden;          /* FIX overflow */
+}
+
+.trust-item > div{
+  min-width: 0;              /* FIX overflow */
+}
+
+.trust-icon{
+  width: 38px; height: 38px;
+  border-radius: 14px;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(26,167,225,0.12);
+  border: 1px solid rgba(26,167,225,0.18);
+  font-size: 18px;
+  flex: 0 0 38px;
+}
+
+.trust-item strong{
+  display:block;
+  font-size: .95rem;
+  color: var(--blue-navy);
+  font-family: Montserrat, Inter, sans-serif;
+  font-weight: 900;
+  white-space: normal;          /* FIX “Confidencialidad” */
+  overflow-wrap: anywhere;      /* FIX “Confidencialidad” */
+  line-height: 1.15;
+}
+
+.trust-item span{
+  display:block;
+  font-size: .85rem;
+  color: var(--gray-muted);
+  margin-top: 1px;
+  overflow-wrap: anywhere;
+}
+
+/* Steps */
+.steps{
+  display:grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 12px;
+}
+
+.step{
+  grid-column: span 4;
+  background:#fff;
+  border:1px solid var(--gray-line);
+  border-radius: var(--radius);
+  padding: 22px;
+  min-width: 0;
+}
+
+.step .num{
+  display:inline-flex;
+  width: 34px; height: 34px;
+  align-items:center; justify-content:center;
+  border-radius: 12px;
+  background: rgba(15,42,68,0.06);
+  border: 1px solid rgba(15,42,68,0.08);
+  font-weight: 900;
+  color: var(--blue-navy);
+  margin-bottom: 10px;
+  font-family: Montserrat, Inter, sans-serif;
+}
+
+/* Blog preview cards */
+.article-card{
+  background:#fff;
+  border:1px solid var(--gray-line);
+  border-radius: var(--radius);
+  padding: 22px;
+  min-width: 0;
+}
+
+.article-card a{
+  text-decoration:none;
+  color: var(--blue-navy);
+  font-weight: 900;
+  font-family: Montserrat, Inter, sans-serif;
+}
+
+.article-card a:hover{ text-decoration: underline; }
+
+.meta{
+  font-size: .85rem;
+  color: var(--gray-muted);
+  margin-top: 6px;
+}
+
+/* CTA band */
+.cta-band{
+  background: var(--blue-navy);
+  border-radius: 18px;
+  padding: 26px;
+  color:#fff;
+  display:flex;
+  gap: 18px;
+  align-items:center;
+  justify-content: space-between;
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.cta-band h3{
+  margin:0;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.cta-band p{
+  margin: 6px 0 0;
+  opacity: .9;
+  max-width: 70ch;
+}
+
+.cta-actions{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* FAQ */
+details.faq{
+  background:#fff;
+  border:1px solid var(--gray-line);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+details.faq summary{
+  cursor:pointer;
+  font-weight: 900;
+  color: var(--blue-navy);
+  font-family: Montserrat, Inter, sans-serif;
+}
+
+details.faq p{
+  margin: 10px 0 0;
+  color: var(--gray-muted);
+}
+
+/* WhatsApp floating button */
+.fab-wa{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  background: #25D366;
+  color:#fff;
+  text-decoration:none;
+  font-weight: 900;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.20);
+}
+
+.fab-wa:hover{ filter: brightness(0.98); }
+
+.fab-wa .dot{
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+}
+
+/* =========================
+   FOOTER
+   ========================= */
 .footer {
   background: var(--blue-navy);
   color: rgba(255,255,255,0.92);
   padding: 44px 0;
 }
+
 .footer strong {
   color: #fff;
   font-family: Montserrat, Inter, sans-serif;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 /* =========================
-   Responsive general
+   RESPONSIVE
    ========================= */
 @media (max-width: 920px) {
   .card { grid-column: span 12; }
+  .step { grid-column: span 12; }
+  .trust-item { grid-column: span 6; }
 }
 
-/* Menú móvil */
+/* Mobile */
 @media (max-width: 760px) {
+  /* Nav */
   .hamburger { display: inline-flex; }
   .nav { display: none; }
 
@@ -369,76 +634,60 @@ table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
     display: flex;
     position: absolute;
     top: 88px;
-    right: 14px;
-    left: 14px;
+    right: 20px;
     flex-direction: column;
     background: rgba(15,42,68,0.98);
     border: 1px solid rgba(255,255,255,0.12);
     padding: 10px;
     border-radius: 16px;
-    min-width: 0;
+    min-width: 220px;
     box-shadow: 0 14px 40px rgba(0,0,0,0.25);
   }
   .nav.mobile-open a { padding: 10px 12px; }
-}
 
-/* =========================
-   MOBILE FIXES HOME
-   (corrige lo que muestras en capturas)
-   ========================= */
-@media (max-width: 760px){
-
-  .container { padding: 0 16px; }
-
-  /* Ajusta separación por header fijo */
+  /* Better spacing */
+  .section { padding: 60px 0; }
   .page-top { padding-top: 92px; }
 
-  /* HERO: menos alto y texto más controlado */
+  /* Hero tighter */
   .hero{
     min-height: 520px;
     padding: 108px 0 46px;
   }
 
-  .logo{
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    flex: 0 0 52px;
-  }
-
   .hero h1{
-    max-width: 24ch;
-    font-size: 2.0rem;
-    line-height: 1.10;
+    max-width: 22ch;
+    font-size: 2.05rem;
+    line-height: 1.08;
   }
 
   .hero p{
     font-size: 1rem;
-    max-width: 46ch;
+    max-width: 44ch;
   }
 
-  /* Botones del hero: que no se rompan y se apilen bonito */
-  .hero-content > div{
-    width: 100%;
-    max-width: 360px;
-    margin: 10px auto 0;
-  }
-  .hero-content .btn-primary,
-  .hero-content .btn-secondary{
+  /* Buttons: stack, not giant */
+  .btn-primary,
+  .btn-secondary{
     width: 100%;
     text-align: center;
     padding: 13px 16px;
     border-radius: 14px;
   }
 
-  /* IMPORTANTÍSIMO: arregla tus “Últimas publicaciones”
-     porque en tu HTML traen inline grid-column: span 4 */
-  .article-card{
-    grid-column: span 12 !important;
+  /* If you have a wrapper for buttons inside hero, this keeps it nice */
+  .hero-content > div{
     width: 100%;
+    max-width: 360px;
+    margin: 10px auto 0;
   }
 
-  /* Si tus article-card estaban en una grid de 12, esto los apila */
+  /* Trust: 2 per row on normal phones */
+  .trust-strip { margin-top: -18px; }
+  .trust-card { padding: 12px; border-radius: 16px; }
+  .trust-item { grid-column: span 6; padding: 10px 12px; }
+
+  /* Grid: one column */
   .grid{
     grid-template-columns: 1fr;
     gap: 14px;
@@ -448,40 +697,44 @@ table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
     padding: 18px;
   }
 
-  /* CTA band: evita botones mini donde el texto se parte */
+  /* Blog cards (if you used inline span, this forces 1 col) */
+  .article-card{ grid-column: auto !important; padding: 18px; }
+
+  /* CTA band stack */
   .cta-band{
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
     gap: 14px;
     padding: 18px;
   }
   .cta-actions{
     width: 100%;
-    display:flex;
-    flex-direction: column;
-    gap: 10px;
+    justify-content: flex-start;
   }
   .cta-actions .btn-primary,
   .cta-actions .btn-secondary{
     width: 100%;
-    text-align: center;
-    white-space: nowrap;
   }
 
-  /* WhatsApp flotante más compacto */
+  /* WhatsApp bubble smaller */
   .fab-wa{
     right: 14px;
     bottom: 14px;
-    padding: 10px 12px;
+    padding: 11px 12px;
     font-size: .95rem;
     gap: 8px;
   }
 }
 
-/* XS phones (muy pequeño) */
+/* Very small phones */
+@media (max-width: 420px) {
+  .trust-item { grid-column: span 12; } /* 1 per row */
+}
+
 @media (max-width: 380px){
-  .hero h1{ font-size: 1.82rem; }
+  .hero h1{ font-size: 1.85rem; }
   .hero{ min-height: 500px; }
+  .trust-icon{ width: 34px; height: 34px; border-radius: 12px; }
 }
 
 /* Accesibilidad */
