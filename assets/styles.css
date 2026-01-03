@@ -25,6 +25,7 @@ body {
 
 img, video { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
+p, h1, h2, h3, td, th { word-break: normal; overflow-wrap: normal; }
 
 .container {
   max-width: var(--container);
@@ -67,17 +68,9 @@ a { color: inherit; }
   flex: 0 0 60px;
 }
 
-.logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.logo img { width: 100%; height: 100%; object-fit: cover; }
 
-.nav {
-  display: flex;
-  gap: 18px;
-  align-items: center;
-}
+.nav { display: flex; gap: 18px; align-items: center; }
 
 .nav a {
   color: rgba(255,255,255,0.92);
@@ -91,9 +84,7 @@ a { color: inherit; }
 
 .nav a:hover { background: rgba(255,255,255,0.10); }
 
-.nav a[aria-current="page"] {
-  background: rgba(255,255,255,0.14);
-}
+.nav a[aria-current="page"] { background: rgba(255,255,255,0.14); }
 
 .btn-nav {
   border: 1px solid rgba(26,167,225,0.95);
@@ -188,7 +179,6 @@ a { color: inherit; }
   font-weight: 700;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
-
 .btn-primary:hover { transform: translateY(-1px); filter: brightness(0.96); }
 
 .btn-secondary {
@@ -201,16 +191,14 @@ a { color: inherit; }
   border: 1px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.08);
 }
-
-.btn-secondary:hover { filter: brightness(1.05); }
+.btn-secondary:hover{ filter: brightness(1.05); }
 
 /* =========================
    SECTIONS + GRID
    ========================= */
 section { scroll-margin-top: 110px; }
 .section { padding: 80px 0; }
-
-.page-top { padding-top: 140px; } /* para header fijo */
+.page-top { padding-top: 140px; }
 
 .section-title {
   font-family: Montserrat, Inter, sans-serif;
@@ -240,7 +228,6 @@ section { scroll-margin-top: 110px; }
   transition: transform 0.2s ease;
   min-width: 0;
 }
-
 .card:hover { transform: translateY(-2px); }
 
 .card h3 {
@@ -249,7 +236,6 @@ section { scroll-margin-top: 110px; }
   color: var(--blue-navy);
   font-size: 1.08rem;
 }
-
 .card p { margin: 0; }
 
 .card-icon{
@@ -262,18 +248,250 @@ section { scroll-margin-top: 110px; }
   margin-bottom: 10px;
 }
 
-/* About */
-.about { background: var(--blue-light); }
-
-.about-card {
-  background: #fff;
-  padding: 36px;
-  border-radius: var(--radius);
-  border: 1px solid var(--gray-line);
+/* =========================
+   HOME: TRUST STRIP (FIX WORD CUTS)
+   ========================= */
+.trust-strip{
+  margin-top: -34px;
+  position: relative;
+  z-index: 5;
 }
 
-/* Contact */
-.contact { background: var(--blue-light); }
+.trust-card{
+  background:#fff;
+  border:1px solid var(--gray-line);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+}
+
+.trust-grid{
+  display:grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.trust-item{
+  grid-column: span 3;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(15,42,68,0.03);
+  border: 1px solid rgba(15,42,68,0.06);
+  min-width: 0;
+}
+
+.trust-item > div{ min-width: 0; }
+
+.trust-icon{
+  width: 38px; height: 38px;
+  border-radius: 14px;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(26,167,225,0.12);
+  border: 1px solid rgba(26,167,225,0.18);
+  font-size: 18px;
+  flex: 0 0 38px;
+}
+
+/* AQUÍ el fix: nada de "anywhere" ni romper palabras a mitad */
+.trust-item strong{
+  display:block;
+  font-size: .95rem;
+  color: var(--blue-navy);
+  font-family: Montserrat, Inter, sans-serif;
+  font-weight: 900;
+  white-space: normal;       /* salta líneas normal */
+  word-break: normal;        /* NO partir palabras */
+  overflow-wrap: normal;     /* NO partir palabras */
+  hyphens: none;             /* evita guiones raros */
+  line-height: 1.15;
+}
+
+.trust-item span{
+  display:block;
+  font-size: .85rem;
+  color: var(--gray-muted);
+  margin-top: 1px;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+/* =========================
+   HOME: STEPS / BLOG / CTA / FAQ / FAB
+   ========================= */
+.steps{
+  display:grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 12px;
+}
+
+.step{
+  grid-column: span 4;
+  background:#fff;
+  border:1px solid var(--gray-line);
+  border-radius: var(--radius);
+  padding: 22px;
+  min-width: 0;
+}
+
+.step .num{
+  display:inline-flex;
+  width: 34px; height: 34px;
+  align-items:center; justify-content:center;
+  border-radius: 12px;
+  background: rgba(15,42,68,0.06);
+  border: 1px solid rgba(15,42,68,0.08);
+  font-weight: 900;
+  color: var(--blue-navy);
+  margin-bottom: 10px;
+  font-family: Montserrat, Inter, sans-serif;
+}
+
+.article-card{
+  background:#fff;
+  border:1px solid var(--gray-line);
+  border-radius: var(--radius);
+  padding: 22px;
+  min-width: 0;
+}
+
+.article-card a{
+  text-decoration:none;
+  color: var(--blue-navy);
+  font-weight: 900;
+  font-family: Montserrat, Inter, sans-serif;
+}
+
+.article-card a:hover{ text-decoration: underline; }
+
+.meta{
+  font-size: .85rem;
+  color: var(--gray-muted);
+  margin-top: 6px;
+}
+
+.cta-band{
+  background: var(--blue-navy);
+  border-radius: 18px;
+  padding: 26px;
+  color:#fff;
+  display:flex;
+  gap: 18px;
+  align-items:center;
+  justify-content: space-between;
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.cta-band h3{
+  margin:0;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.cta-band p{
+  margin: 6px 0 0;
+  opacity: .9;
+  max-width: 70ch;
+}
+
+.cta-actions{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+details.faq{
+  background:#fff;
+  border:1px solid var(--gray-line);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+details.faq summary{
+  cursor:pointer;
+  font-weight: 900;
+  color: var(--blue-navy);
+  font-family: Montserrat, Inter, sans-serif;
+}
+
+details.faq p{
+  margin: 10px 0 0;
+  color: var(--gray-muted);
+}
+
+.fab-wa{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  background: #25D366;
+  color:#fff;
+  text-decoration:none;
+  font-weight: 900;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.20);
+}
+.fab-wa:hover{ filter: brightness(0.98); }
+.fab-wa .dot{
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+.footer {
+  background: var(--blue-navy);
+  color: rgba(255,255,255,0.92);
+  padding: 44px 0;
+}
+.footer strong {
+  color: #fff;
+  font-family: Montserrat, Inter, sans-serif;
+  font-weight: 900;
+}
+
+/* =========================
+   INDICADORES (tablas)
+   ========================= */
+.indicator-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.indicator-table th, .indicator-table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--gray-line);
+  text-align: left;
+  font-size: 0.95rem;
+  vertical-align: top;
+}
+
+.indicator-table th {
+  color: var(--blue-navy);
+  font-weight: 800;
+  background: #F8FAFC;
+  font-family: Montserrat, Inter, sans-serif;
+}
+
+.value-highlight {
+  font-family: Montserrat, Inter, sans-serif;
+  font-weight: 900;
+  color: var(--blue-main);
+}
 
 /* =========================
    INPC
@@ -345,286 +563,15 @@ table.inpc th {
 
 table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
 
-.inpc-title {
-  font-family: Montserrat, Inter, sans-serif;
-  color: var(--blue-navy);
-  font-weight: 900;
-  margin: 0 0 10px;
-}
-
-.inpc-note {
-  margin: 12px 0 0;
-  color: var(--gray-muted);
-  font-size: 0.95rem;
-}
-
-/* =========================
-   INDICADORES (tablas)
-   ========================= */
-.indicator-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.indicator-table th, .indicator-table td {
-  padding: 10px;
-  border-bottom: 1px solid var(--gray-line);
-  text-align: left;
-  font-size: 0.95rem;
-  vertical-align: top;
-}
-
-.indicator-table th {
-  color: var(--blue-navy);
-  font-weight: 800;
-  background: #F8FAFC;
-  font-family: Montserrat, Inter, sans-serif;
-}
-
-.value-highlight {
-  font-family: Montserrat, Inter, sans-serif;
-  font-weight: 900;
-  color: var(--blue-main);
-}
-
-.source-link {
-  font-size: 0.85rem;
-  color: var(--gray-muted);
-  margin-top: 10px;
-  display: inline-block;
-  text-decoration: underline;
-}
-
-/* =========================
-   HOME EXTRAS (trust / steps / blog / cta / faq / fab)
-   ========================= */
-/* Trust strip */
-.trust-strip{
-  margin-top: -34px;
-  position: relative;
-  z-index: 5;
-}
-
-.trust-card{
-  background:#fff;
-  border:1px solid var(--gray-line);
-  border-radius: 18px;
-  padding: 16px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
-}
-
-.trust-grid{
-  display:grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.trust-item{
-  grid-column: span 3;
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 14px;
-  background: rgba(15,42,68,0.03);
-  border: 1px solid rgba(15,42,68,0.06);
-  min-width: 0;              /* FIX overflow */
-  overflow: hidden;          /* FIX overflow */
-}
-
-.trust-item > div{
-  min-width: 0;              /* FIX overflow */
-}
-
-.trust-icon{
-  width: 38px; height: 38px;
-  border-radius: 14px;
-  display:flex; align-items:center; justify-content:center;
-  background: rgba(26,167,225,0.12);
-  border: 1px solid rgba(26,167,225,0.18);
-  font-size: 18px;
-  flex: 0 0 38px;
-}
-
-.trust-item strong{
-  display:block;
-  font-size: .95rem;
-  color: var(--blue-navy);
-  font-family: Montserrat, Inter, sans-serif;
-  font-weight: 900;
-  white-space: normal;          /* FIX “Confidencialidad” */
-  overflow-wrap: anywhere;      /* FIX “Confidencialidad” */
-  line-height: 1.15;
-}
-
-.trust-item span{
-  display:block;
-  font-size: .85rem;
-  color: var(--gray-muted);
-  margin-top: 1px;
-  overflow-wrap: anywhere;
-}
-
-/* Steps */
-.steps{
-  display:grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 12px;
-}
-
-.step{
-  grid-column: span 4;
-  background:#fff;
-  border:1px solid var(--gray-line);
-  border-radius: var(--radius);
-  padding: 22px;
-  min-width: 0;
-}
-
-.step .num{
-  display:inline-flex;
-  width: 34px; height: 34px;
-  align-items:center; justify-content:center;
-  border-radius: 12px;
-  background: rgba(15,42,68,0.06);
-  border: 1px solid rgba(15,42,68,0.08);
-  font-weight: 900;
-  color: var(--blue-navy);
-  margin-bottom: 10px;
-  font-family: Montserrat, Inter, sans-serif;
-}
-
-/* Blog preview cards */
-.article-card{
-  background:#fff;
-  border:1px solid var(--gray-line);
-  border-radius: var(--radius);
-  padding: 22px;
-  min-width: 0;
-}
-
-.article-card a{
-  text-decoration:none;
-  color: var(--blue-navy);
-  font-weight: 900;
-  font-family: Montserrat, Inter, sans-serif;
-}
-
-.article-card a:hover{ text-decoration: underline; }
-
-.meta{
-  font-size: .85rem;
-  color: var(--gray-muted);
-  margin-top: 6px;
-}
-
-/* CTA band */
-.cta-band{
-  background: var(--blue-navy);
-  border-radius: 18px;
-  padding: 26px;
-  color:#fff;
-  display:flex;
-  gap: 18px;
-  align-items:center;
-  justify-content: space-between;
-  border: 1px solid rgba(255,255,255,0.10);
-}
-
-.cta-band h3{
-  margin:0;
-  font-family: Montserrat, Inter, sans-serif;
-  font-size: 1.25rem;
-  font-weight: 900;
-}
-
-.cta-band p{
-  margin: 6px 0 0;
-  opacity: .9;
-  max-width: 70ch;
-}
-
-.cta-actions{
-  display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-/* FAQ */
-details.faq{
-  background:#fff;
-  border:1px solid var(--gray-line);
-  border-radius: 14px;
-  padding: 14px 16px;
-  margin-bottom: 12px;
-}
-
-details.faq summary{
-  cursor:pointer;
-  font-weight: 900;
-  color: var(--blue-navy);
-  font-family: Montserrat, Inter, sans-serif;
-}
-
-details.faq p{
-  margin: 10px 0 0;
-  color: var(--gray-muted);
-}
-
-/* WhatsApp floating button */
-.fab-wa{
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 9999;
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  padding: 12px 14px;
-  border-radius: 999px;
-  background: #25D366;
-  color:#fff;
-  text-decoration:none;
-  font-weight: 900;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.20);
-}
-
-.fab-wa:hover{ filter: brightness(0.98); }
-
-.fab-wa .dot{
-  width: 10px; height: 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.9);
-}
-
-/* =========================
-   FOOTER
-   ========================= */
-.footer {
-  background: var(--blue-navy);
-  color: rgba(255,255,255,0.92);
-  padding: 44px 0;
-}
-
-.footer strong {
-  color: #fff;
-  font-family: Montserrat, Inter, sans-serif;
-  font-weight: 900;
-}
-
 /* =========================
    RESPONSIVE
    ========================= */
 @media (max-width: 920px) {
   .card { grid-column: span 12; }
   .step { grid-column: span 12; }
-  .trust-item { grid-column: span 6; }
+  .trust-item { grid-column: span 6; } /* 2 por fila */
 }
 
-/* Mobile */
 @media (max-width: 760px) {
   /* Nav */
   .hamburger { display: inline-flex; }
@@ -645,11 +592,9 @@ details.faq p{
   }
   .nav.mobile-open a { padding: 10px 12px; }
 
-  /* Better spacing */
   .section { padding: 60px 0; }
   .page-top { padding-top: 92px; }
 
-  /* Hero tighter */
   .hero{
     min-height: 520px;
     padding: 108px 0 46px;
@@ -666,7 +611,6 @@ details.faq p{
     max-width: 44ch;
   }
 
-  /* Buttons: stack, not giant */
   .btn-primary,
   .btn-secondary{
     width: 100%;
@@ -675,19 +619,15 @@ details.faq p{
     border-radius: 14px;
   }
 
-  /* If you have a wrapper for buttons inside hero, this keeps it nice */
   .hero-content > div{
     width: 100%;
     max-width: 360px;
     margin: 10px auto 0;
   }
 
-  /* Trust: 2 per row on normal phones */
   .trust-strip { margin-top: -18px; }
   .trust-card { padding: 12px; border-radius: 16px; }
-  .trust-item { grid-column: span 6; padding: 10px 12px; }
 
-  /* Grid: one column */
   .grid{
     grid-template-columns: 1fr;
     gap: 14px;
@@ -697,10 +637,8 @@ details.faq p{
     padding: 18px;
   }
 
-  /* Blog cards (if you used inline span, this forces 1 col) */
   .article-card{ grid-column: auto !important; padding: 18px; }
 
-  /* CTA band stack */
   .cta-band{
     flex-direction: column;
     align-items: flex-start;
@@ -716,7 +654,6 @@ details.faq p{
     width: 100%;
   }
 
-  /* WhatsApp bubble smaller */
   .fab-wa{
     right: 14px;
     bottom: 14px;
@@ -726,18 +663,11 @@ details.faq p{
   }
 }
 
-/* Very small phones */
-@media (max-width: 420px) {
-  .trust-item { grid-column: span 12; } /* 1 per row */
+/* IMPORTANT: en la mayoría de iPhones (430px) forzamos 1 por fila para que no se apriete */
+@media (max-width: 520px) {
+  .trust-item { grid-column: span 12; } /* 1 por fila */
 }
 
-@media (max-width: 380px){
-  .hero h1{ font-size: 1.85rem; }
-  .hero{ min-height: 500px; }
-  .trust-icon{ width: 34px; height: 34px; border-radius: 12px; }
-}
-
-/* Accesibilidad */
 @media (prefers-reduced-motion: reduce) {
   .hero-video { display: none; }
 }
