@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sitios de Interés y Herramientas | GG Contabilidad</title>
+  <meta name="description" content="Recursos, indicadores financieros, noticias fiscales y enlaces a sitios oficiales del SAT, IMSS y gobierno." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles.css">
+  
+  <style>
+    /* Estilos específicos para esta página de enlaces */
+    .link-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .link-list li {
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--gray-line);
+      padding-bottom: 8px;
+    }
+    .link-list li:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .link-list a {
+      text-decoration: none;
+      color: var(--blue-navy);
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    .link-list a:hover {
+      color: var(--blue-main);
+    }
+    .link-list span {
+      font-size: 0.9em;
+      color: var(--gray-muted);
+    }
+    /* Botón pequeño para indicadores internos */
+    .btn-small {
+      display: inline-block;
+      background: var(--blue-navy);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-top: 5px;
+    }
+    .btn-small:hover { opacity: 0.9; }
+  </style>
+</head>
+
+<body>
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="Inicio">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
+    </a>
+
+    <button id="hamburger" class="hamburger" aria-label="Abrir menú">Menú</button>
+
+    <nav id="nav" class="nav" aria-label="Navegación principal">
+      <a href="servicios.html">Servicios</a>
+      <a href="indicadores.html" aria-current="page">Indicadores</a>
+      <a href="inpc.html">INPC</a>
+      <a href="enlaces.html">Sitios de Interés</a>
+      <a href="Blog.html">Blog</a>
+      <a href="nosotros.html">Quiénes somos</a>
+      <a href="contacto.html" class="btn-nav">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section page-top">
+  <div class="container">
+    <h1 class="section-title">Sitios de Interés y Herramientas</h1>
+    <p class="section-subtitle">
+      Acceso directo a portales oficiales, indicadores financieros actualizados y noticias relevantes del sector.
+    </p>
+
+    <h2 class="section-title" style="font-size:1.4rem; margin-top:20px;">Indicadores Financieros</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>INPC (Histórico)</h3>
+        <p>Consulta las tablas actualizadas del Índice Nacional de Precios al Consumidor.</p>
+        <a href="inpc.html" class="btn-small">Ver Tabla INPC</a>
+      </div>
+
+      <div class="card">
+        <h3>Indicadores Diarios (Banxico)</h3>
+        <ul class="link-list">
+          <li>
+            <a href="https://www.banxico.org.mx/tipcamb/main.do?page=tip&idioma=sp" target="_blank">
+              Tipo de Cambio (FIX) <span>↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=22&accion=consultarCuadro&idCuadro=CP154&locale=es" target="_blank">
+              Valor de las UDIS <span>↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.banxico.org.mx/" target="_blank">
+              TIIE 28 días <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="section-title" style="font-size:1.4rem; margin-top:40px;">Portales Oficiales</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Trámites Fiscales</h3>
+        <ul class="link-list">
+          <li><a href="https://www.sat.gob.mx/home" target="_blank">Portal del SAT <span>sat.gob.mx</span></a></li>
+          <li><a href="https://www.sat.gob.mx/personas/buzon-tributario" target="_blank">Buzón Tributario <span>Acceso</span></a></li>
+          <li><a href="https://www.prodecon.gob.mx/" target="_blank">PRODECON <span>Defensa</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Seguridad Social y Laboral</h3>
+        <ul class="link-list">
+          <li><a href="https://www.imss.gob.mx/patrones/idse" target="_blank">IDSE (IMSS desde su empresa) <span>↗</span></a></li>
+          <li><a href="https://sipare.imss.gob.mx/" target="_blank">SIPARE <span>Pagos</span></a></li>
+          <li><a href="https://www.infonavit.org.mx/" target="_blank">Portal Infonavit <span>↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Leyes y Publicaciones</h3>
+        <ul class="link-list">
+          <li><a href="https://www.dof.gob.mx/" target="_blank">Diario Oficial de la Federación (DOF) <span>↗</span></a></li>
+          <li><a href="https://www.diputados.gob.mx/LeyesBiblio/index.htm" target="_blank">Leyes Federales Vigentes <span>Cámara Dip.</span></a></li>
+        </ul>
+      </div>
+      
+       <div class="card">
+        <h3>Gobierno Estatal</h3>
+        <ul class="link-list">
+          <li><a href="#" target="_blank">Tesorería Virtual (Estado) <span>↗</span></a></li>
+          <li><a href="#" target="_blank">Instituto de Control Vehicular <span>↗</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="section-title" style="font-size:1.4rem; margin-top:40px;">Noticias del Sector</h2>
+    <div class="grid">
+      <div class="card" style="grid-column: span 12;">
+        <h3>Fuentes de Información Confiable</h3>
+        <p style="margin-bottom:15px;">Mantente al día con los cambios fiscales consultando estas fuentes:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+            <a href="https://www.elcontribuyente.mx/" target="_blank" style="text-decoration:none; color: var(--blue-navy); font-weight:600; border:1px solid var(--gray-line); padding:10px; border-radius:8px; text-align:center; background:#fff;">
+               📰 El Contribuyente
+            </a>
+            <a href="https://www.fiscalia.com/" target="_blank" style="text-decoration:none; color: var(--blue-navy); font-weight:600; border:1px solid var(--gray-line); padding:10px; border-radius:8px; text-align:center; background:#fff;">
+               ⚖️ Fiscalia
+            </a>
+             <a href="https://imcp.org.mx/" target="_blank" style="text-decoration:none; color: var(--blue-navy); font-weight:600; border:1px solid var(--gray-line); padding:10px; border-radius:8px; text-align:center; background:#fff;">
+               🎓 IMCP
+            </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <strong>GG Contabilidad y Defensa Fiscal</strong>
+    <p style="margin: 10px 0 0;">© 2025. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById("nav");
+  const hamburger = document.getElementById("hamburger");
+
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("mobile-open");
+  });
+
+  nav.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => nav.classList.remove("mobile-open"));
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GG Contabilidad y Defensa Fiscal</title>
+  <meta name="description" content="GG Contabilidad y Defensa Fiscal: soluciones contables, fiscales y legales con enfoque estratégico y preventivo." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue-main: #1AA7E1;
+      --blue-navy: #0F2A44;
+      --blue-light: #EAF5FB;
+      --white: #FFFFFF;
+      --gray-text: #1F2937;
+      --gray-muted: #6B7280;
+      --gray-line: #E5E7EB;
+      --container: 1120px;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--gray-text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 14px 0;
+      background: rgba(15,42,68,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+    }
+
+    /* Logo */
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      overflow: hidden;
+      flex: 0 0 60px;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav a {
+      color: rgba(255,255,255,0.92);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 10px;
+      border-radius: 10px;
+      transition: background-color 0.2s ease;
+    }
+
+    .nav a:hover { background: rgba(255,255,255,0.10); }
+
+    .btn-nav {
+      border: 1px solid rgba(26,167,225,0.95);
+      padding: 8px 14px !important;
+    }
+
+    /* Mobile nav */
+    .hamburger {
+      display: none;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.92);
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* HERO con VIDEO (tamaño mediano) */
+    .hero {
+      position: relative;
+      min-height: clamp(420px, 68vh, 640px); /* MEDIANO: no pantalla completa */
+      display: flex;
+      align-items: center;
+      padding: 120px 0 60px;
+      color: #fff;
+      overflow: hidden;
+      background: #0F2A44; /* fallback */
+    }
+
+    /* Video de fondo */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;    /* llena el hero sin deformar */
+      object-position: center;
+      z-index: 0;
+      filter: saturate(1.05) contrast(1.05);
+      transform: scale(1.03); /* evita bordes por redondeos/scroll */
+    }
+
+    /* Capa para oscurecer el video y que el texto se lea */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(900px 520px at 70% 25%, rgba(26,167,225,0.30), transparent 60%),
+        linear-gradient(135deg, rgba(15,42,68,0.78), rgba(15,42,68,0.88));
+    }
+
+    /* Contenido del hero arriba del video */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero h1 {
+      font-family: Montserrat, Inter, sans-serif;
+      font-size: clamp(2.1rem, 3.2vw, 3.2rem);
+      margin: 0;
+      letter-spacing: -0.5px;
+      line-height: 1.05;
+      max-width: 18ch;
+      text-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 68ch;
+      opacity: 0.95;
+      font-size: 1.05rem;
+      text-shadow: 0 10px 24px rgba(0,0,0,0.30);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      margin-top: 18px;
+      background: var(--blue-main);
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    .btn-primary:hover { transform: translateY(-1px); filter: brightness(0.96); }
+
+    /* Sections */
+    section { scroll-margin-top: 110px; }
+    .section { padding: 80px 0; }
+
+    .section-title {
+      font-family: Montserrat, Inter, sans-serif;
+      font-size: 1.9rem;
+      color: var(--blue-navy);
+      margin: 0 0 10px;
+    }
+
+    .section-subtitle {
+      color: var(--gray-muted);
+      max-width: 80ch;
+      margin: 0 0 30px;
+    }
+
+    /* Services grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      padding: 22px;
+      background: var(--blue-light);
+      border: 1px solid rgba(15,42,68,0.06);
+      grid-column: span 6;
+      transition: transform 0.2s ease;
+    }
+    .card:hover { transform: translateY(-2px); }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-family: Montserrat, Inter, sans-serif;
+      color: var(--blue-navy);
+      font-size: 1.08rem;
+    }
+    .card p { margin: 0; }
+
+    /* INPC */
+    .inpc-wrap {
+      background: var(--blue-light);
+    }
+
+    .year-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+
+    .year-tab {
+      border: 1px solid var(--gray-line);
+      background: #fff;
+      color: var(--blue-navy);
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-family: Montserrat, Inter, sans-serif;
+      transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .year-tab:hover { transform: translateY(-1px); }
+
+    .year-tab.active {
+      background: rgba(15,42,68,0.92);
+      color: #fff;
+      border-color: rgba(255,255,255,0.14);
+    }
+
+    .inpc-panel { display: none; }
+    .inpc-panel.active { display: block; }
+
+    .table-box {
+      background: #fff;
+      border: 1px solid var(--gray-line);
+      border-radius: 16px;
+      overflow: auto;
+      box-shadow: 0 12px 28px rgba(15,42,68,0.06);
+    }
+
+    table.inpc {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+    }
+
+    table.inpc th, table.inpc td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--gray-line);
+      text-align: left;
+      vertical-align: middle;
+      font-size: 0.98rem;
+    }
+
+    table.inpc th {
+      position: sticky;
+      top: 0;
+      background: #0F2A44;
+      color: #fff;
+      z-index: 1;
+      font-family: Montserrat, Inter, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
+
+    .inpc-title {
+      font-family: Montserrat, Inter, sans-serif;
+      color: var(--blue-navy);
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    .inpc-note {
+      margin: 12px 0 0;
+      color: var(--gray-muted);
+      font-size: 0.95rem;
+    }
+
+    /* About */
+    .about { background: var(--blue-light); }
+    .about-card {
+      background: #fff;
+      padding: 36px;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-line);
+    }
+
+    /* Contact */
+    .contact { background: var(--blue-light); }
+
+    /* Footer */
+    .footer {
+      background: var(--blue-navy);
+      color: rgba(255,255,255,0.92);
+      padding: 44px 0;
+    }
+    .footer strong {
+      color: #fff;
+      font-family: Montserrat, Inter, sans-serif;
+      font-weight: 700;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px) {
+      .card { grid-column: span 12; }
+    }
+
+    @media (max-width: 760px) {
+      .hamburger { display: inline-flex; }
+
+      .nav { display: none; }
+      .nav.mobile-open {
+        display: flex;
+        position: absolute;
+        top: 88px;
+        right: 20px;
+        flex-direction: column;
+        background: rgba(15,42,68,0.98);
+        border: 1px solid rgba(255,255,255,0.12);
+        padding: 10px;
+        border-radius: 16px;
+        min-width: 220px;
+        box-shadow: 0 14px 40px rgba(0,0,0,0.25);
+      }
+      .nav.mobile-open a { padding: 10px 12px; }
+    }
+
+    /* Accesibilidad: si el usuario prefiere menos movimiento, apaga autoplay visualmente */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-video { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="#top" class="logo" aria-label="Inicio">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
+    </a>
+
+    <button id="hamburger" class="hamburger" aria-label="Abrir menú">Menú</button>
+
+    <nav id="nav" class="nav" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#inpc">INPC</a>
+      <a href="#nosotros">Quiénes somos</a>
+      <a href="#contacto" class="btn-nav">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO con video -->
+<main id="top" class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+    <source src="Abstract_Corporate_Background_Video_Generation.MP4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="container hero-content">
+    <h1>GG Contabilidad y Defensa Fiscal</h1>
+    <p>Soluciones contables, fiscales y legales con enfoque estratégico, preventivo y técnico.</p>
+    <a href="#servicios" class="btn-primary">Ver servicios</a>
+  </div>
+</main>
+
+<section id="servicios" class="section">
+  <div class="container">
+    <h2 class="section-title">Servicios Contables y Fiscales</h2>
+    <p class="section-subtitle">
+      Soluciones integrales en materia contable y fiscal, con enfoque preventivo, técnico y estratégico.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Contabilidad y control financiero</h3>
+        <p>
+          Llevamos la contabilidad de forma ordenada, clara y consistente, cuidando que la información financiera refleje la realidad de la empresa y cumpla con las disposiciones fiscales vigentes, permitiendo al cliente tomar decisiones con seguridad.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Facturación electrónica</h3>
+        <p>
+          Supervisamos la correcta emisión y registro de CFDI, asegurando su congruencia con la contabilidad y las obligaciones fiscales, reduciendo riesgos ante revisiones electrónicas.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Nómina</h3>
+        <p>
+          Administramos la nómina considerando sueldos, prestaciones y obligaciones fiscales y de seguridad social, con especial atención a la correcta determinación de cargas laborales y fiscales.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Declaraciones fiscales</h3>
+        <p>
+          Elaboramos y presentamos declaraciones mensuales, anuales e informativas, cuidando la coherencia entre contabilidad, CFDI y pagos, para evitar diferencias que deriven en contingencias.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>IMSS y SUA</h3>
+        <p>
+          Atendemos integralmente las obligaciones en materia de seguridad social, incluyendo altas, bajas, modificaciones salariales y determinación correcta de cuotas a través del SUA, con enfoque preventivo.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Auditoría financiera</h3>
+        <p>
+          Revisamos estados financieros para evaluar su razonabilidad, identificar riesgos contables y fiscales, y fortalecer los controles internos de la empresa.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Estudios de precios de transferencia</h3>
+        <p>
+          Elaboramos estudios de precios de transferencia para operaciones entre partes relacionadas, conforme a la legislación fiscal y lineamientos internacionales, proporcionando sustento técnico sólido ante fiscalización.
+        </p>
+      </div>
+    </div>
+
+    <h2 class="section-title" style="margin-top:60px;">Servicios Legales Fiscales</h2>
+    <p class="section-subtitle">
+      Defensa y acompañamiento legal ante actos de autoridad fiscal y aduanera, con estrategia técnica y enfoque en el debido proceso.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Auditorías del SAT</h3>
+        <p>
+          Acompañamos al contribuyente en revisiones de gabinete, revisiones electrónicas y visitas domiciliarias, atendiendo cada requerimiento con estrategia y cuidando el debido proceso desde el primer acto de autoridad.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Procedimientos Administrativos en Materia Aduanera (PAMA)</h3>
+        <p>
+          Asesoramos y defendemos a empresas y contribuyentes en procedimientos administrativos en materia aduanera, desde el análisis del acta inicial hasta la estrategia legal para la recuperación de mercancías o la impugnación de resoluciones.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Multas y créditos fiscales</h3>
+        <p>
+          Analizamos de manera técnica y detallada multas y créditos fiscales determinados por la autoridad, identificando inconsistencias, vicios de forma y fondo, así como alternativas legales viables para su corrección, reducción o impugnación, siempre con una estrategia realista y bien sustentada.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Restricción de sellos digitales</h3>
+        <p>
+          Atendemos de forma inmediata los casos de restricción de sellos digitales, diseñando la estrategia fiscal y legal necesaria para dejar sin efectos la medida y permitir la continuidad de las operaciones del contribuyente.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Aseguramiento de cuentas</h3>
+        <p>
+          Brindamos defensa frente a embargos y aseguramientos de cuentas bancarias, buscando proteger la liquidez del negocio y garantizar su operación.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Padrón de importadores</h3>
+        <p>
+          Asesoramos y defendemos a empresas ante la suspensión o baja del padrón de importadores y padrones sectoriales, con el objetivo de lograr su reincorporación y continuidad en operaciones de comercio exterior.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INPC (manual) -->
+<section id="inpc" class="section inpc-wrap">
+  <div class="container">
+    <h2 class="section-title">Índice Nacional de Precios al Consumidor (INPC)</h2>
+    <p class="section-subtitle">
+      Tablas informativas actualizadas manualmente con base en la fecha de publicación en el DOF.
+    </p>
+
+    <div class="year-tabs" role="tablist" aria-label="Años INPC">
+      <button class="year-tab active" type="button" data-target="panel-2025" role="tab" aria-selected="true">2025</button>
+      <button class="year-tab" type="button" data-target="panel-2024" role="tab" aria-selected="false">2024</button>
+    </div>
+
+    <!-- 2025 -->
+    <div id="panel-2025" class="inpc-panel active" role="tabpanel">
+      <h3 class="inpc-title">Índice Nacional de Precios al Consumidor 2025</h3>
+      <div class="table-box">
+        <table class="inpc">
+          <thead>
+            <tr>
+              <th>Mes</th>
+              <th>Índices (INPC)</th>
+              <th>Fecha de publicación en el DOF</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Noviembre</td><td>142.645</td><td>10 de diciembre de 2025</td></tr>
+            <tr><td>Octubre</td><td>141.708</td><td>10 de noviembre de 2025</td></tr>
+            <tr><td>Septiembre</td><td>141.197</td><td>10 de octubre de 2025</td></tr>
+            <tr><td>Agosto</td><td>140.867</td><td>10 de septiembre de 2025</td></tr>
+            <tr><td>Julio</td><td>140.78</td><td>08 de agosto de 2025</td></tr>
+            <tr><td>Junio</td><td>140.405</td><td>10 de julio de 2025</td></tr>
+            <tr><td>Mayo</td><td>140.012</td><td>10 de junio de 2025</td></tr>
+            <tr><td>Abril</td><td>139.62</td><td>09 de mayo de 2025</td></tr>
+            <tr><td>Marzo</td><td>139.161</td><td>10 de abril de 2025</td></tr>
+            <tr><td>Febrero</td><td>138.726</td><td>10 de marzo de 2025</td></tr>
+            <tr><td>Enero</td><td>138.343</td><td>10 de febrero de 2025</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="inpc-note">Tip: cuando salga el siguiente mes, solo agrega el renglón arriba.</p>
+    </div>
+
+    <!-- 2024 -->
+    <div id="panel-2024" class="inpc-panel" role="tabpanel">
+      <h3 class="inpc-title">Índice Nacional de Precios al Consumidor 2024</h3>
+      <div class="table-box">
+        <table class="inpc">
+          <thead>
+            <tr>
+              <th>Mes</th>
+              <th>Índices (INPC)</th>
+              <th>Fecha de publicación en el DOF</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Diciembre</td><td>137.949</td><td>10 de enero de 2025</td></tr>
+            <tr><td>Noviembre</td><td>137.424</td><td>10 de diciembre de 2024</td></tr>
+            <tr><td>Octubre</td><td>136.828</td><td>08 de noviembre de 2024</td></tr>
+            <tr><td>Septiembre</td><td>136.08</td><td>10 de octubre de 2024</td></tr>
+            <tr><td>Agosto</td><td>136.013</td><td>10 de septiembre de 2024</td></tr>
+            <tr><td>Julio</td><td>136.003</td><td>09 de agosto de 2024</td></tr>
+            <tr><td>Junio</td><td>134.594</td><td>10 de julio de 2024</td></tr>
+            <tr><td>Mayo</td><td>134.087</td><td>10 de junio de 2024</td></tr>
+            <tr><td>Abril</td><td>134.336</td><td>10 de mayo de 2024</td></tr>
+            <tr><td>Marzo</td><td>134.065</td><td>10 de abril de 2024</td></tr>
+            <tr><td>Febrero</td><td>133.681</td><td>08 de marzo de 2024</td></tr>
+            <tr><td>Enero</td><td>133.555</td><td>09 de febrero de 2024</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="inpc-note">Tip: si algún dato cambia por corrección, solo edita el valor del mes.</p>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros" class="section about">
+  <div class="container">
+    <div class="about-card">
+      <h2 class="section-title">Quiénes somos</h2>
+      <p>
+        <strong>GG Contabilidad y Defensa Fiscal</strong> es un despacho enfocado en brindar soluciones contables, fiscales y legales
+        con un enfoque preventivo, estratégico y alineado a la normativa vigente. Priorizamos claridad, confidencialidad y atención personalizada.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="section contact">
+  <div class="container">
+    <h2 class="section-title">Contacto</h2>
+    <p>Agenda una consulta por WhatsApp.</p>
+    <a class="btn-primary" href="https://wa.me/525513110556" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <strong>GG Contabilidad y Defensa Fiscal</strong>
+    <p style="margin: 10px 0 0;">© 2025. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById("nav");
+  const hamburger = document.getElementById("hamburger");
+
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("mobile-open");
+  });
+
+  nav.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => nav.classList.remove("mobile-open"));
+  });
+
+  // Tabs INPC
+  const tabButtons = document.querySelectorAll(".year-tab");
+  const panels = document.querySelectorAll(".inpc-panel");
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+
+      tabButtons.forEach(b => {
+        b.classList.remove("active");
+        b.setAttribute("aria-selected", "false");
+      });
+      btn.classList.add("active");
+      btn.setAttribute("aria-selected", "true");
+
+      panels.forEach(p => p.classList.remove("active"));
+      const targetPanel = document.getElementById(targetId);
+      if (targetPanel) targetPanel.classList.add("active");
+    });
+  });
+</script>
+
+</body>
+</html>

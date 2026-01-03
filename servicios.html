@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Servicios | GG Contabilidad y Defensa Fiscal</title>
+  <meta name="description" content="Servicios contables, fiscales y legales con enfoque estratégico, preventivo y técnico." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="Inicio">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
+    </a>
+
+    <button id="hamburger" class="hamburger" aria-label="Abrir menú">Menú</button>
+
+    <nav id="nav" class="nav" aria-label="Navegación principal">
+      <a href="servicios.html">Servicios</a>
+      <a href="indicadores.html" aria-current="page">Indicadores</a>
+      <a href="inpc.html">INPC</a>
+      <a href="enlaces.html">Sitios de Interés</a>
+      <a href="Blog.html">Blog</a>
+      <a href="nosotros.html">Quiénes somos</a>
+      <a href="contacto.html" class="btn-nav">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section page-top">
+  <div class="container">
+    <h1 class="section-title" style="margin-bottom:6px;">Servicios</h1>
+    <p class="section-subtitle">
+      Soluciones integrales en materia contable, fiscal y legal, con enfoque preventivo, técnico y estratégico.
+    </p>
+
+    <h2 class="section-title" style="font-size:1.5rem;">Servicios Contables y Fiscales</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Contabilidad y control financiero</h3>
+        <p>Contabilidad ordenada y clara, alineada a disposiciones fiscales vigentes.</p>
+      </div>
+
+      <div class="card">
+        <h3>Facturación electrónica</h3>
+        <p>Supervisión de CFDI y su congruencia con contabilidad para reducir riesgos.</p>
+      </div>
+
+      <div class="card">
+        <h3>Nómina</h3>
+        <p>Administración de nómina con enfoque en cargas laborales y obligaciones.</p>
+      </div>
+
+      <div class="card">
+        <h3>Declaraciones fiscales</h3>
+        <p>Mensuales, anuales e informativas con coherencia entre contabilidad y CFDI.</p>
+      </div>
+
+      <div class="card">
+        <h3>IMSS y SUA</h3>
+        <p>Altas, bajas, modificaciones y determinación correcta de cuotas.</p>
+      </div>
+
+      <div class="card">
+        <h3>Auditoría financiera</h3>
+        <p>Evaluación de estados financieros e identificación de riesgos.</p>
+      </div>
+
+      <div class="card">
+        <h3>Precios de transferencia</h3>
+        <p>Estudios para partes relacionadas con sustento técnico.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title" style="margin-top:60px; font-size:1.5rem;">Servicios Legales Fiscales</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Auditorías del SAT</h3>
+        <p>Acompañamiento en revisiones de gabinete, electrónicas y visitas domiciliarias.</p>
+      </div>
+
+      <div class="card">
+        <h3>PAMA</h3>
+        <p>Estrategia y defensa en procedimientos aduaneros.</p>
+      </div>
+
+      <div class="card">
+        <h3>Multas y créditos fiscales</h3>
+        <p>Análisis técnico para corrección, reducción o impugnación.</p>
+      </div>
+
+      <div class="card">
+        <h3>Restricción de sellos digitales</h3>
+        <p>Atención inmediata y estrategia para continuidad operativa.</p>
+      </div>
+
+      <div class="card">
+        <h3>Aseguramiento de cuentas</h3>
+        <p>Defensa frente a embargos para proteger liquidez.</p>
+      </div>
+
+      <div class="card">
+        <h3>Padrón de importadores</h3>
+        <p>Asesoría ante suspensión o baja para reincorporación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <strong>GG Contabilidad y Defensa Fiscal</strong>
+    <p style="margin: 10px 0 0;">© 2025. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById("nav");
+  const hamburger = document.getElementById("hamburger");
+
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("mobile-open");
+  });
+
+  nav.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => nav.classList.remove("mobile-open"));
+  });
+</script>
+</body>
+</html>

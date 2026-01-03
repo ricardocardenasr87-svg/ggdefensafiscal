@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Indicadores | GG Contabilidad y Defensa Fiscal</title>
+  <meta name="description" content="Indicadores fiscales y financieros: UMA, salarios mínimos, recargos, ISR, INPC y más. Actualización y fuentes de consulta." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <style>
+    /* ====== Estilo "hub" de Indicadores (tipo directorio) ====== */
+    .hub-grid .card{ background:#fff; border:1px solid var(--gray-line); }
+    .hub-head{
+      display:flex; align-items:center; gap:12px; margin-bottom:10px;
+    }
+    .hub-icon{
+      width:44px; height:44px; border-radius:14px;
+      display:inline-flex; align-items:center; justify-content:center;
+      background: rgba(26,167,225,0.10);
+      border: 1px solid rgba(26,167,225,0.18);
+      color: var(--blue-navy);
+      font-size: 20px;
+      flex: 0 0 44px;
+    }
+    .hub-title{
+      margin:0;
+      font-family: Montserrat, Inter, sans-serif;
+      color: var(--blue-navy);
+      font-size: 1.05rem;
+      line-height: 1.15;
+    }
+    .hub-links{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+    }
+    .hub-links a{
+      display:flex; align-items:center; justify-content:space-between;
+      text-decoration:none;
+      color: var(--gray-text);
+      background: #F8FAFC;
+      border: 1px solid rgba(15,42,68,0.08);
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: transform .15s ease, border-color .15s ease, background-color .15s ease;
+      font-size: .95rem;
+    }
+    .hub-links a:hover{
+      transform: translateY(-1px);
+      border-color: rgba(26,167,225,0.35);
+      background: #FFFFFF;
+    }
+    .hub-links a span{
+      color: var(--gray-muted);
+      font-weight: 600;
+      margin-left: 10px;
+    }
+
+    /* ====== Secciones internas ====== */
+    .indicator-section{
+      padding: 40px 0 0;
+    }
+    .indicator-box{
+      background:#fff;
+      border:1px solid var(--gray-line);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .indicator-box h2{
+      margin:0 0 8px;
+      font-family: Montserrat, Inter, sans-serif;
+      color: var(--blue-navy);
+      font-size: 1.25rem;
+    }
+    .indicator-box p{
+      margin:0 0 14px;
+      color: var(--gray-muted);
+      font-size: .95rem;
+    }
+    .indicator-table{
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    .indicator-table th, .indicator-table td{
+      padding: 10px;
+      border-bottom: 1px solid var(--gray-line);
+      text-align: left;
+      font-size: 0.95rem;
+      vertical-align: top;
+    }
+    .indicator-table th{
+      color: var(--blue-navy);
+      font-weight: 700;
+      background: #F8FAFC;
+    }
+    .value-highlight{
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      color: var(--blue-main);
+      white-space: nowrap;
+    }
+    .pill-note{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: .85rem;
+      color: var(--gray-muted);
+      background: rgba(15,42,68,0.06);
+      border: 1px solid rgba(15,42,68,0.08);
+    }
+    .btn-inline{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 12px 16px;
+      background: var(--blue-main);
+      color:#fff;
+      margin-top: 8px;
+    }
+    .btn-inline:hover{ filter: brightness(0.96); }
+    .back-top{
+      display:inline-block;
+      margin-top: 14px;
+      color: var(--blue-navy);
+      text-decoration: underline;
+      font-weight: 600;
+      font-size: .92rem;
+    }
+  </style>
+</head>
+
+<body>
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="Inicio">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
+    </a>
+
+    <button id="hamburger" class="hamburger" aria-label="Abrir menú">Menú</button>
+
+    <nav id="nav" class="nav" aria-label="Navegación principal">
+      <a href="servicios.html">Servicios</a>
+      <a href="indicadores.html" aria-current="page">Indicadores</a>
+      <a href="inpc.html">INPC</a>
+      <a href="enlaces.html">Sitios de Interés</a>
+      <a href="Blog.html">Blog</a>
+      <a href="nosotros.html">Quiénes somos</a>
+      <a href="contacto.html" class="btn-nav">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section id="top" class="section page-top">
+  <div class="container">
+    <h1 class="section-title">Indicadores</h1>
+    <p class="section-subtitle">
+      Directorio de consulta rápida. Aquí puedes navegar por categorías y actualizar manualmente los valores cuando lo necesites.
+    </p>
+
+    <!-- HUB (tipo contadoresvh.com/indicadores) -->
+    <div class="grid hub-grid">
+
+      <div class="card" style="grid-column: span 6;">
+        <div class="hub-head">
+          <div class="hub-icon">🧾</div>
+          <h3 class="hub-title">Impuestos Federales</h3>
+        </div>
+        <ul class="hub-links">
+          <li><a href="#multas-cff">Multas actualizadas CFF <span>→</span></a></li>
+          <li><a href="#isr-provisionales">Tarifas y tablas ISR (Pagos provisionales) <span>→</span></a></li>
+          <li><a href="#isr-anual">Tarifas y tablas ISR (Declaración anual) <span>→</span></a></li>
+          <li><a href="#recargos">Tasas de recargos <span>→</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card" style="grid-column: span 6;">
+        <div class="hub-head">
+          <div class="hub-icon">📈</div>
+          <h3 class="hub-title">Financiero</h3>
+        </div>
+        <ul class="hub-links">
+          <li><a href="#tc-fix">Equivalencia del dólar (FIX) <span>↗</span></a></li>
+          <li><a href="#otras-monedas">Equivalencia de otras monedas <span>↗</span></a></li>
+          <li><a href="inpc.html">Índice Nacional de Precios al Consumidor (INPC) <span>↗</span></a></li>
+          <li><a href="#banxico">CETES / CPP / TIIE / UDIS <span>↗</span></a></li>
+          <li><a href="#uma">Unidad de medida y actualización (UMA) <span>→</span></a></li>
+          <li><a href="#inflacion">Tasa porcentual de inflación <span>↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card" style="grid-column: span 6;">
+        <div class="hub-head">
+          <div class="hub-icon">🛡️</div>
+          <h3 class="hub-title">Seguridad Social</h3>
+        </div>
+        <ul class="hub-links">
+          <li><a href="#imss-infonavit">Cuotas IMSS e INFONAVIT <span>↗</span></a></li>
+          <li><a href="#sanciones-lss">Sanciones establecidas LSS <span>↗</span></a></li>
+          <li><a href="#sanciones-infonavit">Sanciones establecidas INFONAVIT <span>↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card" style="grid-column: span 6;">
+        <div class="hub-head">
+          <div class="hub-icon">🕵️‍♂️</div>
+          <h3 class="hub-title">Prevención de Lavado de Dinero (PLD)</h3>
+        </div>
+        <ul class="hub-links">
+          <li><a href="#actividades-vulnerables">Catálogo de actividades vulnerables <span>↗</span></a></li>
+          <li><a href="#multas-lfpiorpi">Multas establecidas en LFPIORPI <span>↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card" style="grid-column: span 6;">
+        <div class="hub-head">
+          <div class="hub-icon">👷‍♂️</div>
+          <h3 class="hub-title">Laboral</h3>
+        </div>
+        <ul class="hub-links">
+          <li><a href="#salarios">Salarios mínimos generales <span>→</span></a></li>
+          <li><a href="#salarios">Salarios mínimos profesionales <span>↗</span></a></li>
+          <li><a href="#sanciones-lft">Sanciones establecidas en la LFT <span>↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card" style="grid-column: span 6;">
+        <div class="hub-head">
+          <div class="hub-icon">🚢</div>
+          <h3 class="hub-title">Comercio Exterior</h3>
+        </div>
+        <ul class="hub-links">
+          <li><a href="#multas-ley-aduanera">Cantidades y multas actualizadas Ley Aduanera <span>↗</span></a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- ===================== SECCIONES (contenidos / tablas) ===================== -->
+
+    <div class="indicator-section" id="uma">
+      <div class="indicator-box">
+        <h2>UMA (Unidad de Medida y Actualización)</h2>
+        <p>Referencia económica para determinar cuantías de obligaciones, multas y diversos conceptos.</p>
+        <table class="indicator-table">
+          <thead>
+            <tr>
+              <th>Periodo</th>
+              <th>Valor 2025*</th>
+              <th>Valor 2024</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Diario</td>
+              <td class="value-highlight">$113.88</td>
+              <td>$108.57</td>
+            </tr>
+            <tr>
+              <td>Mensual</td>
+              <td class="value-highlight">$3,463.15</td>
+              <td>$3,300.53</td>
+            </tr>
+            <tr>
+              <td>Anual</td>
+              <td class="value-highlight">$41,557.80</td>
+              <td>$39,606.36</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pill-note">*Actualiza este bloque cuando cambie el valor oficial.</div>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="salarios">
+      <div class="indicator-box">
+        <h2>Salarios mínimos</h2>
+        <p>Vigentes a partir del 1 de enero. (Puedes actualizar manualmente cada año.)</p>
+        <table class="indicator-table">
+          <thead>
+            <tr>
+              <th>Zona</th>
+              <th>2025</th>
+              <th>2024</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>General</td>
+              <td class="value-highlight">$278.88</td>
+              <td>$248.93</td>
+            </tr>
+            <tr>
+              <td>Zona Libre Frontera Norte</td>
+              <td class="value-highlight">$419.88</td>
+              <td>$374.89</td>
+            </tr>
+          </tbody>
+        </table>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="recargos">
+      <div class="indicator-box">
+        <h2>Tasas de recargos</h2>
+        <p>Referencia común para cálculos fiscales (actualiza cuando cambie la publicación aplicable).</p>
+        <table class="indicator-table">
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Tasa mensual</th>
+              <th>Nota</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Prórroga (pago a plazos)</td>
+              <td class="value-highlight">0.98%</td>
+              <td>Aplicable sobre saldos insolutos.</td>
+            </tr>
+            <tr>
+              <td>Mora (falta de pago oportuno)</td>
+              <td class="value-highlight">1.47%</td>
+              <td>Aplicable sobre saldos insolutos.</td>
+            </tr>
+          </tbody>
+        </table>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="isr-provisionales">
+      <div class="indicator-box">
+        <h2>Tarifas y tablas ISR (Pagos provisionales)</h2>
+        <p>Fuente recomendada: Anexo 8 de la RMF (PDF). Puedes enlazar a la versión vigente.</p>
+        <a class="btn-inline" href="https://www.sat.gob.mx/minisitio/NormatividadRMFyRGCE/documentos2025/rmf/anexos/Anexo8_RMF2025-30122024.pdf" target="_blank" rel="noopener">
+          Ver Anexo 8 (SAT) ↗
+        </a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="isr-anual">
+      <div class="indicator-box">
+        <h2>Tarifas y tablas ISR (Declaración anual)</h2>
+        <p>Generalmente viene en el mismo Anexo 8 (RMF). Ajusta el enlace si usas otro documento.</p>
+        <a class="btn-inline" href="https://www.sat.gob.mx/minisitio/NormatividadRMFyRGCE/documentos2025/rmf/anexos/Anexo8_RMF2025-30122024.pdf" target="_blank" rel="noopener">
+          Ver Anexo 8 (SAT) ↗
+        </a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="multas-cff">
+      <div class="indicator-box">
+        <h2>Multas actualizadas CFF</h2>
+        <p>Recomendación: aquí puedes meter tu propia tabla o enlazar a la fuente que uses para consulta.</p>
+        <a class="btn-inline" href="https://omawww.sat.gob.mx/fichas_tematicas/declaracion_anual/Paginas/multas_sanciones_declaracion.aspx" target="_blank" rel="noopener">
+          Ver referencia SAT ↗
+        </a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="banxico">
+      <div class="indicator-box">
+        <h2>Banxico: CETES / CPP / TIIE / UDIS</h2>
+        <p>Para tasas e indicadores financieros, Banxico trae el “hub” más práctico.</p>
+        <a class="btn-inline" href="https://www.banxico.org.mx/Indicadores/" target="_blank" rel="noopener">
+          Abrir indicadores Banxico ↗
+        </a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <!-- Secciones “placeholder” (solo enlaces sugeridos) -->
+    <div class="indicator-section" id="tc-fix">
+      <div class="indicator-box">
+        <h2>Equivalencia del dólar (FIX)</h2>
+        <p>Consulta el tipo de cambio en fuentes oficiales (Banxico / SIE).</p>
+        <a class="btn-inline" href="https://www.banxico.org.mx/" target="_blank" rel="noopener">Ir a Banxico ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="otras-monedas">
+      <div class="indicator-box">
+        <h2>Equivalencia de otras monedas</h2>
+        <p>Consulta tipos de cambio en fuentes oficiales (Banxico / SIE).</p>
+        <a class="btn-inline" href="https://www.banxico.org.mx/" target="_blank" rel="noopener">Ir a Banxico ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="inflacion">
+      <div class="indicator-box">
+        <h2>Tasa porcentual de inflación</h2>
+        <p>Te conviene enlazar a INEGI/Indicadores oficiales o tu propio cálculo con INPC.</p>
+        <a class="btn-inline" href="https://www.inegi.org.mx/" target="_blank" rel="noopener">Ir a INEGI ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="imss-infonavit">
+      <div class="indicator-box">
+        <h2>Cuotas IMSS e INFONAVIT</h2>
+        <p>Enlace sugerido a fuentes oficiales.</p>
+        <a class="btn-inline" href="https://www.imss.gob.mx/" target="_blank" rel="noopener">Ir a IMSS ↗</a>
+        <a class="btn-inline" href="https://www.infonavit.org.mx/" target="_blank" rel="noopener" style="margin-left:10px;">Ir a INFONAVIT ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="sanciones-lss">
+      <div class="indicator-box">
+        <h2>Sanciones establecidas (LSS)</h2>
+        <p>Placeholder: aquí puedes poner tu resumen o enlazar a la legislación.</p>
+        <a class="btn-inline" href="https://www.gob.mx/" target="_blank" rel="noopener">Ir a gob.mx ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="sanciones-infonavit">
+      <div class="indicator-box">
+        <h2>Sanciones establecidas (INFONAVIT)</h2>
+        <p>Placeholder: aquí puedes poner tu resumen o enlazar a la legislación.</p>
+        <a class="btn-inline" href="https://www.infonavit.org.mx/" target="_blank" rel="noopener">Ir a INFONAVIT ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="actividades-vulnerables">
+      <div class="indicator-box">
+        <h2>Catálogo de actividades vulnerables (PLD)</h2>
+        <p>Placeholder: puedes enlazar a UIF o a la LFPIORPI según tu criterio.</p>
+        <a class="btn-inline" href="https://www.gob.mx/uif" target="_blank" rel="noopener">Ir a UIF ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="multas-lfpiorpi">
+      <div class="indicator-box">
+        <h2>Multas establecidas en la LFPIORPI</h2>
+        <p>Placeholder: aquí puedes poner tu tabla/resumen o enlazar a fuente legal.</p>
+        <a class="btn-inline" href="https://www.dof.gob.mx/" target="_blank" rel="noopener">Ir al DOF ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="sanciones-lft">
+      <div class="indicator-box">
+        <h2>Sanciones establecidas en la LFT</h2>
+        <p>Placeholder: puedes enlazar a la ley o publicar tu resumen.</p>
+        <a class="btn-inline" href="https://www.diputados.gob.mx/" target="_blank" rel="noopener">Ir a Diputados ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="multas-ley-aduanera">
+      <div class="indicator-box">
+        <h2>Cantidades y multas actualizadas (Ley Aduanera)</h2>
+        <p>Placeholder: aquí puedes publicar tu tabla o enlazar a la autoridad competente.</p>
+        <a class="btn-inline" href="https://www.dof.gob.mx/" target="_blank" rel="noopener">Ir al DOF ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <strong>GG Contabilidad y Defensa Fiscal</strong>
+    <p style="margin: 10px 0 0;">© 2025. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById("nav");
+  const hamburger = document.getElementById("hamburger");
+
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("mobile-open");
+  });
+
+  nav.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => nav.classList.remove("mobile-open"));
+  });
+</script>
+</body>
+</html>

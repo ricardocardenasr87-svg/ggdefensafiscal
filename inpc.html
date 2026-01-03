@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>INPC | GG Contabilidad y Defensa Fiscal</title>
+  <meta name="description" content="Tablas del INPC 2024 y 2025 con fecha de publicación en el DOF. Actualización manual mensual." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="Inicio">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
+    </a>
+
+    <button id="hamburger" class="hamburger" aria-label="Abrir menú">Menú</button>
+
+    <nav id="nav" class="nav" aria-label="Navegación principal">
+      <a href="servicios.html">Servicios</a>
+      <a href="indicadores.html" aria-current="page">Indicadores</a>
+      <a href="inpc.html">INPC</a>
+      <a href="enlaces.html">Sitios de Interés</a>
+      <a href="Blog.html">Blog</a>
+      <a href="nosotros.html">Quiénes somos</a>
+      <a href="contacto.html" class="btn-nav">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section page-top inpc-wrap">
+  <div class="container">
+    <h1 class="section-title">Índice Nacional de Precios al Consumidor (INPC)</h1>
+    <p class="section-subtitle">
+      Tablas informativas actualizadas manualmente con base en la fecha de publicación en el DOF.
+    </p>
+
+    <div class="year-tabs" role="tablist" aria-label="Años INPC">
+      <button class="year-tab active" type="button" data-target="panel-2025" role="tab" aria-selected="true">2025</button>
+      <button class="year-tab" type="button" data-target="panel-2024" role="tab" aria-selected="false">2024</button>
+    </div>
+
+    <!-- 2025 -->
+    <div id="panel-2025" class="inpc-panel active" role="tabpanel">
+      <h3 class="inpc-title">INPC 2025</h3>
+      <div class="table-box">
+        <table class="inpc">
+          <thead>
+            <tr>
+              <th>Mes</th>
+              <th>Índices (INPC)</th>
+              <th>Fecha de publicación en el DOF</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Noviembre</td><td>142.645</td><td>10 de diciembre de 2025</td></tr>
+            <tr><td>Octubre</td><td>141.708</td><td>10 de noviembre de 2025</td></tr>
+            <tr><td>Septiembre</td><td>141.197</td><td>10 de octubre de 2025</td></tr>
+            <tr><td>Agosto</td><td>140.867</td><td>10 de septiembre de 2025</td></tr>
+            <tr><td>Julio</td><td>140.78</td><td>08 de agosto de 2025</td></tr>
+            <tr><td>Junio</td><td>140.405</td><td>10 de julio de 2025</td></tr>
+            <tr><td>Mayo</td><td>140.012</td><td>10 de junio de 2025</td></tr>
+            <tr><td>Abril</td><td>139.62</td><td>09 de mayo de 2025</td></tr>
+            <tr><td>Marzo</td><td>139.161</td><td>10 de abril de 2025</td></tr>
+            <tr><td>Febrero</td><td>138.726</td><td>10 de marzo de 2025</td></tr>
+            <tr><td>Enero</td><td>138.343</td><td>10 de febrero de 2025</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="inpc-note">Tip: cada mes agrega el renglón nuevo arriba (mes más reciente).</p>
+    </div>
+
+    <!-- 2024 -->
+    <div id="panel-2024" class="inpc-panel" role="tabpanel">
+      <h3 class="inpc-title">INPC 2024</h3>
+      <div class="table-box">
+        <table class="inpc">
+          <thead>
+            <tr>
+              <th>Mes</th>
+              <th>Índices (INPC)</th>
+              <th>Fecha de publicación en el DOF</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Diciembre</td><td>137.949</td><td>10 de enero de 2025</td></tr>
+            <tr><td>Noviembre</td><td>137.424</td><td>10 de diciembre de 2024</td></tr>
+            <tr><td>Octubre</td><td>136.828</td><td>08 de noviembre de 2024</td></tr>
+            <tr><td>Septiembre</td><td>136.08</td><td>10 de octubre de 2024</td></tr>
+            <tr><td>Agosto</td><td>136.013</td><td>10 de septiembre de 2024</td></tr>
+            <tr><td>Julio</td><td>136.003</td><td>09 de agosto de 2024</td></tr>
+            <tr><td>Junio</td><td>134.594</td><td>10 de julio de 2024</td></tr>
+            <tr><td>Mayo</td><td>134.087</td><td>10 de junio de 2024</td></tr>
+            <tr><td>Abril</td><td>134.336</td><td>10 de mayo de 2024</td></tr>
+            <tr><td>Marzo</td><td>134.065</td><td>10 de abril de 2024</td></tr>
+            <tr><td>Febrero</td><td>133.681</td><td>08 de marzo de 2024</td></tr>
+            <tr><td>Enero</td><td>133.555</td><td>09 de febrero de 2024</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="inpc-note">Tip: si hay corrección, edita el valor del mes y la fecha DOF.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <strong>GG Contabilidad y Defensa Fiscal</strong>
+    <p style="margin: 10px 0 0;">© 2025. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById("nav");
+  const hamburger = document.getElementById("hamburger");
+
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("mobile-open");
+  });
+
+  nav.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => nav.classList.remove("mobile-open"));
+  });
+
+  // Tabs INPC
+  const tabButtons = document.querySelectorAll(".year-tab");
+  const panels = document.querySelectorAll(".inpc-panel");
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+
+      tabButtons.forEach(b => {
+        b.classList.remove("active");
+        b.setAttribute("aria-selected", "false");
+      });
+      btn.classList.add("active");
+      btn.setAttribute("aria-selected", "true");
+
+      panels.forEach(p => p.classList.remove("active"));
+      const targetPanel = document.getElementById(targetId);
+      if (targetPanel) targetPanel.classList.add("active");
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto | GG Contabilidad y Defensa Fiscal</title>
+  <meta name="description" content="Agenda una consulta con GG Contabilidad y Defensa Fiscal." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="Inicio">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
+    </a>
+
+    <button id="hamburger" class="hamburger" aria-label="Abrir menú">Menú</button>
+
+    <nav id="nav" class="nav" aria-label="Navegación principal">
+      <a href="servicios.html">Servicios</a>
+      <a href="indicadores.html" aria-current="page">Indicadores</a>
+      <a href="inpc.html">INPC</a>
+      <a href="enlaces.html">Sitios de Interés</a>
+      <a href="Blog.html">Blog</a>
+      <a href="nosotros.html">Quiénes somos</a>
+      <a href="contacto.html" class="btn-nav">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section page-top contact">
+  <div class="container">
+    <h1 class="section-title">Contacto</h1>
+    <p class="section-subtitle">
+      Agenda una consulta por WhatsApp. Respuesta rápida y atención personalizada.
+    </p>
+
+    <div class="grid">
+      <div class="card" style="grid-column: span 12;">
+        <h3>WhatsApp</h3>
+        <p>Escríbenos y dinos: tipo de contribuyente, actividad, y qué necesitas (cumplimiento / defensa / regularización).</p>
+        <a class="btn-primary" href="https://wa.me/525513110556" target="_blank" rel="noopener">Abrir WhatsApp</a>
+        <p style="margin-top:12px; color: var(--gray-muted); font-size: 0.95rem;">
+          Tip: si quieres que abra con mensaje prellenado, me dices y te lo dejo listo.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <strong>GG Contabilidad y Defensa Fiscal</strong>
+    <p style="margin: 10px 0 0;">© 2025. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById("nav");
+  const hamburger = document.getElementById("hamburger");
+
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("mobile-open");
+  });
+
+  nav.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => nav.classList.remove("mobile-open"));
+  });
+</script>
+</body>
+</html>

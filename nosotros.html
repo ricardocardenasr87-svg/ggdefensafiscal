@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiénes Somos | GG Contabilidad y Defensa Fiscal</title>
+  <meta name="description" content="Despacho enfocado en soluciones contables, fiscales y legales con enfoque preventivo, estratégico y técnico." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="Inicio">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
+    </a>
+
+    <button id="hamburger" class="hamburger" aria-label="Abrir menú">Menú</button>
+
+    <nav id="nav" class="nav" aria-label="Navegación principal">
+      <a href="servicios.html">Servicios</a>
+      <a href="indicadores.html" aria-current="page">Indicadores</a>
+      <a href="inpc.html">INPC</a>
+      <a href="enlaces.html">Sitios de Interés</a>
+      <a href="Blog.html">Blog</a>
+      <a href="nosotros.html">Quiénes somos</a>
+      <a href="contacto.html" class="btn-nav">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section page-top about">
+  <div class="container">
+    <div class="about-card">
+      <h1 class="section-title">Quiénes somos</h1>
+      <p>
+        <strong>GG Contabilidad y Defensa Fiscal</strong> es un despacho enfocado en brindar soluciones contables, fiscales y legales
+        con un enfoque preventivo, estratégico y alineado a la normativa vigente.
+      </p>
+
+      <div class="grid" style="margin-top:20px;">
+        <div class="card" style="background:#F8FAFC;">
+          <h3>Enfoque</h3>
+          <p>Prevención de riesgos, claridad financiera y respaldo técnico ante revisiones.</p>
+        </div>
+
+        <div class="card" style="background:#F8FAFC;">
+          <h3>Valores</h3>
+          <p>Confidencialidad, atención personalizada, y comunicación clara y oportuna.</p>
+        </div>
+
+        <div class="card" style="background:#F8FAFC;">
+          <h3>Cómo trabajamos</h3>
+          <p>Diagnóstico, plan de acción y seguimiento, cuidando congruencia entre contabilidad, CFDI y obligaciones.</p>
+        </div>
+
+        <div class="card" style="background:#F8FAFC;">
+          <h3>Qué puedes esperar</h3>
+          <p>Orden, estrategia y acompañamiento en cumplimiento y defensa fiscal.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:22px;">
+        <a class="btn-primary" href="contacto.html">Agendar consulta</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <strong>GG Contabilidad y Defensa Fiscal</strong>
+    <p style="margin: 10px 0 0;">© 2025. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById("nav");
+  const hamburger = document.getElementById("hamburger");
+
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("mobile-open");
+  });
+
+  nav.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => nav.classList.remove("mobile-open"));
+  });
+</script>
+</body>
+</html>

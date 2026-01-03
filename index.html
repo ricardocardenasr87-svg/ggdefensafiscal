@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GG Contabilidad y Defensa Fiscal</title>
+  <meta name="description" content="Soluciones contables, fiscales y legales con enfoque estratégico, preventivo y técnico." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <!-- Estilos extra SOLO para el Home -->
+  <style>
+    /* Separación correcta por header fijo */
+    .page-top { padding-top: 110px; }
+
+    /* Barra de confianza (tipo “sellos”) */
+    .trust-strip{
+      margin-top: -34px;
+      position: relative;
+      z-index: 5;
+    }
+    .trust-card{
+      background:#fff;
+      border:1px solid var(--gray-line);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+    }
+    .trust-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+    .trust-item{
+      grid-column: span 3;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(15,42,68,0.03);
+      border: 1px solid rgba(15,42,68,0.06);
+    }
+    .trust-icon{
+      width: 38px; height: 38px;
+      border-radius: 14px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(26,167,225,0.12);
+      border: 1px solid rgba(26,167,225,0.18);
+      font-size: 18px;
+      flex: 0 0 38px;
+    }
+    .trust-item strong{
+      display:block;
+      font-size: .95rem;
+      color: var(--blue-navy);
+      font-family: Montserrat, Inter, sans-serif;
+    }
+    .trust-item span{
+      display:block;
+      font-size: .85rem;
+      color: var(--gray-muted);
+      margin-top: 1px;
+    }
+
+    /* Tarjetas con icono */
+    .card-icon{
+      width: 44px; height: 44px;
+      border-radius: 16px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(26,167,225,0.12);
+      border: 1px solid rgba(26,167,225,0.18);
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    /* Proceso */
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+      margin-top: 12px;
+    }
+    .step{
+      grid-column: span 4;
+      background:#fff;
+      border:1px solid var(--gray-line);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .step .num{
+      display:inline-flex;
+      width: 34px; height: 34px;
+      align-items:center; justify-content:center;
+      border-radius: 12px;
+      background: rgba(15,42,68,0.06);
+      border: 1px solid rgba(15,42,68,0.08);
+      font-weight: 800;
+      color: var(--blue-navy);
+      margin-bottom: 10px;
+      font-family: Montserrat, Inter, sans-serif;
+    }
+
+    /* Artículos (preview) */
+    .article-card{
+      background:#fff;
+      border:1px solid var(--gray-line);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .article-card a{
+      text-decoration:none;
+      color: var(--blue-navy);
+      font-weight: 800;
+      font-family: Montserrat, Inter, sans-serif;
+    }
+    .article-card a:hover{ text-decoration: underline; }
+    .meta{
+      font-size: .85rem;
+      color: var(--gray-muted);
+      margin-top: 6px;
+    }
+
+    /* CTA banda */
+    .cta-band{
+      background: var(--blue-navy);
+      border-radius: 18px;
+      padding: 26px;
+      color:#fff;
+      display:flex;
+      gap: 18px;
+      align-items:center;
+      justify-content: space-between;
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+    .cta-band h3{
+      margin:0;
+      font-family: Montserrat, Inter, sans-serif;
+      font-size: 1.25rem;
+    }
+    .cta-band p{
+      margin: 6px 0 0;
+      opacity: .9;
+      max-width: 70ch;
+    }
+    .cta-actions{
+      display:flex; gap: 10px; flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .btn-secondary{
+      display:inline-block;
+      padding: 14px 18px;
+      border-radius: 12px;
+      text-decoration:none;
+      font-weight: 700;
+      color:#fff;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+    }
+    .btn-secondary:hover{ filter: brightness(1.05); }
+
+    /* FAQ */
+    details.faq{
+      background:#fff;
+      border:1px solid var(--gray-line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+    }
+    details.faq summary{
+      cursor:pointer;
+      font-weight: 800;
+      color: var(--blue-navy);
+      font-family: Montserrat, Inter, sans-serif;
+    }
+    details.faq p{
+      margin: 10px 0 0;
+      color: var(--gray-muted);
+    }
+
+    /* Botón flotante WhatsApp */
+    .fab-wa{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 9999;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: #25D366;
+      color:#fff;
+      text-decoration:none;
+      font-weight: 800;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.20);
+    }
+    .fab-wa:hover{ filter: brightness(0.98); }
+    .fab-wa .dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .trust-item{ grid-column: span 6; }
+      .step{ grid-column: span 12; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="Inicio">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
+    </a>
+
+    <button id="hamburger" class="hamburger" aria-label="Abrir menú">Menú</button>
+
+    <nav id="nav" class="nav" aria-label="Navegación principal">
+      <a href="servicios.html">Servicios</a>
+      <a href="indicadores.html">Indicadores</a>
+      <a href="inpc.html">INPC</a>
+      <a href="enlaces.html">Sitios de Interés</a>
+      <a href="blog.html">Blog</a>
+      <a href="nosotros.html">Quiénes somos</a>
+      <a href="contacto.html" class="btn-nav">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main class="hero" id="top">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+    <source src="Abstract_Corporate_Background_Video_Generation.MP4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="container hero-content">
+    <h1>GG Contabilidad y Defensa Fiscal</h1>
+    <p>Soluciones contables, fiscales y legales con enfoque estratégico, preventivo y técnico.</p>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:16px;">
+      <a href="servicios.html" class="btn-primary">Ver servicios</a>
+      <a href="contacto.html" class="btn-secondary">Agendar consulta</a>
+    </div>
+  </div>
+</main>
+
+<!-- Trust strip -->
+<section class="trust-strip">
+  <div class="container">
+    <div class="trust-card">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon">🛡️</div>
+          <div>
+            <strong>Enfoque preventivo</strong>
+            <span>Reducimos riesgos antes de que escalen</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">📌</div>
+          <div>
+            <strong>Atención clara</strong>
+            <span>Explicación simple, soporte técnico</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">⏱️</div>
+          <div>
+            <strong>Respuesta oportuna</strong>
+            <span>Seguimiento puntual de cada caso</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🔒</div>
+          <div>
+            <strong>Confidencialidad</strong>
+            <span>Tratamiento responsable de datos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Servicios principales -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Qué podemos resolver</h2>
+    <p class="section-subtitle">
+      Acompañamiento contable, fiscal y legal para operar con claridad, control y sustento técnico.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <h3>Contabilidad & control</h3>
+        <p>Registro ordenado, estados financieros y lectura clara para decisiones.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🧾</div>
+        <h3>CFDI & conciliación</h3>
+        <p>Revisión de congruencia entre CFDI, contabilidad y obligaciones fiscales.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <h3>Nómina</h3>
+        <p>Cálculo, timbrado, obligaciones y soporte para auditorías laborales.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <h3>Declaraciones</h3>
+        <p>Mensuales, anuales e informativas cuidando diferencias y contingencias.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <h3>Defensa fiscal</h3>
+        <p>Atención a requerimientos, auditorías, créditos fiscales y estrategia legal.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🚢</div>
+        <h3>Aduanas & PAMA</h3>
+        <p>Soporte y defensa ante actos de autoridad en materia aduanera.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:24px; display:flex; gap:10px; flex-wrap:wrap;">
+      <a class="btn-primary" href="servicios.html">Ver todos los servicios</a>
+      <a class="btn-secondary" href="contacto.html">Cotizar / Agendar</a>
+    </div>
+  </div>
+</section>
+
+<!-- Recursos tipo “competencia”: indicadores + enlaces + INPC -->
+<section class="section" style="background: var(--blue-light);">
+  <div class="container">
+    <h2 class="section-title">Recursos de consulta</h2>
+    <p class="section-subtitle">
+      Indicadores y referencias para consulta frecuente: INPC, UMA, salarios mínimos, recargos y enlaces oficiales.
+    </p>
+
+    <div class="grid">
+      <div class="card" style="background:#fff; border:1px solid var(--gray-line);">
+        <div class="card-icon">📊</div>
+        <h3>Indicadores</h3>
+        <p>UMA, salarios mínimos, recargos y enlaces a fuentes oficiales.</p>
+        <a class="btn-primary" href="indicadores.html" style="margin-top:12px;">Abrir Indicadores</a>
+      </div>
+
+      <div class="card" style="background:#fff; border:1px solid var(--gray-line);">
+        <div class="card-icon">📈</div>
+        <h3>INPC</h3>
+        <p>Tabla por año para actualización manual y consulta rápida.</p>
+        <a class="btn-primary" href="inpc.html" style="margin-top:12px;">Ver INPC</a>
+      </div>
+
+      <div class="card" style="background:#fff; border:1px solid var(--gray-line);">
+        <div class="card-icon">🔗</div>
+        <h3>Sitios de interés</h3>
+        <p>Accesos directos a SAT, DOF, IMSS, INFONAVIT, Banxico e INEGI.</p>
+        <a class="btn-primary" href="enlaces.html" style="margin-top:12px;">Ir a enlaces</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Proceso (esto lo tienen mucho las webs top) -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Cómo trabajamos</h2>
+    <p class="section-subtitle">
+      Un proceso simple para diagnosticar, ordenar y darle seguimiento a tu situación.
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3 style="margin:0 0 8px; color:var(--blue-navy); font-family:Montserrat, Inter, sans-serif;">Diagnóstico</h3>
+        <p style="margin:0; color:var(--gray-muted);">Revisamos tu caso, documentación y prioridades para definir el alcance.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3 style="margin:0 0 8px; color:var(--blue-navy); font-family:Montserrat, Inter, sans-serif;">Plan de acción</h3>
+        <p style="margin:0; color:var(--gray-muted);">Te proponemos la estrategia y calendario: cumplimiento, correcciones o defensa.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3 style="margin:0 0 8px; color:var(--blue-navy); font-family:Montserrat, Inter, sans-serif;">Seguimiento</h3>
+        <p style="margin:0; color:var(--gray-muted);">Damos continuidad y control para evitar contingencias futuras.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Preview de Blog (aunque esté vacío aún) -->
+<section class="section" style="background: var(--blue-light);">
+  <div class="container">
+    <h2 class="section-title">Últimas publicaciones</h2>
+    <p class="section-subtitle">
+      Contenido técnico y divulgativo. (Puedes actualizar los títulos cuando publiques.)
+    </p>
+
+    <div class="grid">
+      <div class="article-card" style="grid-column: span 4;">
+        <a href="blog.html">CFDI 4.0: errores comunes y cómo evitarlos</a>
+        <div class="meta">Guía práctica • 5 min</div>
+        <p style="margin:10px 0 0; color:var(--gray-muted);">Checklist para reducir rechazos y diferencias en conciliación.</p>
+      </div>
+
+      <div class="article-card" style="grid-column: span 4;">
+        <a href="blog.html">INPC y actualización de contribuciones: cómo se calcula</a>
+        <div class="meta">Explicación • 6 min</div>
+        <p style="margin:10px 0 0; color:var(--gray-muted);">Qué considerar al usar índices y por qué importa la fecha de DOF.</p>
+      </div>
+
+      <div class="article-card" style="grid-column: span 4;">
+        <a href="blog.html">Recargos y multas: diferencias y cuándo aplican</a>
+        <div class="meta">Resumen • 4 min</div>
+        <p style="margin:10px 0 0; color:var(--gray-muted);">Lo básico para entender costos por incumplimiento y prórrogas.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;">
+      <a class="btn-primary" href="blog.html">Ver Blog</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ (muy “competencia” porque reduce dudas) -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Preguntas frecuentes</h2>
+    <p class="section-subtitle">Respuestas rápidas para orientar el primer contacto.</p>
+
+    <details class="faq">
+      <summary>¿Atienden personas físicas y morales?</summary>
+      <p>Sí. Definimos el alcance en función del régimen, obligaciones y situación actual.</p>
+    </details>
+
+    <details class="faq">
+      <summary>¿Pueden apoyar en auditorías o requerimientos del SAT?</summary>
+      <p>Sí. Revisamos el acto de autoridad, plazos y documentación para responder con estrategia y sustento.</p>
+    </details>
+
+    <details class="faq">
+      <summary>¿Cómo agendo una consulta?</summary>
+      <p>Puedes hacerlo por WhatsApp desde el botón de contacto o el botón flotante.</p>
+    </details>
+  </div>
+</section>
+
+<!-- CTA banda final -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band">
+      <div>
+        <h3>¿Quieres una revisión inicial de tu caso?</h3>
+        <p>Escríbenos por WhatsApp y te decimos qué información necesitamos para empezar.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn-primary" href="https://wa.me/525513110556?text=Hola%20GG%2C%20quiero%20agendar%20una%20consulta.%20Soy%20%5Bpersona%20f%C3%ADsica%2Fmoral%5D%20y%20necesito%20ayuda%20con%3A%20" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn-secondary" href="contacto.html">Contacto</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <strong>GG Contabilidad y Defensa Fiscal</strong>
+    <p style="margin: 10px 0 0; opacity:.92;">
+      © 2025. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a class="fab-wa"
+   href="https://wa.me/525513110556?text=Hola%20GG%2C%20quiero%20una%20consulta.%20Soy%20%5Bpersona%20f%C3%ADsica%2Fmoral%5D%20y%20mi%20tema%20es%3A%20"
+   target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
+  <span class="dot"></span> WhatsApp
+</a>
+
+<script>
+  const nav = document.getElementById("nav");
+  const hamburger = document.getElementById("hamburger");
+
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("mobile-open");
+  });
+
+  nav.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => nav.classList.remove("mobile-open"));
+  });
+</script>
+
+</body>
+</html>
