@@ -4,260 +4,477 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GG Contabilidad y Defensa Fiscal</title>
-  <meta name="description" content="Soluciones contables, fiscales y legales con enfoque estratégico, preventivo y técnico." />
+  <meta name="description" content="Despacho especializado en asesoría contable, fiscal y defensa ante autoridades, con enfoque preventivo y técnico." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
+  <!-- Mantiene tu CSS general para header/nav (y demás páginas) -->
   <link rel="stylesheet" href="assets/styles.css">
 
-  <!-- Estilos extra SOLO para el Home -->
   <style>
-    /* Barra de confianza (tipo “sellos”) */
-    .trust-strip{
-      margin-top: -34px;
-      position: relative;
-      z-index: 5;
-    }
-    .trust-card{
-      background:#fff;
-      border:1px solid var(--gray-line);
-      border-radius: 18px;
-      padding: 16px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
-    }
-    .trust-grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-    }
-    .trust-item{
-      grid-column: span 3;
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(15,42,68,0.03);
-      border: 1px solid rgba(15,42,68,0.06);
-      min-width: 0;
-    }
-    .trust-icon{
-      width: 38px; height: 38px;
-      border-radius: 14px;
-      display:flex; align-items:center; justify-content:center;
-      background: rgba(26,167,225,0.12);
-      border: 1px solid rgba(26,167,225,0.18);
-      font-size: 18px;
-      flex: 0 0 38px;
-    }
-    .trust-item strong{
-      display:block;
-      font-size: .95rem;
-      color: var(--blue-navy);
-      font-family: Montserrat, Inter, sans-serif;
-      line-height: 1.2;
-      white-space: normal;
-      overflow-wrap: anywhere;
-    }
-    .trust-item span{
-      display:block;
-      font-size: .85rem;
-      color: var(--gray-muted);
-      margin-top: 2px;
-      line-height: 1.25;
-      white-space: normal;
-      overflow-wrap: anywhere;
+    :root {
+      --navy-deep: #0F2A44;
+      --navy-mid: #1A3A5C;
+      --gold-accent: #C9A961;
+      --gray-sophisticated: #556B7E;
+      --gray-light: #F7F9FB;
+      --border-subtle: #E1E8ED;
     }
 
-    /* Tarjetas con icono */
-    .card-icon{
-      width: 44px; height: 44px;
-      border-radius: 16px;
-      display:flex; align-items:center; justify-content:center;
-      background: rgba(26,167,225,0.12);
-      border: 1px solid rgba(26,167,225,0.18);
-      font-size: 20px;
-      margin-bottom: 10px;
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--navy-deep);
+      line-height: 1.6;
+    }
+
+    /* Hero refinado */
+    .hero {
+      position: relative;
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #0F2A44 0%, #1A3A5C 100%);
+    }
+
+    .hero-video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.15;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15,42,68,0.92) 0%, rgba(26,58,92,0.88) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+      padding: 3rem 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin: 0 0 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+      color: rgba(255,255,255,0.92);
+      margin: 0 0 2.2rem;
+      font-weight: 400;
+      line-height: 1.55;
+    }
+
+    .hero-kicker {
+      margin-top: 0.4rem;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* Botones profesionales */
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--gold-accent);
+      color: var(--navy-deep);
+    }
+    .btn-primary:hover {
+      background: #D4B871;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,169,97,0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.3);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--navy-deep);
+      border-color: var(--border-subtle);
+    }
+    .btn-outline:hover {
+      background: var(--navy-deep);
+      color: #fff;
+      border-color: var(--navy-deep);
+    }
+
+    /* Strip de confianza (sin números inventados) */
+    .credentials {
+      background: #fff;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 2.2rem 0;
+    }
+
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .credential-item {
+      text-align: center;
+      padding: 1rem 1rem;
+      border: 1px solid var(--border-subtle);
+      background: #fff;
+    }
+
+    .credential-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--gold-accent);
+      display: block;
+      margin-bottom: 0.55rem;
+    }
+
+    .credential-label {
+      font-size: 0.95rem;
+      color: var(--gray-sophisticated);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    /* Secciones */
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-header {
+      max-width: 760px;
+      margin: 0 auto 3.2rem;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin: 0 0 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-description {
+      font-size: 1.1rem;
+      color: var(--gray-sophisticated);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Servicios profesionales */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .service-card {
+      background: #fff;
+      border: 1px solid var(--border-subtle);
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: var(--gold-accent);
+      transition: height 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(15,42,68,0.12);
+    }
+
+    .service-card:hover::before {
+      height: 100%;
+    }
+
+    .service-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy-deep);
+      margin: 0 0 1rem;
+    }
+
+    .service-description {
+      color: var(--gray-sophisticated);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Tarjetas “Recursos” */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .resource-card {
+      background: #fff;
+      border: 1px solid var(--border-subtle);
+      padding: 2rem;
+    }
+
+    .resource-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0 0 0.75rem;
+      color: var(--navy-deep);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .resource-card p {
+      margin: 0 0 1.25rem;
+      color: var(--gray-sophisticated);
+      line-height: 1.6;
     }
 
     /* Proceso */
-    .steps{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
-      margin-top: 12px;
-    }
-    .step{
-      grid-column: span 4;
-      background:#fff;
-      border:1px solid var(--gray-line);
-      border-radius: var(--radius);
-      padding: 22px;
-    }
-    .step .num{
-      display:inline-flex;
-      width: 34px; height: 34px;
-      align-items:center; justify-content:center;
-      border-radius: 12px;
-      background: rgba(15,42,68,0.06);
-      border: 1px solid rgba(15,42,68,0.08);
-      font-weight: 800;
-      color: var(--blue-navy);
-      margin-bottom: 10px;
-      font-family: Montserrat, Inter, sans-serif;
+    .process-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
+      padding: 0 1.5rem;
     }
 
-    /* Artículos (preview) */
-    .article-card{
-      background:#fff;
-      border:1px solid var(--gray-line);
-      border-radius: var(--radius);
-      padding: 22px;
-      grid-column: span 4;
-      min-width: 0;
-    }
-    .article-card a{
-      text-decoration:none;
-      color: var(--blue-navy);
-      font-weight: 800;
-      font-family: Montserrat, Inter, sans-serif;
-      white-space: normal;
-      overflow-wrap: anywhere;
-    }
-    .article-card a:hover{ text-decoration: underline; }
-    .meta{
-      font-size: .85rem;
-      color: var(--gray-muted);
-      margin-top: 6px;
+    .process-step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      padding: 2rem;
+      background: #fff;
+      border: 1px solid var(--border-subtle);
+      align-items: start;
     }
 
-    /* CTA banda */
-    .cta-band{
-      background: var(--blue-navy);
-      border-radius: 18px;
-      padding: 26px;
-      color:#fff;
-      display:flex;
-      gap: 18px;
-      align-items:center;
-      justify-content: space-between;
-      border: 1px solid rgba(255,255,255,0.10);
-    }
-    .cta-band h3{
-      margin:0;
-      font-family: Montserrat, Inter, sans-serif;
-      font-size: 1.25rem;
-    }
-    .cta-band p{
-      margin: 6px 0 0;
-      opacity: .9;
-      max-width: 70ch;
-    }
-    .cta-actions{
-      display:flex; gap: 10px; flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-    .btn-secondary{
-      display:inline-block;
-      padding: 14px 18px;
-      border-radius: 12px;
-      text-decoration:none;
+    .step-number {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--navy-deep);
+      color: var(--gold-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
       font-weight: 700;
-      color:#fff;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.08);
-      text-align:center;
-    }
-    .btn-secondary:hover{ filter: brightness(1.05); }
-
-    /* FAQ */
-    details.faq{
-      background:#fff;
-      border:1px solid var(--gray-line);
-      border-radius: 14px;
-      padding: 14px 16px;
-      margin-bottom: 12px;
-    }
-    details.faq summary{
-      cursor:pointer;
-      font-weight: 800;
-      color: var(--blue-navy);
-      font-family: Montserrat, Inter, sans-serif;
-    }
-    details.faq p{
-      margin: 10px 0 0;
-      color: var(--gray-muted);
+      flex-shrink: 0;
     }
 
-    /* Botón flotante WhatsApp */
-    .fab-wa{
+    .step-content h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--navy-deep);
+      margin: 0 0 0.5rem;
+    }
+
+    .step-content p {
+      color: var(--gray-sophisticated);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* CTA profesional */
+    .cta-section {
+      background: var(--navy-deep);
+      color: #fff;
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .cta-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .cta-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      font-weight: 700;
+      margin: 0 0 1rem;
+    }
+
+    .cta-text {
+      font-size: 1.1rem;
+      opacity: 0.92;
+      margin: 0 0 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Footer profesional */
+    .footer {
+      background: var(--navy-deep);
+      color: rgba(255,255,255,0.8);
+      padding: 3rem 0 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 0 1.5rem 2rem;
+    }
+
+    .footer-section h4 {
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 1.5rem 1.5rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* WhatsApp profesional */
+    .whatsapp-float {
       position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 9999;
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-radius: 999px;
-      background: #25D366;
-      color:#fff;
-      text-decoration:none;
-      font-weight: 800;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.20);
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 1000;
     }
-    .fab-wa:hover{ filter: brightness(0.98); }
-    .fab-wa .dot{
-      width: 10px; height: 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.9);
+
+    .whatsapp-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      background: #25D366;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+    }
+
+    .whatsapp-icon {
+      width: 24px;
+      height: 24px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Responsive */
-    @media (max-width: 920px){
-      .trust-item{ grid-column: span 6; }
-      .step{ grid-column: span 12; }
-      .article-card{ grid-column: span 6; }
-    }
+    @media (max-width: 768px) {
+      .hero { min-height: 60vh; }
 
-    /* ✅ CELULAR: trust strip 1x1 vertical + blog 1x1 */
-    @media (max-width: 760px){
-      .trust-grid{
-        display:flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-      .trust-item{
-        width: 100%;
-        grid-column: unset;
+      .process-step {
+        grid-template-columns: 1fr;
+        gap: 1rem;
       }
 
-      .steps{ grid-template-columns: 1fr; }
-      .step{ grid-column: unset; }
-
-      .article-card{
-        grid-column: 1 / -1;
+      .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
       }
 
-      /* Botones hero/cta a full width */
-      .btn-primary, .btn-secondary{
-        width: 100%;
-        text-align:center;
-      }
+      .cta-buttons { flex-direction: column; }
 
-      .cta-band{
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .cta-actions{
-        width:100%;
-        justify-content:flex-start;
-      }
-      .cta-actions a{
-        width:100%;
-      }
+      .btn { width: 100%; text-align: center; }
+
+      .footer-content { grid-template-columns: 1fr; }
+
+      .whatsapp-float { bottom: 1rem; right: 1rem; }
     }
   </style>
 </head>
@@ -267,18 +484,19 @@
 <header class="header">
   <div class="container header-inner">
     <a href="index.html" class="logo" aria-label="Inicio">
-      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal" style="height: 48px;">
     </a>
 
-    <button id="hamburger" class="hamburger" aria-label="Abrir menú">Menú</button>
+    <button id="hamburger" class="hamburger" aria-label="Menú">Menú</button>
 
+    <!-- ✅ Respeta tus rutas existentes -->
     <nav id="nav" class="nav" aria-label="Navegación principal">
       <a href="servicios.html">Servicios</a>
       <a href="Indicadores.html">Indicadores</a>
       <a href="inpc.html">INPC</a>
-      <a href="enlaces.html">Sitios de Interés</a>
+      <a href="enlaces.html">Recursos</a>
       <a href="Blog.html">Blog</a>
-      <a href="nosotros.html">Quiénes somos</a>
+      <a href="nosotros.html">Nosotros</a>
       <a href="contacto.html" class="btn-nav">Contacto</a>
     </nav>
   </div>
@@ -287,242 +505,178 @@
 <main class="hero" id="top">
   <video class="hero-video" autoplay muted loop playsinline preload="metadata">
     <source src="Abstract_Corporate_Background_Video_Generation.mp4" type="video/mp4">
-    Tu navegador no soporta video HTML5.
   </video>
 
   <div class="hero-overlay" aria-hidden="true"></div>
 
   <div class="container hero-content">
-    <h1>GG Contabilidad y Defensa Fiscal</h1>
-    <p>Soluciones contables, fiscales y legales con enfoque estratégico, preventivo y técnico.</p>
+    <h1>Asesoría contable, fiscal y defensa especializada</h1>
+    <p class="hero-subtitle">
+      Despacho profesional enfocado en prevención, cumplimiento estratégico y representación ante autoridades fiscales y aduaneras.
+    </p>
+    <div class="hero-kicker">GG Contabilidad y Defensa Fiscal</div>
 
-    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:16px; width:min(420px,100%);">
-      <a href="servicios.html" class="btn-primary" style="flex:1; min-width:160px;">Ver servicios</a>
-      <a href="contacto.html" class="btn-secondary" style="flex:1; min-width:160px;">Agendar consulta</a>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:2rem;">
+      <a href="servicios.html" class="btn btn-primary">Conocer servicios</a>
+      <a href="contacto.html" class="btn btn-secondary">Solicitar consulta</a>
     </div>
   </div>
 </main>
 
-<!-- Trust strip -->
-<section class="trust-strip">
+<!-- ✅ Strip de confianza (sin métricas inventadas) -->
+<section class="credentials" aria-label="Pilares de confianza">
   <div class="container">
-    <div class="trust-card">
-      <div class="trust-grid">
-        <div class="trust-item">
-          <div class="trust-icon">🛡️</div>
-          <div>
-            <strong>Enfoque preventivo</strong>
-            <span>Reducimos riesgos antes de que escalen</span>
-          </div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">📌</div>
-          <div>
-            <strong>Atención clara</strong>
-            <span>Explicación simple, soporte técnico</span>
-          </div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">⏱️</div>
-          <div>
-            <strong>Respuesta oportuna</strong>
-            <span>Seguimiento puntual de cada caso</span>
-          </div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">🔒</div>
-          <div>
-            <strong>Confidencialidad</strong>
-            <span>Tratamiento responsable de datos</span>
-          </div>
-        </div>
+    <div class="credentials-grid">
+      <div class="credential-item">
+        <span class="credential-number">🛡️</span>
+        <span class="credential-label">Enfoque preventivo</span>
+      </div>
+      <div class="credential-item">
+        <span class="credential-number">🔒</span>
+        <span class="credential-label">Confidencialidad</span>
+      </div>
+      <div class="credential-item">
+        <span class="credential-number">📌</span>
+        <span class="credential-label">Atención clara</span>
+      </div>
+      <div class="credential-item">
+        <span class="credential-number">⏱️</span>
+        <span class="credential-label">Respuesta oportuna</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Servicios principales -->
 <section class="section">
   <div class="container">
-    <h2 class="section-title">Qué podemos resolver</h2>
-    <p class="section-subtitle">
-      Acompañamiento contable, fiscal y legal para operar con claridad, control y sustento técnico.
-    </p>
+    <div class="section-header">
+      <h2 class="section-title">Áreas de práctica</h2>
+      <p class="section-description">
+        Servicios especializados para cumplimiento normativo, optimización fiscal y defensa jurídica ante autoridades.
+      </p>
+    </div>
 
-    <div class="grid">
-      <div class="card">
-        <div class="card-icon">📚</div>
-        <h3>Contabilidad & control</h3>
-        <p>Registro ordenado, estados financieros y lectura clara para decisiones.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3 class="service-title">Contabilidad estratégica</h3>
+        <p class="service-description">Registro contable, estados financieros y control de operaciones con criterios técnicos para toma de decisiones.</p>
       </div>
 
-      <div class="card">
-        <div class="card-icon">🧾</div>
-        <h3>CFDI & conciliación</h3>
-        <p>Revisión de congruencia entre CFDI, contabilidad y obligaciones fiscales.</p>
+      <div class="service-card">
+        <h3 class="service-title">Cumplimiento fiscal</h3>
+        <p class="service-description">Declaraciones mensuales, anuales e informativas. Revisión de diferencias y estrategia preventiva.</p>
       </div>
 
-      <div class="card">
-        <div class="card-icon">👥</div>
-        <h3>Nómina</h3>
-        <p>Cálculo, timbrado, obligaciones y soporte para auditorías laborales.</p>
+      <div class="service-card">
+        <h3 class="service-title">CFDI y facturación electrónica</h3>
+        <p class="service-description">Validación técnica, conciliación contable-fiscal y resolución de inconsistencias en comprobantes digitales.</p>
       </div>
 
-      <div class="card">
-        <div class="card-icon">🧠</div>
-        <h3>Declaraciones</h3>
-        <p>Mensuales, anuales e informativas cuidando diferencias y contingencias.</p>
+      <div class="service-card">
+        <h3 class="service-title">Nómina y seguridad social</h3>
+        <p class="service-description">Cálculo, timbrado y obligaciones laborales. Preparación ante auditorías IMSS e INFONAVIT.</p>
       </div>
 
-      <div class="card">
-        <div class="card-icon">⚖️</div>
-        <h3>Defensa fiscal</h3>
-        <p>Atención a requerimientos, auditorías, créditos fiscales y estrategia legal.</p>
+      <div class="service-card">
+        <h3 class="service-title">Defensa fiscal</h3>
+        <p class="service-description">Atención a requerimientos, auditorías, créditos fiscales y recursos administrativos con sustento técnico.</p>
       </div>
 
-      <div class="card">
-        <div class="card-icon">🚢</div>
-        <h3>Aduanas & PAMA</h3>
-        <p>Soporte y defensa ante actos de autoridad en materia aduanera.</p>
+      <div class="service-card">
+        <h3 class="service-title">Comercio exterior y aduanas</h3>
+        <p class="service-description">Defensa ante actos de autoridad aduanera, PAMA y procedimientos en materia de comercio exterior.</p>
       </div>
     </div>
 
-    <div style="margin-top:24px; display:flex; gap:10px; flex-wrap:wrap;">
-      <a class="btn-primary" href="servicios.html">Ver todos los servicios</a>
-      <a class="btn-secondary" href="contacto.html">Cotizar / Agendar</a>
+    <div style="margin-top:3rem; text-align:center;">
+      <a class="btn btn-outline" href="servicios.html">Ver todos los servicios</a>
     </div>
   </div>
 </section>
 
-<!-- Recursos -->
-<section class="section" style="background: var(--blue-light);">
+<!-- ✅ Mantiene tus páginas de recursos (Indicadores/INPC/Enlaces) visibles desde Home -->
+<section class="section" style="background: var(--gray-light);">
   <div class="container">
-    <h2 class="section-title">Recursos de consulta</h2>
-    <p class="section-subtitle">
-      Indicadores y referencias para consulta frecuente: INPC, UMA, salarios mínimos, recargos y enlaces oficiales.
-    </p>
+    <div class="section-header">
+      <h2 class="section-title">Recursos de consulta</h2>
+      <p class="section-description">
+        Indicadores y referencias oficiales para consulta frecuente: INPC, UMA, recargos y enlaces de autoridad.
+      </p>
+    </div>
 
-    <div class="grid">
-      <div class="card" style="background:#fff; border:1px solid var(--gray-line);">
-        <div class="card-icon">📊</div>
+    <div class="resource-grid">
+      <div class="resource-card">
         <h3>Indicadores</h3>
-        <p>UMA, salarios mínimos, recargos y enlaces a fuentes oficiales.</p>
-        <a class="btn-primary" href="Indicadores.html" style="margin-top:12px;">Abrir Indicadores</a>
+        <p>UMA, salarios mínimos, recargos y acceso a fuentes oficiales.</p>
+        <a href="Indicadores.html" class="btn btn-outline">Abrir Indicadores</a>
       </div>
 
-      <div class="card" style="background:#fff; border:1px solid var(--gray-line);">
-        <div class="card-icon">📈</div>
+      <div class="resource-card">
         <h3>INPC</h3>
-        <p>Tabla por año para actualización manual y consulta rápida.</p>
-        <a class="btn-primary" href="inpc.html" style="margin-top:12px;">Ver INPC</a>
+        <p>Consulta rápida por año para actualización y referencias.</p>
+        <a href="inpc.html" class="btn btn-outline">Ver INPC</a>
       </div>
 
-      <div class="card" style="background:#fff; border:1px solid var(--gray-line);">
-        <div class="card-icon">🔗</div>
+      <div class="resource-card">
         <h3>Sitios de interés</h3>
         <p>Accesos directos a SAT, DOF, IMSS, INFONAVIT, Banxico e INEGI.</p>
-        <a class="btn-primary" href="enlaces.html" style="margin-top:12px;">Ir a enlaces</a>
+        <a href="enlaces.html" class="btn btn-outline">Ir a enlaces</a>
       </div>
+    </div>
+
+    <div style="margin-top:2.5rem; text-align:center;">
+      <a class="btn btn-outline" href="Blog.html">Ver Blog técnico</a>
     </div>
   </div>
 </section>
 
-<!-- Proceso -->
 <section class="section">
   <div class="container">
-    <h2 class="section-title">Cómo trabajamos</h2>
-    <p class="section-subtitle">
-      Un proceso simple para diagnosticar, ordenar y darle seguimiento a tu situación.
-    </p>
+    <div class="section-header">
+      <h2 class="section-title">Metodología de trabajo</h2>
+      <p class="section-description">
+        Proceso estructurado para diagnóstico, estrategia y seguimiento continuo.
+      </p>
+    </div>
 
-    <div class="steps">
-      <div class="step">
-        <div class="num">1</div>
-        <h3 style="margin:0 0 8px; color:var(--blue-navy); font-family:Montserrat, Inter, sans-serif;">Diagnóstico</h3>
-        <p style="margin:0; color:var(--gray-muted);">Revisamos tu caso, documentación y prioridades para definir el alcance.</p>
+    <div class="process-container">
+      <div class="process-step">
+        <div class="step-number">01</div>
+        <div class="step-content">
+          <h3>Análisis y diagnóstico</h3>
+          <p>Evaluación técnica, revisión documental y determinación de obligaciones, riesgos y oportunidades.</p>
+        </div>
       </div>
-      <div class="step">
-        <div class="num">2</div>
-        <h3 style="margin:0 0 8px; color:var(--blue-navy); font-family:Montserrat, Inter, sans-serif;">Plan de acción</h3>
-        <p style="margin:0; color:var(--gray-muted);">Te proponemos la estrategia y calendario: cumplimiento, correcciones o defensa.</p>
+
+      <div class="process-step">
+        <div class="step-number">02</div>
+        <div class="step-content">
+          <h3>Estrategia y planificación</h3>
+          <p>Plan de acción con alcances definidos, cronograma y medidas correctivas o preventivas.</p>
+        </div>
       </div>
-      <div class="step">
-        <div class="num">3</div>
-        <h3 style="margin:0 0 8px; color:var(--blue-navy); font-family:Montserrat, Inter, sans-serif;">Seguimiento</h3>
-        <p style="margin:0; color:var(--gray-muted);">Damos continuidad y control para evitar contingencias futuras.</p>
+
+      <div class="process-step">
+        <div class="step-number">03</div>
+        <div class="step-content">
+          <h3>Ejecución y seguimiento</h3>
+          <p>Implementación con monitoreo, comunicación directa y ajustes según evolución del caso.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Blog preview -->
-<section class="section" style="background: var(--blue-light);">
+<section class="cta-section">
   <div class="container">
-    <h2 class="section-title">Últimas publicaciones</h2>
-    <p class="section-subtitle">
-      Contenido técnico y divulgativo. (Puedes actualizar los títulos cuando publiques.)
-    </p>
-
-    <div class="grid">
-      <div class="article-card">
-        <a href="Blog.html">CFDI 4.0: errores comunes y cómo evitarlos</a>
-        <div class="meta">Guía práctica • 5 min</div>
-        <p style="margin:10px 0 0; color:var(--gray-muted);">Checklist para reducir rechazos y diferencias en conciliación.</p>
-      </div>
-
-      <div class="article-card">
-        <a href="Blog.html">INPC y actualización de contribuciones: cómo se calcula</a>
-        <div class="meta">Explicación • 6 min</div>
-        <p style="margin:10px 0 0; color:var(--gray-muted);">Qué considerar al usar índices y por qué importa la fecha de DOF.</p>
-      </div>
-
-      <div class="article-card">
-        <a href="Blog.html">Recargos y multas: diferencias y cuándo aplican</a>
-        <div class="meta">Resumen • 4 min</div>
-        <p style="margin:10px 0 0; color:var(--gray-muted);">Lo básico para entender costos por incumplimiento y prórrogas.</p>
-      </div>
-    </div>
-
-    <div style="margin-top:18px;">
-      <a class="btn-primary" href="Blog.html">Ver Blog</a>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">Preguntas frecuentes</h2>
-    <p class="section-subtitle">Respuestas rápidas para orientar el primer contacto.</p>
-
-    <details class="faq">
-      <summary>¿Atienden personas físicas y morales?</summary>
-      <p>Sí. Definimos el alcance en función del régimen, obligaciones y situación actual.</p>
-    </details>
-
-    <details class="faq">
-      <summary>¿Pueden apoyar en auditorías o requerimientos del SAT?</summary>
-      <p>Sí. Revisamos el acto de autoridad, plazos y documentación para responder con estrategia y sustento.</p>
-    </details>
-
-    <details class="faq">
-      <summary>¿Cómo agendo una consulta?</summary>
-      <p>Puedes hacerlo por WhatsApp desde el botón de contacto o el botón flotante.</p>
-    </details>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="section">
-  <div class="container">
-    <div class="cta-band">
-      <div>
-        <h3>¿Quieres una revisión inicial de tu caso?</h3>
-        <p>Escríbenos por WhatsApp y te decimos qué información necesitamos para empezar.</p>
-      </div>
-      <div class="cta-actions">
-        <a class="btn-primary" href="https://wa.me/525513110556?text=Hola%20GG%2C%20quiero%20agendar%20una%20consulta.%20Soy%20%5Bpersona%20f%C3%ADsica%2Fmoral%5D%20y%20necesito%20ayuda%20con%3A%20" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn-secondary" href="contacto.html">Contacto</a>
+    <div class="cta-content">
+      <h2 class="cta-title">¿Requiere asesoría especializada?</h2>
+      <p class="cta-text">Agende una consulta inicial para revisar su situación y definir la mejor estrategia.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/525513110556?text=Solicito%20informaci%C3%B3n%20sobre%20asesor%C3%ADa%20contable%20y%20fiscal" target="_blank" rel="noopener" class="btn btn-primary">
+          Contactar por WhatsApp
+        </a>
+        <a href="contacto.html" class="btn btn-secondary">Enviar mensaje</a>
       </div>
     </div>
   </div>
@@ -530,19 +684,57 @@
 
 <footer class="footer">
   <div class="container">
-    <strong>GG Contabilidad y Defensa Fiscal</strong>
-    <p style="margin: 10px 0 0; opacity:.92;">
-      © 2025. Todos los derechos reservados.
-    </p>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>GG Contabilidad</h4>
+        <p style="margin:0; line-height:1.6;">
+          Despacho especializado en asesoría contable, fiscal y defensa ante autoridades.
+        </p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Servicios</h4>
+        <ul class="footer-links">
+          <li><a href="servicios.html">Contabilidad</a></li>
+          <li><a href="servicios.html">Cumplimiento fiscal</a></li>
+          <li><a href="servicios.html">Defensa fiscal</a></li>
+          <li><a href="servicios.html">Comercio exterior</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Recursos</h4>
+        <ul class="footer-links">
+          <li><a href="Indicadores.html">Indicadores</a></li>
+          <li><a href="inpc.html">INPC</a></li>
+          <li><a href="enlaces.html">Sitios oficiales</a></li>
+          <li><a href="Blog.html">Blog técnico</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <ul class="footer-links">
+          <li><a href="contacto.html">Formulario</a></li>
+          <li><a href="nosotros.html">Acerca de nosotros</a></li>
+          <li><a href="https://wa.me/525513110556" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p style="margin:0;">© 2025 GG Contabilidad y Defensa Fiscal. Todos los derechos reservados.</p>
+    </div>
   </div>
 </footer>
 
-<!-- WhatsApp flotante -->
-<a class="fab-wa"
-   href="https://wa.me/525513110556?text=Hola%20GG%2C%20quiero%20una%20consulta.%20Soy%20%5Bpersona%20f%C3%ADsica%2Fmoral%5D%20y%20mi%20tema%20es%3A%20"
-   target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
-  <span class="dot"></span> WhatsApp
-</a>
+<div class="whatsapp-float">
+  <a href="https://wa.me/525513110556?text=Solicito%20informaci%C3%B3n%20sobre%20asesor%C3%ADa%20profesional" target="_blank" rel="noopener"
+     class="whatsapp-btn" aria-label="Contactar por WhatsApp">
+    <span class="whatsapp-icon">💬</span>
+    <span>Consulta WhatsApp</span>
+  </a>
+</div>
 
 <script>
   const nav = document.getElementById("nav");
@@ -559,3 +751,4 @@
 
 </body>
 </html>
+
