@@ -14,467 +14,483 @@
   <link rel="stylesheet" href="assets/styles.css">
 
   <style>
-    :root {
-      --navy-deep: #0F2A44;
-      --navy-mid: #1A3A5C;
-      --gold-accent: #C9A961;
-      --gray-sophisticated: #556B7E;
-      --gray-light: #F7F9FB;
-      --border-subtle: #E1E8ED;
+    :root{
+      --navy-deep:#0F2A44;
+      --navy-mid:#1A3A5C;
+      --gold-accent:#C9A961;
+      --gray-sophisticated:#556B7E;
+      --gray-light:#F7F9FB;
+      --border-subtle:#E1E8ED;
     }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--navy-deep);
-      line-height: 1.6;
+    body{
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+      color:var(--navy-deep);
+      line-height:1.6;
+    }
+
+    /* ✅ Logo más grande (sin romper móvil) */
+    .logo img{
+      height: 68px;
+      width: auto;
+      display:block;
     }
 
     /* Hero refinado */
-    .hero {
-      position: relative;
-      min-height: 75vh;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(135deg, #0F2A44 0%, #1A3A5C 100%);
+    .hero{
+      position:relative;
+      min-height:75vh;
+      display:flex;
+      align-items:center;
+      background:linear-gradient(135deg,#0F2A44 0%,#1A3A5C 100%);
+      overflow:hidden;
     }
 
-    .hero-video {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.15;
+    /* ✅ Video más nítido: menos "filtro" (más presencia) */
+    .hero-video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0.35;              /* antes 0.15 */
+      filter:none;               /* por si el navegador aplica filtros */
+      transform: translateZ(0);  /* mejora render en algunos equipos */
     }
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(15,42,68,0.92) 0%, rgba(26,58,92,0.88) 100%);
+    /* ✅ Overlay menos pesado para que el video se vea más claro */
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        135deg,
+        rgba(15,42,68,0.78) 0%,
+        rgba(26,58,92,0.74) 100%
+      );
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 820px;
-      padding: 3rem 1.5rem;
-    }
-
-    .hero h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.2;
-      margin: 0 0 1.1rem;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-      color: rgba(255,255,255,0.92);
-      margin: 0 0 2.2rem;
-      font-weight: 400;
-      line-height: 1.55;
-    }
-
-    .hero-kicker {
-      margin-top: 0.4rem;
-      color: rgba(255,255,255,0.85);
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-
-    /* Botones profesionales */
-    .btn {
-      display: inline-block;
-      padding: 1rem 2rem;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-      font-size: 0.95rem;
-      letter-spacing: 0.02em;
-      border: 2px solid transparent;
-    }
-
-    .btn-primary {
-      background: var(--gold-accent);
-      color: var(--navy-deep);
-    }
-    .btn-primary:hover {
-      background: #D4B871;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(201,169,97,0.3);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: #fff;
-      border-color: rgba(255,255,255,0.3);
-    }
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(255,255,255,0.5);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--navy-deep);
-      border-color: var(--border-subtle);
-    }
-    .btn-outline:hover {
-      background: var(--navy-deep);
-      color: #fff;
-      border-color: var(--navy-deep);
-    }
-
-    /* Strip de confianza (sin números inventados) */
-    .credentials {
-      background: #fff;
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 2.2rem 0;
-    }
-
-    .credentials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      max-width: 1100px;
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:900px;
+      padding:3rem 1.5rem;
+      text-align:center; /* ✅ centra título/subtítulo y botones */
       margin: 0 auto;
-      padding: 0 1.5rem;
     }
 
-    .credential-item {
-      text-align: center;
-      padding: 1rem 1rem;
-      border: 1px solid var(--border-subtle);
-      background: #fff;
+    /* ✅ Encabezado principal como pediste */
+    .hero h1{
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(2.2rem,5vw,3.2rem);
+      font-weight:700;
+      color:#fff;
+      line-height:1.15;
+      margin:0 0 1rem;
+      letter-spacing:-0.02em;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
 
-    .credential-number {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.9rem;
-      font-weight: 700;
-      color: var(--gold-accent);
-      display: block;
-      margin-bottom: 0.55rem;
+    .hero-subtitle{
+      font-size:clamp(1.05rem,2.4vw,1.25rem);
+      color:rgba(255,255,255,0.92);
+      margin:0 0 2.2rem;
+      font-weight:400;
+      line-height:1.55;
+      text-shadow: 0 10px 28px rgba(0,0,0,0.22);
     }
 
-    .credential-label {
-      font-size: 0.95rem;
-      color: var(--gray-sophisticated);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 500;
-      line-height: 1.35;
+    /* ✅ Botones profesionales (texto centrado perfecto) */
+    .btn{
+      display:inline-flex;          /* clave para centrar vertical/horizontal */
+      align-items:center;
+      justify-content:center;
+      gap:.5rem;
+      padding: 1rem 2rem;
+      font-weight:600;
+      text-decoration:none;
+      border-radius: 2px;
+      transition:all .25s ease;
+      font-size:.95rem;
+      letter-spacing:.02em;
+      border:2px solid transparent;
+      line-height:1;               /* evita que el texto “flote” */
+      min-height: 50px;            /* altura consistente */
+      box-sizing:border-box;
+      white-space:nowrap;
+    }
+
+    .btn-primary{
+      background:var(--gold-accent);
+      color:var(--navy-deep);
+    }
+    .btn-primary:hover{
+      background:#D4B871;
+      transform:translateY(-2px);
+      box-shadow:0 8px 24px rgba(201,169,97,0.3);
+    }
+
+    /* ✅ Botón secundario con borde claro y centrado */
+    .btn-secondary{
+      background:transparent;
+      color:#fff;
+      border-color:rgba(255,255,255,0.35);
+    }
+    .btn-secondary:hover{
+      background:rgba(255,255,255,0.10);
+      border-color:rgba(255,255,255,0.55);
+    }
+
+    .btn-outline{
+      background:transparent;
+      color:var(--navy-deep);
+      border-color:var(--border-subtle);
+    }
+    .btn-outline:hover{
+      background:var(--navy-deep);
+      color:#fff;
+      border-color:var(--navy-deep);
+    }
+
+    /* ✅ Contenedor de botones centrado */
+    .hero-actions{
+      display:flex;
+      gap:1rem;
+      flex-wrap:wrap;
+      justify-content:center; /* centra ambos botones */
+      margin-top: 1.8rem;
+    }
+
+    /* Strip de confianza */
+    .credentials{
+      background:#fff;
+      border-top:1px solid var(--border-subtle);
+      border-bottom:1px solid var(--border-subtle);
+      padding:2.2rem 0;
+    }
+
+    .credentials-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:1.5rem;
+      max-width:1100px;
+      margin:0 auto;
+      padding:0 1.5rem;
+    }
+
+    .credential-item{
+      text-align:center;
+      padding:1rem;
+      border:1px solid var(--border-subtle);
+      background:#fff;
+    }
+
+    .credential-number{
+      font-family:'Montserrat',sans-serif;
+      font-size:1.9rem;
+      font-weight:700;
+      color:var(--gold-accent);
+      display:block;
+      margin-bottom:.55rem;
+    }
+
+    .credential-label{
+      font-size:.95rem;
+      color:var(--gray-sophisticated);
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      font-weight:500;
+      line-height:1.35;
     }
 
     /* Secciones */
-    .section {
-      padding: 5rem 0;
+    .section{ padding:5rem 0; }
+
+    .section-header{
+      max-width:760px;
+      margin:0 auto 3.2rem;
+      text-align:center;
+      padding:0 1.5rem;
     }
 
-    .section-header {
-      max-width: 760px;
-      margin: 0 auto 3.2rem;
-      text-align: center;
-      padding: 0 1.5rem;
+    .section-title{
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(1.8rem,4vw,2.4rem);
+      font-weight:700;
+      color:var(--navy-deep);
+      margin:0 0 1rem;
+      letter-spacing:-0.01em;
     }
 
-    .section-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      font-weight: 700;
-      color: var(--navy-deep);
-      margin: 0 0 1rem;
-      letter-spacing: -0.01em;
+    .section-description{
+      font-size:1.1rem;
+      color:var(--gray-sophisticated);
+      line-height:1.7;
+      margin:0;
     }
 
-    .section-description {
-      font-size: 1.1rem;
-      color: var(--gray-sophisticated);
-      line-height: 1.7;
-      margin: 0;
+    /* Servicios */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:1.5rem;
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 1.5rem;
     }
 
-    /* Servicios profesionales */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
+    .service-card{
+      background:#fff;
+      border:1px solid var(--border-subtle);
+      padding:2rem;
+      transition:all .3s ease;
+      position:relative;
     }
 
-    .service-card {
-      background: #fff;
-      border: 1px solid var(--border-subtle);
-      padding: 2rem;
-      transition: all 0.3s ease;
-      position: relative;
+    .service-card::before{
+      content:'';
+      position:absolute;
+      top:0; left:0;
+      width:4px;
+      height:0;
+      background:var(--gold-accent);
+      transition:height .3s ease;
     }
 
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 0;
-      background: var(--gold-accent);
-      transition: height 0.3s ease;
+    .service-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 12px 32px rgba(15,42,68,0.12);
     }
 
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(15,42,68,0.12);
+    .service-card:hover::before{ height:100%; }
+
+    .service-title{
+      font-family:'Montserrat',sans-serif;
+      font-size:1.2rem;
+      font-weight:600;
+      color:var(--navy-deep);
+      margin:0 0 1rem;
     }
 
-    .service-card:hover::before {
-      height: 100%;
+    .service-description{
+      color:var(--gray-sophisticated);
+      margin:0;
+      line-height:1.6;
     }
 
-    .service-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--navy-deep);
-      margin: 0 0 1rem;
+    /* Recursos */
+    .resource-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:1.5rem;
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 1.5rem;
     }
 
-    .service-description {
-      color: var(--gray-sophisticated);
-      margin: 0;
-      line-height: 1.6;
+    .resource-card{
+      background:#fff;
+      border:1px solid var(--border-subtle);
+      padding:2rem;
     }
 
-    /* Tarjetas “Recursos” */
-    .resource-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
+    .resource-card h3{
+      font-family:'Montserrat',sans-serif;
+      margin:0 0 .75rem;
+      color:var(--navy-deep);
+      font-size:1.2rem;
+      font-weight:600;
     }
 
-    .resource-card {
-      background: #fff;
-      border: 1px solid var(--border-subtle);
-      padding: 2rem;
-    }
-
-    .resource-card h3 {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0 0 0.75rem;
-      color: var(--navy-deep);
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    .resource-card p {
-      margin: 0 0 1.25rem;
-      color: var(--gray-sophisticated);
-      line-height: 1.6;
+    .resource-card p{
+      margin:0 0 1.25rem;
+      color:var(--gray-sophisticated);
+      line-height:1.6;
     }
 
     /* Proceso */
-    .process-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      gap: 1.5rem;
-      padding: 0 1.5rem;
+    .process-container{
+      max-width:1000px;
+      margin:0 auto;
+      display:grid;
+      gap:1.5rem;
+      padding:0 1.5rem;
     }
 
-    .process-step {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 2rem;
-      padding: 2rem;
-      background: #fff;
-      border: 1px solid var(--border-subtle);
-      align-items: start;
+    .process-step{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:2rem;
+      padding:2rem;
+      background:#fff;
+      border:1px solid var(--border-subtle);
+      align-items:start;
     }
 
-    .step-number {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: var(--navy-deep);
-      color: var(--gold-accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      flex-shrink: 0;
+    .step-number{
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      background:var(--navy-deep);
+      color:var(--gold-accent);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:'Montserrat',sans-serif;
+      font-size:1.5rem;
+      font-weight:700;
+      flex-shrink:0;
     }
 
-    .step-content h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--navy-deep);
-      margin: 0 0 0.5rem;
+    .step-content h3{
+      font-family:'Montserrat',sans-serif;
+      font-size:1.3rem;
+      font-weight:600;
+      color:var(--navy-deep);
+      margin:0 0 .5rem;
     }
 
-    .step-content p {
-      color: var(--gray-sophisticated);
-      margin: 0;
-      line-height: 1.6;
+    .step-content p{
+      color:var(--gray-sophisticated);
+      margin:0;
+      line-height:1.6;
     }
 
-    /* CTA profesional */
-    .cta-section {
-      background: var(--navy-deep);
-      color: #fff;
-      padding: 4rem 0;
-      text-align: center;
+    /* CTA */
+    .cta-section{
+      background:var(--navy-deep);
+      color:#fff;
+      padding:4rem 0;
+      text-align:center;
     }
 
-    .cta-content {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
+    .cta-content{
+      max-width:720px;
+      margin:0 auto;
+      padding:0 1.5rem;
     }
 
-    .cta-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.6rem, 4vw, 2rem);
-      font-weight: 700;
-      margin: 0 0 1rem;
+    .cta-title{
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(1.6rem,4vw,2rem);
+      font-weight:700;
+      margin:0 0 1rem;
     }
 
-    .cta-text {
-      font-size: 1.1rem;
-      opacity: 0.92;
-      margin: 0 0 2rem;
+    .cta-text{
+      font-size:1.1rem;
+      opacity:.92;
+      margin:0 0 2rem;
     }
 
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
+    .cta-buttons{
+      display:flex;
+      gap:1rem;
+      justify-content:center;
+      flex-wrap:wrap;
     }
 
-    /* Footer profesional */
-    .footer {
-      background: var(--navy-deep);
-      color: rgba(255,255,255,0.8);
-      padding: 3rem 0 2rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
+    /* Footer */
+    .footer{
+      background:var(--navy-deep);
+      color:rgba(255,255,255,0.8);
+      padding:3rem 0 2rem;
+      border-top:1px solid rgba(255,255,255,0.1);
     }
 
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      padding: 0 1.5rem 2rem;
+    .footer-content{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:2rem;
+      padding:0 1.5rem 2rem;
     }
 
-    .footer-section h4 {
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      margin: 0 0 1rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+    .footer-section h4{
+      color:#fff;
+      font-family:'Montserrat',sans-serif;
+      font-size:1rem;
+      font-weight:600;
+      margin:0 0 1rem;
+      letter-spacing:.05em;
+      text-transform:uppercase;
     }
 
-    .footer-links {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .footer-links{ list-style:none; padding:0; margin:0; }
+    .footer-links li{ margin-bottom:.5rem; }
+    .footer-links a{
+      color:rgba(255,255,255,0.7);
+      text-decoration:none;
+      transition:color .2s;
+    }
+    .footer-links a:hover{ color:var(--gold-accent); }
+
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,0.1);
+      padding:1.5rem 1.5rem 0;
+      text-align:center;
+      font-size:.9rem;
     }
 
-    .footer-links li {
-      margin-bottom: 0.5rem;
+    /* WhatsApp */
+    .whatsapp-float{
+      position:fixed;
+      bottom:2rem;
+      right:2rem;
+      z-index:1000;
     }
 
-    .footer-links a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      transition: color 0.2s;
+    .whatsapp-btn{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+      padding:1rem 1.5rem;
+      background:#25D366;
+      color:#fff;
+      text-decoration:none;
+      border-radius:50px;
+      font-weight:600;
+      box-shadow:0 4px 16px rgba(37,211,102,0.4);
+      transition:all .3s ease;
     }
 
-    .footer-links a:hover {
-      color: var(--gold-accent);
+    .whatsapp-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 24px rgba(37,211,102,0.5);
     }
 
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 1.5rem 1.5rem 0;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-
-    /* WhatsApp profesional */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 1000;
-    }
-
-    .whatsapp-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 1.5rem;
-      background: #25D366;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 600;
-      box-shadow: 0 4px 16px rgba(37,211,102,0.4);
-      transition: all 0.3s ease;
-    }
-
-    .whatsapp-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
-    }
-
-    .whatsapp-icon {
-      width: 24px;
-      height: 24px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .whatsapp-icon{
+      width:24px;
+      height:24px;
+      background:rgba(255,255,255,0.2);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
-      .hero { min-height: 60vh; }
+    @media (max-width: 768px){
+      .hero{ min-height:60vh; }
+      .logo img{ height:56px; } /* ✅ logo responsivo */
 
-      .process-step {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+      .process-step{
+        grid-template-columns:1fr;
+        gap:1rem;
       }
 
-      .step-number {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
+      .step-number{
+        width:50px;
+        height:50px;
+        font-size:1.2rem;
       }
 
-      .cta-buttons { flex-direction: column; }
+      .cta-buttons{ flex-direction:column; }
+      .btn{ width:100%; text-align:center; }
 
-      .btn { width: 100%; text-align: center; }
+      .footer-content{ grid-template-columns:1fr; }
 
-      .footer-content { grid-template-columns: 1fr; }
-
-      .whatsapp-float { bottom: 1rem; right: 1rem; }
+      .whatsapp-float{ bottom:1rem; right:1rem; }
     }
   </style>
 </head>
@@ -484,7 +500,7 @@
 <header class="header">
   <div class="container header-inner">
     <a href="index.html" class="logo" aria-label="Inicio">
-      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal" style="height: 48px;">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
     </a>
 
     <button id="hamburger" class="hamburger" aria-label="Menú">Menú</button>
@@ -510,20 +526,20 @@
   <div class="hero-overlay" aria-hidden="true"></div>
 
   <div class="container hero-content">
-    <h1>Asesoría contable, fiscal y defensa especializada</h1>
+    <!-- ✅ Texto principal cambiado -->
+    <h1>GG Contabilidad y Defensa Fiscal</h1>
     <p class="hero-subtitle">
-      Despacho profesional enfocado en prevención, cumplimiento estratégico y representación ante autoridades fiscales y aduaneras.
+      Soluciones contables, fiscales y legales con enfoque estratégico, preventivo y técnico.
     </p>
-    <div class="hero-kicker">GG Contabilidad y Defensa Fiscal</div>
 
-    <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:2rem;">
+    <!-- ✅ Botones centrados + “Solicitar consulta” centrado dentro del botón -->
+    <div class="hero-actions">
       <a href="servicios.html" class="btn btn-primary">Conocer servicios</a>
       <a href="contacto.html" class="btn btn-secondary">Solicitar consulta</a>
     </div>
   </div>
 </main>
 
-<!-- ✅ Strip de confianza (sin métricas inventadas) -->
 <section class="credentials" aria-label="Pilares de confianza">
   <div class="container">
     <div class="credentials-grid">
@@ -594,7 +610,6 @@
   </div>
 </section>
 
-<!-- ✅ Mantiene tus páginas de recursos (Indicadores/INPC/Enlaces) visibles desde Home -->
 <section class="section" style="background: var(--gray-light);">
   <div class="container">
     <div class="section-header">
@@ -751,4 +766,3 @@
 
 </body>
 </html>
-
