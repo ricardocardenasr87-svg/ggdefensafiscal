@@ -1,4 +1,5 @@
 :root {
+  /* ======= PALETA ORIGINAL (AZUL) ======= */
   --blue-main: #1AA7E1;
   --blue-navy: #0F2A44;
   --blue-light: #EAF5FB;
@@ -6,12 +7,40 @@
   --gray-text: #1F2937;
   --gray-muted: #6B7280;
   --gray-line: #E5E7EB;
+
   --container: 1120px;
   --radius: 12px;
+
+  /* ======= PALETA NUEVA (NAVY + GOLD) ======= */
+  --navy-deep: #0F2A44;
+  --navy-mid: #1A3A5C;
+  --gold-accent: #C9A961;
+  --gray-sophisticated: #556B7E;
+  --gray-light: #F7F9FB;
+  --border-subtle: #E1E8ED;
+
+  /* ======= VARIABLES DE HEADER (THEMEABLE) ======= */
+  --header-bg: rgba(15,42,68,0.92);
+  --header-border: rgba(255,255,255,0.10);
+
+  --nav-link-color: rgba(255,255,255,0.92);
+  --nav-hover-bg: rgba(255,255,255,0.10);
+  --nav-current-bg: rgba(255,255,255,0.14);
+
+  --hamburger-bg: rgba(255,255,255,0.10);
+  --hamburger-border: rgba(255,255,255,0.16);
+  --hamburger-color: rgba(255,255,255,0.92);
+
+  --btn-nav-border: rgba(26,167,225,0.95);
+
+  --mobile-nav-bg: rgba(15,42,68,0.98);
+  --mobile-nav-border: rgba(255,255,255,0.12);
+  --mobile-nav-shadow: rgba(0,0,0,0.25);
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -26,7 +55,9 @@ body {
   padding: 0 20px;
 }
 
-/* Header */
+/* =======================
+   HEADER (DEFAULT DARK)
+   ======================= */
 .header {
   position: fixed;
   top: 0;
@@ -34,9 +65,9 @@ body {
   right: 0;
   z-index: 1000;
   padding: 14px 0;
-  background: rgba(15,42,68,0.92);
+  background: var(--header-bg);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255,255,255,0.10);
+  border-bottom: 1px solid var(--header-border);
 }
 
 .header-inner {
@@ -76,39 +107,63 @@ body {
 }
 
 .nav a {
-  color: rgba(255,255,255,0.92);
+  color: var(--nav-link-color);
   text-decoration: none;
   font-weight: 500;
   padding: 8px 10px;
   border-radius: 10px;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
   white-space: nowrap;
 }
 
-.nav a:hover { background: rgba(255,255,255,0.10); }
+.nav a:hover { background: var(--nav-hover-bg); }
 
 .nav a[aria-current="page"] {
-  background: rgba(255,255,255,0.14);
+  background: var(--nav-current-bg);
 }
 
 .btn-nav {
-  border: 1px solid rgba(26,167,225,0.95);
+  border: 1px solid var(--btn-nav-border);
   padding: 8px 14px !important;
 }
 
 /* Mobile nav button */
 .hamburger {
   display: none;
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.16);
-  color: rgba(255,255,255,0.92);
+  background: var(--hamburger-bg);
+  border: 1px solid var(--hamburger-border);
+  color: var(--hamburger-color);
   border-radius: 12px;
   padding: 10px 12px;
   cursor: pointer;
   font-weight: 600;
 }
 
-/* HERO con VIDEO */
+/* =======================
+   HEADER VARIANT: LIGHT
+   Usa en páginas nuevas:
+   <header class="header header--light">
+   ======================= */
+.header--light {
+  --header-bg: rgba(255,255,255,0.98);
+  --header-border: var(--border-subtle);
+
+  --nav-link-color: var(--navy-deep);
+  --nav-hover-bg: rgba(15,42,68,0.06);
+  --nav-current-bg: rgba(15,42,68,0.10);
+
+  --hamburger-bg: rgba(15,42,68,0.06);
+  --hamburger-border: rgba(15,42,68,0.12);
+  --hamburger-color: var(--navy-deep);
+
+  --btn-nav-border: rgba(201,169,97,0.85);
+
+  --mobile-nav-bg: #fff;
+  --mobile-nav-border: var(--border-subtle);
+  --mobile-nav-shadow: rgba(15,42,68,0.15);
+}
+
+/* HERO con VIDEO (HOME) */
 .hero {
   position: relative;
   min-height: clamp(420px, 68vh, 640px);
@@ -169,7 +224,7 @@ body {
   text-shadow: 0 10px 24px rgba(0,0,0,0.30);
 }
 
-/* Buttons */
+/* Buttons (legacy) */
 .btn-primary {
   display: inline-block;
   margin-top: 18px;
@@ -194,6 +249,56 @@ body {
   border: 1px solid rgba(255,255,255,0.18);
 }
 .btn-secondary:hover{ filter: brightness(1.05); }
+
+/* =======================
+   NEW BUTTON SYSTEM (para páginas nuevas)
+   Aplica solo cuando usas class="btn ..."
+   ======================= */
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border: 2px solid transparent;
+}
+
+.btn.btn-primary {
+  background: var(--gold-accent);
+  color: var(--navy-deep);
+}
+
+.btn.btn-primary:hover {
+  background: #D4B871;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201,169,97,0.3);
+}
+
+.btn.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,0.3);
+}
+
+.btn.btn-secondary:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.5);
+}
+
+.btn.btn-outline {
+  background: transparent;
+  color: var(--navy-deep);
+  border-color: var(--border-subtle);
+}
+
+.btn.btn-outline:hover {
+  background: var(--navy-deep);
+  color: #fff;
+  border-color: var(--navy-deep);
+}
 
 /* Sections */
 section { scroll-margin-top: 110px; }
@@ -250,6 +355,55 @@ section { scroll-margin-top: 110px; }
   border: 1px solid var(--gray-line);
 }
 .contact { background: var(--blue-light); }
+
+/* =======================
+   NEW SECTIONS HELPERS (páginas nuevas)
+   ======================= */
+.page-hero {
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
+  color: #fff;
+  padding: 4rem 0 3rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.page-hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 700;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+.page-hero-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.92;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.breadcrumb {
+  padding: 1.5rem 0;
+  background: var(--gray-light);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.breadcrumb-nav {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--gray-sophisticated);
+  flex-wrap: wrap;
+}
+
+.breadcrumb-nav a {
+  color: var(--navy-deep);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumb-nav a:hover { color: var(--gold-accent); }
 
 /* INPC */
 .inpc-wrap { background: var(--blue-light); }
@@ -331,7 +485,9 @@ table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
   font-size: 0.95rem;
 }
 
-/* Footer */
+/* =======================
+   FOOTER (legacy simple)
+   ======================= */
 .footer {
   background: var(--blue-navy);
   color: rgba(255,255,255,0.92);
@@ -341,6 +497,53 @@ table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
   color: #fff;
   font-family: Montserrat, Inter, sans-serif;
   font-weight: 700;
+}
+
+/* =======================
+   FOOTER (pro layout)
+   Para páginas nuevas con:
+   .footer-content .footer-section .footer-links .footer-bottom
+   ======================= */
+.footer .footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 1.5rem 2rem;
+}
+
+.footer .footer-section h4 {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.footer .footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .footer-links li { margin-bottom: 0.5rem; }
+
+.footer .footer-links a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer .footer-links a:hover { color: var(--gold-accent); }
+
+.footer .footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 1.5rem 1.5rem 0;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
 /* ==============
@@ -363,12 +566,12 @@ table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
     top: 88px;
     right: 20px;
     flex-direction: column;
-    background: rgba(15,42,68,0.98);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: var(--mobile-nav-bg);
+    border: 1px solid var(--mobile-nav-border);
     padding: 10px;
     border-radius: 16px;
     min-width: 220px;
-    box-shadow: 0 14px 40px rgba(0,0,0,0.25);
+    box-shadow: 0 14px 40px var(--mobile-nav-shadow);
   }
 
   .nav.mobile-open a { padding: 10px 12px; }
@@ -408,3 +611,4 @@ table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
 @media (prefers-reduced-motion: reduce) {
   .hero-video { display: none; }
 }
+
