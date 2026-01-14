@@ -29,18 +29,53 @@
       background: #fff;
     }
 
-    .header {
-      background: rgba(255, 255, 255, 0.98);
+    /* =========================
+       HEADER LIGHT (fallback)
+       Usa: <header class="header header--light">
+       ========================= */
+    .header.header--light {
+      background: rgba(255, 255, 255, 0.98) !important;
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--border-subtle) !important;
+      padding: 1.2rem 0 !important;
     }
 
-    /* Hero de página interna */
+    /* Links en header blanco */
+    .header.header--light .nav a{
+      color: var(--navy-deep) !important;
+    }
+    .header.header--light .nav a:hover{
+      background: rgba(15,42,68,0.06) !important;
+    }
+    .header.header--light .nav a[aria-current="page"]{
+      background: rgba(15,42,68,0.10) !important;
+    }
+    .header.header--light .btn-nav{
+      border-color: rgba(201,169,97,0.85) !important;
+    }
+    .header.header--light .hamburger{
+      background: rgba(15,42,68,0.06) !important;
+      border: 1px solid rgba(15,42,68,0.12) !important;
+      color: var(--navy-deep) !important;
+    }
+
+    /* Mobile dropdown cuando el header es blanco */
+    @media (max-width: 760px) {
+      .header.header--light .nav.mobile-open{
+        background: #fff !important;
+        border: 1px solid var(--border-subtle) !important;
+        box-shadow: 0 14px 40px rgba(15,42,68,0.15) !important;
+      }
+      .header.header--light .nav.mobile-open a{
+        color: var(--navy-deep) !important;
+      }
+    }
+
+    /* Hero de página interna (compensa header fijo) */
     .page-hero {
       background: linear-gradient(135deg, #0F2A44 0%, #1A3A5C 100%);
       color: #fff;
-      padding: 5rem 0 3rem;
+      padding: calc(5rem + 90px) 0 3rem; /* ✅ evita que el header tape el hero */
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
@@ -74,6 +109,7 @@
       align-items: center;
       font-size: 0.9rem;
       color: var(--gray-sophisticated);
+      flex-wrap: wrap;
     }
 
     .breadcrumb-nav a {
@@ -89,9 +125,9 @@
     /* Secciones de servicio */
     .services-section {
       padding: 4rem 0;
+      background: #fff;
     }
-
-    .services-section:nth-child(even) {
+    .services-section.alt {
       background: var(--gray-light);
     }
 
@@ -222,7 +258,7 @@
       color: #fff;
       padding: 3.5rem 0;
       text-align: center;
-      margin-top: 2rem;
+      margin-top: 0;
     }
 
     .services-cta h2 {
@@ -340,7 +376,7 @@
     /* Responsive */
     @media (max-width: 768px) {
       .page-hero {
-        padding: 3.5rem 0 2.5rem;
+        padding: calc(3.5rem + 90px) 0 2.5rem; /* ✅ también compensa header fijo */
       }
 
       .services-section {
@@ -365,10 +401,10 @@
 
 <body>
 
-<header class="header">
+<header class="header header--light">
   <div class="container header-inner">
     <a href="index.html" class="logo" aria-label="Inicio">
-      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal" style="height: 48px;">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
     </a>
 
     <button id="hamburger" class="hamburger" aria-label="Menú">Menú</button>
@@ -501,7 +537,7 @@
 </section>
 
 <!-- Servicios Legales -->
-<section class="services-section">
+<section class="services-section alt">
   <div class="container">
     <div class="section-header">
       <span class="section-category">Área de defensa fiscal</span>
@@ -655,6 +691,5 @@
 
 </body>
 </html>
-
 
 
