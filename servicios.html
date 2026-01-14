@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
+  <!-- CSS global (header/nav fijo oscuro, etc.) -->
   <link rel="stylesheet" href="assets/styles.css">
 
   <style>
@@ -29,53 +30,11 @@
       background: #fff;
     }
 
-    /* =========================
-       HEADER LIGHT (fallback)
-       Usa: <header class="header header--light">
-       ========================= */
-    .header.header--light {
-      background: rgba(255, 255, 255, 0.98) !important;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-subtle) !important;
-      padding: 1.2rem 0 !important;
-    }
-
-    /* Links en header blanco */
-    .header.header--light .nav a{
-      color: var(--navy-deep) !important;
-    }
-    .header.header--light .nav a:hover{
-      background: rgba(15,42,68,0.06) !important;
-    }
-    .header.header--light .nav a[aria-current="page"]{
-      background: rgba(15,42,68,0.10) !important;
-    }
-    .header.header--light .btn-nav{
-      border-color: rgba(201,169,97,0.85) !important;
-    }
-    .header.header--light .hamburger{
-      background: rgba(15,42,68,0.06) !important;
-      border: 1px solid rgba(15,42,68,0.12) !important;
-      color: var(--navy-deep) !important;
-    }
-
-    /* Mobile dropdown cuando el header es blanco */
-    @media (max-width: 760px) {
-      .header.header--light .nav.mobile-open{
-        background: #fff !important;
-        border: 1px solid var(--border-subtle) !important;
-        box-shadow: 0 14px 40px rgba(15,42,68,0.15) !important;
-      }
-      .header.header--light .nav.mobile-open a{
-        color: var(--navy-deep) !important;
-      }
-    }
-
-    /* Hero de página interna (compensa header fijo) */
+    /* Hero de página interna (compensa header fijo oscuro del styles.css) */
     .page-hero {
       background: linear-gradient(135deg, #0F2A44 0%, #1A3A5C 100%);
       color: #fff;
-      padding: calc(5rem + 90px) 0 3rem; /* ✅ evita que el header tape el hero */
+      padding: calc(4.5rem + 110px) 0 3rem; /* ✅ evita que el header tape el hero */
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
@@ -96,7 +55,7 @@
       line-height: 1.6;
     }
 
-    /* Breadcrumb profesional */
+    /* Breadcrumb */
     .breadcrumb {
       padding: 1.5rem 0;
       background: var(--gray-light);
@@ -252,7 +211,7 @@
       font-weight: 700;
     }
 
-    /* CTA de contacto */
+    /* CTA */
     .services-cta {
       background: var(--navy-deep);
       color: #fff;
@@ -277,7 +236,7 @@
       margin-right: auto;
     }
 
-    /* ✅ Botones: centrado vertical perfecto */
+    /* Botones */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -319,7 +278,7 @@
       border-color: rgba(255,255,255,0.5);
     }
 
-    /* Footer */
+    /* Footer (se queda igual a tu estilo) */
     .footer {
       background: var(--navy-deep);
       color: rgba(255,255,255,0.8);
@@ -376,32 +335,20 @@
     /* Responsive */
     @media (max-width: 768px) {
       .page-hero {
-        padding: calc(3.5rem + 90px) 0 2.5rem; /* ✅ también compensa header fijo */
+        padding: calc(3.5rem + 110px) 0 2.5rem;
       }
-
-      .services-section {
-        padding: 3rem 0;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-header {
-        margin-bottom: 2rem;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
+      .services-section { padding: 3rem 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .section-header { margin-bottom: 2rem; }
+      .btn { width: 100%; text-align: center; }
     }
   </style>
 </head>
 
 <body>
 
-<header class="header header--light">
+<!-- ✅ IMPORTANTE: quitamos header--light para que use tu header oscuro de assets/styles.css -->
+<header class="header">
   <div class="container header-inner">
     <a href="index.html" class="logo" aria-label="Inicio">
       <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
@@ -409,7 +356,6 @@
 
     <button id="hamburger" class="hamburger" aria-label="Menú">Menú</button>
 
-    <!-- ✅ Respeta tus rutas existentes -->
     <nav id="nav" class="nav" aria-label="Navegación principal">
       <a href="servicios.html" aria-current="page">Servicios</a>
       <a href="Indicadores.html">Indicadores</a>
@@ -425,7 +371,9 @@
 <section class="page-hero">
   <div class="container">
     <h1>Servicios profesionales</h1>
-    <p class="page-hero-subtitle">Asesoría especializada en materia contable, fiscal y defensa jurídica con enfoque preventivo, técnico y estratégico para personas físicas y morales.</p>
+    <p class="page-hero-subtitle">
+      Asesoría especializada en materia contable, fiscal y defensa jurídica con enfoque preventivo, técnico y estratégico para personas físicas y morales.
+    </p>
   </div>
 </section>
 
