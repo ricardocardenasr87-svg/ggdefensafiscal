@@ -13,6 +13,41 @@
   <link rel="stylesheet" href="assets/styles.css">
 
   <style>
+    :root{
+      --navy-deep:#0F2A44;
+      --navy-mid:#1A3A5C;
+      --gold-accent:#C9A961;
+      --gray-sophisticated:#556B7E;
+      --gray-light:#F7F9FB;
+      --border-subtle:#E1E8ED;
+    }
+
+    /* ===== Hero (para que no se sienta "blanco" y compense header fijo) ===== */
+    .page-hero{
+      background: linear-gradient(135deg, #0F2A44 0%, #1A3A5C 100%);
+      color:#fff;
+      padding: calc(3.75rem + 110px) 0 2.4rem; /* ✅ compensa header fijo */
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .page-hero h1{
+      font-family: Montserrat, Inter, sans-serif;
+      font-size: clamp(2rem, 4.6vw, 2.8rem);
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.20);
+      text-align:center;
+    }
+    .page-hero p{
+      margin: 0 auto;
+      max-width: 78ch;
+      opacity: 0.92;
+      text-align:center;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      text-shadow: 0 10px 26px rgba(0,0,0,0.18);
+    }
+
     /* ====== Estilo "hub" de Indicadores (tipo directorio) ====== */
     .hub-grid .card{ background:#fff; border:1px solid var(--gray-line); }
     .hub-head{
@@ -64,6 +99,12 @@
       margin-left: 10px;
     }
 
+    /* ====== Wrapper del contenido bajo el hero ====== */
+    .page-body{
+      padding: 46px 0 80px;
+      background: #fff;
+    }
+
     /* ====== Secciones internas ====== */
     .indicator-section{
       padding: 40px 0 0;
@@ -73,6 +114,7 @@
       border:1px solid var(--gray-line);
       border-radius: var(--radius);
       padding: 22px;
+      box-shadow: 0 12px 28px rgba(15,42,68,0.06);
     }
     .indicator-box h2{
       margin:0 0 8px;
@@ -89,6 +131,7 @@
       width: 100%;
       border-collapse: collapse;
       margin-top: 10px;
+      min-width: 640px;
     }
     .indicator-table th, .indicator-table td{
       padding: 10px;
@@ -101,6 +144,14 @@
       color: var(--blue-navy);
       font-weight: 700;
       background: #F8FAFC;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .table-wrap{
+      overflow:auto;
+      border-radius: 14px;
+      border: 1px solid rgba(15,42,68,0.06);
     }
     .value-highlight{
       font-family: 'Montserrat', sans-serif;
@@ -131,8 +182,12 @@
       background: var(--blue-main);
       color:#fff;
       margin-top: 8px;
+      line-height: 1;
+      min-height: 46px;
+      white-space: nowrap;
     }
     .btn-inline:hover{ filter: brightness(0.96); }
+
     .back-top{
       display:inline-block;
       margin-top: 14px;
@@ -140,6 +195,13 @@
       text-decoration: underline;
       font-weight: 600;
       font-size: .92rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px){
+      .page-hero{ padding: calc(3.1rem + 110px) 0 2rem; }
+      .indicator-table{ min-width: 560px; }
+      .btn-inline{ width:100%; }
     }
   </style>
 </head>
@@ -165,12 +227,18 @@
   </div>
 </header>
 
-<section id="top" class="section page-top">
+<!-- ✅ HERO para dar presencia y evitar "página blanca" -->
+<section class="page-hero" id="top">
   <div class="container">
-    <h1 class="section-title">Indicadores</h1>
-    <p class="section-subtitle">
-      Directorio de consulta rápida. Aquí puedes navegar por categorías y actualizar manualmente los valores cuando lo necesites.
+    <h1>Indicadores</h1>
+    <p>
+      Directorio de consulta rápida. Navega por categorías y actualiza manualmente los valores cuando lo necesites.
     </p>
+  </div>
+</section>
+
+<section class="page-body">
+  <div class="container">
 
     <!-- HUB (tipo contadoresvh.com/indicadores) -->
     <div class="grid hub-grid">
@@ -256,32 +324,36 @@
       <div class="indicator-box">
         <h2>UMA (Unidad de Medida y Actualización)</h2>
         <p>Referencia económica para determinar cuantías de obligaciones, multas y diversos conceptos.</p>
-        <table class="indicator-table">
-          <thead>
-            <tr>
-              <th>Periodo</th>
-              <th>Valor 2025*</th>
-              <th>Valor 2024</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Diario</td>
-              <td class="value-highlight">$113.88</td>
-              <td>$108.57</td>
-            </tr>
-            <tr>
-              <td>Mensual</td>
-              <td class="value-highlight">$3,463.15</td>
-              <td>$3,300.53</td>
-            </tr>
-            <tr>
-              <td>Anual</td>
-              <td class="value-highlight">$41,557.80</td>
-              <td>$39,606.36</td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div class="table-wrap">
+          <table class="indicator-table">
+            <thead>
+              <tr>
+                <th>Periodo</th>
+                <th>Valor 2025*</th>
+                <th>Valor 2024</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Diario</td>
+                <td class="value-highlight">$113.88</td>
+                <td>$108.57</td>
+              </tr>
+              <tr>
+                <td>Mensual</td>
+                <td class="value-highlight">$3,463.15</td>
+                <td>$3,300.53</td>
+              </tr>
+              <tr>
+                <td>Anual</td>
+                <td class="value-highlight">$41,557.80</td>
+                <td>$39,606.36</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <div class="pill-note">*Actualiza este bloque cuando cambie el valor oficial.</div>
         <a class="back-top" href="#top">Volver arriba</a>
       </div>
@@ -291,27 +363,31 @@
       <div class="indicator-box">
         <h2>Salarios mínimos</h2>
         <p>Vigentes a partir del 1 de enero. (Puedes actualizar manualmente cada año.)</p>
-        <table class="indicator-table">
-          <thead>
-            <tr>
-              <th>Zona</th>
-              <th>2025</th>
-              <th>2024</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>General</td>
-              <td class="value-highlight">$278.88</td>
-              <td>$248.93</td>
-            </tr>
-            <tr>
-              <td>Zona Libre Frontera Norte</td>
-              <td class="value-highlight">$419.88</td>
-              <td>$374.89</td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div class="table-wrap">
+          <table class="indicator-table">
+            <thead>
+              <tr>
+                <th>Zona</th>
+                <th>2025</th>
+                <th>2024</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>General</td>
+                <td class="value-highlight">$278.88</td>
+                <td>$248.93</td>
+              </tr>
+              <tr>
+                <td>Zona Libre Frontera Norte</td>
+                <td class="value-highlight">$419.88</td>
+                <td>$374.89</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <a class="back-top" href="#top">Volver arriba</a>
       </div>
     </div>
@@ -320,27 +396,31 @@
       <div class="indicator-box">
         <h2>Tasas de recargos</h2>
         <p>Referencia común para cálculos fiscales (actualiza cuando cambie la publicación aplicable).</p>
-        <table class="indicator-table">
-          <thead>
-            <tr>
-              <th>Tipo</th>
-              <th>Tasa mensual</th>
-              <th>Nota</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Prórroga (pago a plazos)</td>
-              <td class="value-highlight">0.98%</td>
-              <td>Aplicable sobre saldos insolutos.</td>
-            </tr>
-            <tr>
-              <td>Mora (falta de pago oportuno)</td>
-              <td class="value-highlight">1.47%</td>
-              <td>Aplicable sobre saldos insolutos.</td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div class="table-wrap">
+          <table class="indicator-table">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Tasa mensual</th>
+                <th>Nota</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Prórroga (pago a plazos)</td>
+                <td class="value-highlight">0.98%</td>
+                <td>Aplicable sobre saldos insolutos.</td>
+              </tr>
+              <tr>
+                <td>Mora (falta de pago oportuno)</td>
+                <td class="value-highlight">1.47%</td>
+                <td>Aplicable sobre saldos insolutos.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <a class="back-top" href="#top">Volver arriba</a>
       </div>
     </div>
@@ -389,7 +469,7 @@
       </div>
     </div>
 
-    <!-- Secciones “placeholder” (solo enlaces sugeridos) -->
+    <!-- Placeholders -->
     <div class="indicator-section" id="tc-fix">
       <div class="indicator-box">
         <h2>Equivalencia del dólar (FIX)</h2>
@@ -421,8 +501,10 @@
       <div class="indicator-box">
         <h2>Cuotas IMSS e INFONAVIT</h2>
         <p>Enlace sugerido a fuentes oficiales.</p>
-        <a class="btn-inline" href="https://www.imss.gob.mx/" target="_blank" rel="noopener">Ir a IMSS ↗</a>
-        <a class="btn-inline" href="https://www.infonavit.org.mx/" target="_blank" rel="noopener" style="margin-left:10px;">Ir a INFONAVIT ↗</a>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+          <a class="btn-inline" href="https://www.imss.gob.mx/" target="_blank" rel="noopener">Ir a IMSS ↗</a>
+          <a class="btn-inline" href="https://www.infonavit.org.mx/" target="_blank" rel="noopener">Ir a INFONAVIT ↗</a>
+        </div>
         <a class="back-top" href="#top">Volver arriba</a>
       </div>
     </div>
@@ -505,4 +587,3 @@
 </script>
 </body>
 </html>
-
