@@ -3,184 +3,670 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sitios de Interés y Herramientas | GG Contabilidad</title>
-  <meta name="description" content="Recursos, indicadores financieros, noticias fiscales y enlaces a sitios oficiales del SAT, IMSS y gobierno." />
+  <title>Recursos y Enlaces | GG Contabilidad y Defensa Fiscal</title>
+  <meta name="description" content="Acceso directo a portales oficiales, indicadores financieros y recursos del sector fiscal y contable." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/styles.css">
-  
+
   <style>
-    /* Estilos específicos para esta página de enlaces */
+    :root {
+      --navy-deep: #0F2A44;
+      --navy-mid: #1A3A5C;
+      --gold-accent: #C9A961;
+      --gray-sophisticated: #556B7E;
+      --gray-light: #F7F9FB;
+      --border-subtle: #E1E8ED;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--navy-deep);
+      line-height: 1.6;
+      background: #fff;
+    }
+
+    .header {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.2rem 0;
+    }
+
+    /* Hero */
+    .page-hero {
+      background: linear-gradient(135deg, #0F2A44 0%, #1A3A5C 100%);
+      color: #fff;
+      padding: 4rem 0 3rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .page-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 700;
+      margin: 0 0 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-hero-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.92;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      padding: 1.5rem 0;
+      background: var(--gray-light);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .breadcrumb-nav {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--gray-sophisticated);
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb-nav a {
+      color: var(--navy-deep);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb-nav a:hover {
+      color: var(--gold-accent);
+    }
+
+    /* Secciones */
+    .resources-section {
+      padding: 4rem 0;
+    }
+
+    .resources-section:nth-child(even) {
+      background: var(--gray-light);
+    }
+
+    .section-header {
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .section-category {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold-accent);
+      margin-bottom: 0.75rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(201,169,97,0.12);
+      border-radius: 4px;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-description {
+      font-size: 1.05rem;
+      color: var(--gray-sophisticated);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Grid de recursos */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Tarjetas de recurso */
+    .resource-card {
+      background: #fff;
+      border: 1px solid var(--border-subtle);
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .resource-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: var(--gold-accent);
+      transition: height 0.3s ease;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(15,42,68,0.12);
+    }
+
+    .resource-card:hover::before {
+      height: 100%;
+    }
+
+    .resource-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: rgba(201,169,97,0.12);
+      border: 1px solid rgba(201,169,97,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .resource-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy-deep);
+      margin: 0 0 1rem;
+    }
+
+    .resource-description {
+      color: var(--gray-sophisticated);
+      margin: 0 0 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Lista de enlaces */
     .link-list {
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     .link-list li {
-      margin-bottom: 12px;
-      border-bottom: 1px solid var(--gray-line);
-      padding-bottom: 8px;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
     }
+
     .link-list li:last-child {
       border-bottom: none;
       margin-bottom: 0;
+      padding-bottom: 0;
     }
+
     .link-list a {
       text-decoration: none;
-      color: var(--blue-navy);
+      color: var(--navy-deep);
       font-weight: 500;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .link-list a:hover {
+      color: var(--gold-accent);
+      padding-left: 0.5rem;
+    }
+
+    .link-label {
+      font-size: 0.85rem;
+      color: var(--gray-sophisticated);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    /* Tarjetas de noticias */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 2rem auto 0;
+    }
+
+    .news-card {
+      background: #fff;
+      border: 1px solid var(--border-subtle);
+      padding: 1.75rem;
+      text-align: center;
+      text-decoration: none;
+      color: var(--navy-deep);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(15,42,68,0.12);
+      border-color: var(--gold-accent);
+    }
+
+    .news-icon { font-size: 2.5rem; }
+
+    .news-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    /* Indicadores rápidos */
+    .indicators-banner {
+      background: var(--navy-deep);
+      color: #fff;
+      padding: 2.5rem;
+      border-radius: 2px;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    .indicators-banner h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 1.5rem;
+      text-align: center;
+    }
+
+    .indicators-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .indicator-item {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .indicator-label {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    .indicator-link {
+      color: var(--gold-accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+
+    .indicator-link:hover { opacity: 0.8; }
+
+    /* Footer */
+    .footer {
+      background: var(--navy-deep);
+      color: rgba(255,255,255,0.8);
+      padding: 3rem 0 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 0 1.5rem 2rem;
+    }
+
+    .footer-section h4 {
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li { margin-bottom: 0.5rem; }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
       transition: color 0.2s;
     }
-    .link-list a:hover {
-      color: var(--blue-main);
+
+    .footer-links a:hover { color: var(--gold-accent); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 1.5rem 1.5rem 0;
+      text-align: center;
+      font-size: 0.9rem;
     }
-    .link-list span {
-      font-size: 0.9em;
-      color: var(--gray-muted);
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-hero { padding: 3rem 0 2rem; }
+      .resources-section { padding: 3rem 0; }
+      .resources-grid { grid-template-columns: 1fr; }
+      .news-grid { grid-template-columns: 1fr; }
+      .indicators-grid { grid-template-columns: 1fr; }
+      .indicators-banner { padding: 1.75rem; }
+      .link-label { white-space: normal; }
     }
-    /* Botón pequeño para indicadores internos */
-    .btn-small {
-      display: inline-block;
-      background: var(--blue-navy);
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      margin-top: 5px;
-    }
-    .btn-small:hover { opacity: 0.9; }
   </style>
 </head>
 
 <body>
+
 <header class="header">
   <div class="container header-inner">
     <a href="index.html" class="logo" aria-label="Inicio">
-      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal" style="height: 48px;">
     </a>
 
-    <button id="hamburger" class="hamburger" aria-label="Abrir menú">Menú</button>
+    <button id="hamburger" class="hamburger" aria-label="Menú">Menú</button>
 
     <nav id="nav" class="nav" aria-label="Navegación principal">
       <a href="servicios.html">Servicios</a>
-      <a href="indicadores.html" aria-current="page">Indicadores</a>
+      <a href="Indicadores.html">Indicadores</a>
       <a href="inpc.html">INPC</a>
-      <a href="enlaces.html">Sitios de Interés</a>
+      <a href="enlaces.html" aria-current="page">Recursos</a>
       <a href="Blog.html">Blog</a>
-      <a href="nosotros.html">Quiénes somos</a>
+      <a href="nosotros.html">Nosotros</a>
       <a href="contacto.html" class="btn-nav">Contacto</a>
     </nav>
   </div>
 </header>
 
-<section class="section page-top">
+<section class="page-hero">
   <div class="container">
-    <h1 class="section-title">Sitios de Interés y Herramientas</h1>
-    <p class="section-subtitle">
-      Acceso directo a portales oficiales, indicadores financieros actualizados y noticias relevantes del sector.
-    </p>
+    <h1>Recursos y enlaces oficiales</h1>
+    <p class="page-hero-subtitle">Acceso directo a portales institucionales, indicadores financieros y fuentes de información del sector fiscal y contable.</p>
+  </div>
+</section>
 
-    <h2 class="section-title" style="font-size:1.4rem; margin-top:20px;">Indicadores Financieros</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>INPC (Histórico)</h3>
-        <p>Consulta las tablas actualizadas del Índice Nacional de Precios al Consumidor.</p>
-        <a href="inpc.html" class="btn-small">Ver Tabla INPC</a>
-      </div>
+<div class="breadcrumb">
+  <div class="container">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span>/</span>
+      <span>Recursos</span>
+    </nav>
+  </div>
+</div>
 
-      <div class="card">
-        <h3>Indicadores Diarios (Banxico)</h3>
-        <ul class="link-list">
-          <li>
-            <a href="https://www.banxico.org.mx/tipcamb/main.do?page=tip&idioma=sp" target="_blank">
-              Tipo de Cambio (FIX) <span>↗</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=22&accion=consultarCuadro&idCuadro=CP154&locale=es" target="_blank">
-              Valor de las UDIS <span>↗</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.banxico.org.mx/" target="_blank">
-              TIIE 28 días <span>↗</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <h2 class="section-title" style="font-size:1.4rem; margin-top:40px;">Portales Oficiales</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Trámites Fiscales</h3>
-        <ul class="link-list">
-          <li><a href="https://www.sat.gob.mx/home" target="_blank">Portal del SAT <span>sat.gob.mx</span></a></li>
-          <li><a href="https://www.sat.gob.mx/personas/buzon-tributario" target="_blank">Buzón Tributario <span>Acceso</span></a></li>
-          <li><a href="https://www.prodecon.gob.mx/" target="_blank">PRODECON <span>Defensa</span></a></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Seguridad Social y Laboral</h3>
-        <ul class="link-list">
-          <li><a href="https://www.imss.gob.mx/patrones/idse" target="_blank">IDSE (IMSS desde su empresa) <span>↗</span></a></li>
-          <li><a href="https://sipare.imss.gob.mx/" target="_blank">SIPARE <span>Pagos</span></a></li>
-          <li><a href="https://www.infonavit.org.mx/" target="_blank">Portal Infonavit <span>↗</span></a></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Leyes y Publicaciones</h3>
-        <ul class="link-list">
-          <li><a href="https://www.dof.gob.mx/" target="_blank">Diario Oficial de la Federación (DOF) <span>↗</span></a></li>
-          <li><a href="https://www.diputados.gob.mx/LeyesBiblio/index.htm" target="_blank">Leyes Federales Vigentes <span>Cámara Dip.</span></a></li>
-        </ul>
-      </div>
-      
-       <div class="card">
-        <h3>Gobierno Estatal</h3>
-        <ul class="link-list">
-          <li><a href="#" target="_blank">Tesorería Virtual (Estado) <span>↗</span></a></li>
-          <li><a href="#" target="_blank">Instituto de Control Vehicular <span>↗</span></a></li>
-        </ul>
-      </div>
-    </div>
-
-    <h2 class="section-title" style="font-size:1.4rem; margin-top:40px;">Noticias del Sector</h2>
-    <div class="grid">
-      <div class="card" style="grid-column: span 12;">
-        <h3>Fuentes de Información Confiable</h3>
-        <p style="margin-bottom:15px;">Mantente al día con los cambios fiscales consultando estas fuentes:</p>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-            <a href="https://www.elcontribuyente.mx/" target="_blank" style="text-decoration:none; color: var(--blue-navy); font-weight:600; border:1px solid var(--gray-line); padding:10px; border-radius:8px; text-align:center; background:#fff;">
-               📰 El Contribuyente
-            </a>
-            <a href="https://www.fiscalia.com/" target="_blank" style="text-decoration:none; color: var(--blue-navy); font-weight:600; border:1px solid var(--gray-line); padding:10px; border-radius:8px; text-align:center; background:#fff;">
-               ⚖️ Fiscalia
-            </a>
-             <a href="https://imcp.org.mx/" target="_blank" style="text-decoration:none; color: var(--blue-navy); font-weight:600; border:1px solid var(--gray-line); padding:10px; border-radius:8px; text-align:center; background:#fff;">
-               🎓 IMCP
-            </a>
+<!-- Indicadores rápidos -->
+<section class="resources-section">
+  <div class="container">
+    <div class="indicators-banner">
+      <h3>Indicadores financieros actualizados</h3>
+      <div class="indicators-grid">
+        <div class="indicator-item">
+          <div class="indicator-label">Tipo de cambio FIX</div>
+          <a href="https://www.banxico.org.mx/tipcamb/main.do?page=tip&idioma=sp" target="_blank" rel="noopener" class="indicator-link">Consultar en Banxico →</a>
+        </div>
+        <div class="indicator-item">
+          <div class="indicator-label">Valor de UDIS</div>
+          <a href="https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=22&accion=consultarCuadro&idCuadro=CP154&locale=es" target="_blank" rel="noopener" class="indicator-link">Consultar en Banxico →</a>
+        </div>
+        <div class="indicator-item">
+          <div class="indicator-label">TIIE 28 días</div>
+          <a href="https://www.banxico.org.mx/" target="_blank" rel="noopener" class="indicator-link">Consultar en Banxico →</a>
+        </div>
+        <div class="indicator-item">
+          <div class="indicator-label">Tabla INPC</div>
+          <a href="inpc.html" class="indicator-link">Ver histórico completo →</a>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
+<!-- Portales oficiales fiscales -->
+<section class="resources-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-category">Autoridades fiscales</span>
+      <h2 class="section-title">Trámites fiscales y defensa</h2>
+      <p class="section-description">Acceso a portales del SAT, buzón tributario y servicios de defensa del contribuyente.</p>
+    </div>
+
+    <div class="resources-grid">
+      <div class="resource-card">
+        <div class="resource-icon">🏛️</div>
+        <h3 class="resource-title">Servicios SAT</h3>
+        <p class="resource-description">Portal principal y servicios en línea del Servicio de Administración Tributaria.</p>
+        <ul class="link-list">
+          <li><a href="https://www.sat.gob.mx/home" target="_blank" rel="noopener">Portal principal SAT <span class="link-label">sat.gob.mx</span></a></li>
+          <li><a href="https://www.sat.gob.mx/personas/buzon-tributario" target="_blank" rel="noopener">Buzón Tributario <span class="link-label">Notificaciones</span></a></li>
+          <li><a href="https://portalsat.plataforma.sat.gob.mx/" target="_blank" rel="noopener">Portal SAT (CIEC/e.firma) <span class="link-label">Trámites</span></a></li>
+        </ul>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon">⚖️</div>
+        <h3 class="resource-title">Defensa del contribuyente</h3>
+        <p class="resource-description">Procuraduría de la Defensa del Contribuyente y recursos legales.</p>
+        <ul class="link-list">
+          <li><a href="https://www.prodecon.gob.mx/" target="_blank" rel="noopener">PRODECON <span class="link-label">prodecon.gob.mx</span></a></li>
+          <li><a href="https://www.tfja.gob.mx/" target="_blank" rel="noopener">Tribunal Federal de Justicia Administrativa <span class="link-label">TFJA</span></a></li>
+        </ul>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon">📋</div>
+        <h3 class="resource-title">Leyes y publicaciones</h3>
+        <p class="resource-description">Diario Oficial y legislación federal vigente.</p>
+        <ul class="link-list">
+          <li><a href="https://www.dof.gob.mx/" target="_blank" rel="noopener">Diario Oficial de la Federación <span class="link-label">DOF</span></a></li>
+          <li><a href="https://www.diputados.gob.mx/LeyesBiblio/index.htm" target="_blank" rel="noopener">Leyes Federales <span class="link-label">Cámara de Diputados</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Seguridad social -->
+<section class="resources-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-category">Seguridad social</span>
+      <h2 class="section-title">IMSS, INFONAVIT y trámites laborales</h2>
+      <p class="section-description">Portales para gestión de movimientos afiliatorios y pagos de seguridad social.</p>
+    </div>
+
+    <div class="resources-grid">
+      <div class="resource-card">
+        <div class="resource-icon">🏥</div>
+        <h3 class="resource-title">Instituto Mexicano del Seguro Social</h3>
+        <p class="resource-description">IDSE, consulta de cédulas y trámites patronales.</p>
+        <ul class="link-list">
+          <li><a href="https://www.imss.gob.mx/patrones/idse" target="_blank" rel="noopener">IDSE (IMSS desde su empresa) <span class="link-label">Movimientos</span></a></li>
+          <li><a href="https://sipare.imss.gob.mx/" target="_blank" rel="noopener">SIPARE <span class="link-label">Pagos en línea</span></a></li>
+          <li><a href="https://www.imss.gob.mx/" target="_blank" rel="noopener">Portal principal IMSS <span class="link-label">imss.gob.mx</span></a></li>
+        </ul>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon">🏠</div>
+        <h3 class="resource-title">INFONAVIT</h3>
+        <p class="resource-description">Aportaciones, pagos y servicios para patrones.</p>
+        <ul class="link-list">
+          <li><a href="https://www.infonavit.org.mx/" target="_blank" rel="noopener">Portal INFONAVIT <span class="link-label">infonavit.org.mx</span></a></li>
+          <li><a href="https://micuenta.infonavit.org.mx/" target="_blank" rel="noopener">Mi Cuenta Infonavit <span class="link-label">Servicios</span></a></li>
+        </ul>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon">💼</div>
+        <h3 class="resource-title">Secretaría del Trabajo</h3>
+        <p class="resource-description">Normatividad laboral y trámites ante STPS.</p>
+        <ul class="link-list">
+          <li><a href="https://www.gob.mx/stps" target="_blank" rel="noopener">Portal STPS <span class="link-label">gob.mx/stps</span></a></li>
+          <li><a href="https://www.gob.mx/profedet" target="_blank" rel="noopener">PROFEDET <span class="link-label">Defensa laboral</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gobierno estatal (traído de tu original) -->
+<section class="resources-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-category">Gobierno estatal</span>
+      <h2 class="section-title">Trámites y portales locales</h2>
+      <p class="section-description">Accesos directos a servicios estatales. Puedes reemplazar los enlaces “#” por los oficiales cuando los tengas.</p>
+    </div>
+
+    <div class="resources-grid">
+      <div class="resource-card">
+        <div class="resource-icon">🏢</div>
+        <h3 class="resource-title">Tesorería y pagos</h3>
+        <p class="resource-description">Servicios de tesorería, pagos y consultas estatales.</p>
+        <ul class="link-list">
+          <li><a href="#" target="_blank" rel="noopener">Tesorería Virtual (Estado) <span class="link-label">Pendiente</span></a></li>
+          <li><a href="#" target="_blank" rel="noopener">Pago de contribuciones locales <span class="link-label">Pendiente</span></a></li>
+        </ul>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon">🚗</div>
+        <h3 class="resource-title">Control vehicular</h3>
+        <p class="resource-description">Servicios y trámites relacionados con vehículos.</p>
+        <ul class="link-list">
+          <li><a href="#" target="_blank" rel="noopener">Instituto de Control Vehicular <span class="link-label">Pendiente</span></a></li>
+          <li><a href="#" target="_blank" rel="noopener">Refrendo / Tenencia <span class="link-label">Pendiente</span></a></li>
+        </ul>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon">📍</div>
+        <h3 class="resource-title">Directorio de dependencias</h3>
+        <p class="resource-description">Consulta de sitios oficiales del estado (cuando lo completes).</p>
+        <ul class="link-list">
+          <li><a href="#" target="_blank" rel="noopener">Portal principal del Estado <span class="link-label">Pendiente</span></a></li>
+          <li><a href="#" target="_blank" rel="noopener">Trámites en línea <span class="link-label">Pendiente</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Fuentes de información -->
+<section class="resources-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-category">Actualización profesional</span>
+      <h2 class="section-title">Fuentes de información especializada</h2>
+      <p class="section-description">Medios y organizaciones para mantenerse actualizado en materia fiscal y contable.</p>
+    </div>
+
+    <div class="news-grid">
+      <a href="https://www.elcontribuyente.mx/" target="_blank" rel="noopener" class="news-card">
+        <div class="news-icon">📰</div>
+        <h3 class="news-title">El Contribuyente</h3>
+      </a>
+
+      <a href="https://www.fiscalia.com/" target="_blank" rel="noopener" class="news-card">
+        <div class="news-icon">⚖️</div>
+        <h3 class="news-title">Fiscalia</h3>
+      </a>
+
+      <a href="https://imcp.org.mx/" target="_blank" rel="noopener" class="news-card">
+        <div class="news-icon">🎓</div>
+        <h3 class="news-title">IMCP</h3>
+      </a>
+
+      <a href="https://www.banxico.org.mx/" target="_blank" rel="noopener" class="news-card">
+        <div class="news-icon">🏦</div>
+        <h3 class="news-title">Banco de México</h3>
+      </a>
+
+      <a href="https://www.inegi.org.mx/" target="_blank" rel="noopener" class="news-card">
+        <div class="news-icon">📊</div>
+        <h3 class="news-title">INEGI</h3>
+      </a>
+    </div>
   </div>
 </section>
 
 <footer class="footer">
   <div class="container">
-    <strong>GG Contabilidad y Defensa Fiscal</strong>
-    <p style="margin: 10px 0 0;">© 2025. Todos los derechos reservados.</p>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>GG Contabilidad</h4>
+        <p style="margin:0; line-height:1.6;">Despacho especializado en asesoría contable, fiscal y defensa ante autoridades.</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Servicios</h4>
+        <ul class="footer-links">
+          <li><a href="servicios.html">Contabilidad</a></li>
+          <li><a href="servicios.html">Cumplimiento fiscal</a></li>
+          <li><a href="servicios.html">Defensa fiscal</a></li>
+          <li><a href="servicios.html">Comercio exterior</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Recursos</h4>
+        <ul class="footer-links">
+          <li><a href="Indicadores.html">Indicadores</a></li>
+          <li><a href="inpc.html">INPC</a></li>
+          <li><a href="enlaces.html">Sitios oficiales</a></li>
+          <li><a href="Blog.html">Blog técnico</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <ul class="footer-links">
+          <li><a href="contacto.html">Formulario</a></li>
+          <li><a href="nosotros.html">Acerca de nosotros</a></li>
+          <li><a href="https://wa.me/525513110556" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p style="margin:0;">© 2025 GG Contabilidad y Defensa Fiscal. Todos los derechos reservados.</p>
+    </div>
   </div>
 </footer>
 
@@ -196,5 +682,6 @@
     a.addEventListener("click", () => nav.classList.remove("mobile-open"));
   });
 </script>
+
 </body>
 </html>
