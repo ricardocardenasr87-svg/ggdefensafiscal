@@ -29,41 +29,87 @@
       background: #fff;
     }
 
-    .header {
-      background: rgba(255, 255, 255, 0.98);
+    /* =========================
+       HEADER LIGHT (override seguro)
+       Usa: <header class="header header--light">
+       ========================= */
+    .header.header--light{
+      background: rgba(255,255,255,0.98) !important;
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--border-subtle) !important;
     }
 
-    /* Hero de página */
+    /* Links visibles en header blanco */
+    .header.header--light .nav a{
+      color: var(--navy-deep) !important;
+    }
+    .header.header--light .nav a:hover{
+      background: rgba(15,42,68,0.06) !important;
+    }
+    .header.header--light .nav a[aria-current="page"]{
+      background: rgba(15,42,68,0.10) !important;
+    }
+
+    /* Botón contacto del nav */
+    .header.header--light .btn-nav{
+      color: var(--navy-deep) !important;
+      border-color: rgba(201,169,97,0.85) !important;
+      background: transparent !important;
+    }
+    .header.header--light .btn-nav:hover{
+      background: rgba(201,169,97,0.12) !important;
+      border-color: rgba(201,169,97,1) !important;
+    }
+
+    /* Hamburger visible en blanco */
+    .header.header--light .hamburger{
+      background: rgba(15,42,68,0.06) !important;
+      border: 1px solid rgba(15,42,68,0.12) !important;
+      color: var(--navy-deep) !important;
+    }
+
+    @media (max-width: 760px){
+      .header.header--light .nav.mobile-open{
+        background:#fff !important;
+        border:1px solid var(--border-subtle) !important;
+        box-shadow: 0 14px 40px rgba(15,42,68,0.15) !important;
+      }
+      .header.header--light .nav.mobile-open a{
+        color: var(--navy-deep) !important;
+      }
+    }
+
+    /* ===== Hero de página (compensa header fijo) ===== */
     .page-hero {
       background: linear-gradient(135deg, #0F2A44 0%, #1A3A5C 100%);
       color: #fff;
-      padding: 4rem 0 3rem;
+      padding: calc(3.6rem + 95px) 0 2.6rem; /* ✅ evita que el header tape el título */
       text-align: center;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
     }
 
     .page-hero h1 {
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-size: clamp(1.9rem, 5vw, 2.6rem);
       font-weight: 700;
       margin: 0 0 1rem;
       letter-spacing: -0.02em;
+      line-height: 1.15;
+      text-shadow: 0 10px 26px rgba(0,0,0,0.18);
     }
 
     .page-hero-subtitle {
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       opacity: 0.92;
-      max-width: 680px;
+      max-width: 760px;
       margin: 0 auto;
       line-height: 1.6;
+      text-shadow: 0 10px 22px rgba(0,0,0,0.16);
     }
 
     /* Breadcrumb */
     .breadcrumb {
-      padding: 1.5rem 0;
+      padding: 1.2rem 0;
       background: var(--gray-light);
       border-bottom: 1px solid var(--border-subtle);
     }
@@ -72,7 +118,7 @@
       display: flex;
       gap: 0.5rem;
       align-items: center;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--gray-sophisticated);
       flex-wrap: wrap;
     }
@@ -81,6 +127,7 @@
       color: var(--navy-deep);
       text-decoration: none;
       transition: color 0.2s;
+      font-weight: 600;
     }
 
     .breadcrumb-nav a:hover {
@@ -89,12 +136,12 @@
 
     /* Contenido principal */
     .inpc-section {
-      padding: 4rem 0;
+      padding: 3.2rem 0;
     }
 
     .inpc-intro {
-      max-width: 800px;
-      margin: 0 auto 3rem;
+      max-width: 900px;
+      margin: 0 auto 2.2rem;
       background: var(--gray-light);
       padding: 2rem;
       border-left: 4px solid var(--gold-accent);
@@ -103,8 +150,8 @@
 
     .inpc-intro h2 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 600;
+      font-size: 1.25rem;
+      font-weight: 700;
       color: var(--navy-deep);
       margin: 0 0 0.75rem;
     }
@@ -115,38 +162,50 @@
       line-height: 1.7;
     }
 
-    /* Tabs profesionales */
+    /* ===== Tabs (arreglo del botón 2025) ===== */
     .year-tabs {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.75rem;
       max-width: 900px;
-      margin: 0 auto 2rem;
-      border-bottom: 2px solid var(--border-subtle);
+      margin: 0 auto 1.6rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.6rem;
+      flex-wrap: wrap;
     }
 
-    .year-tab {
-      background: transparent;
-      border: none;
-      padding: 1rem 2rem;
+    /* Reset fuerte para que NO herede estilos globales de button */
+    .year-tab{
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid rgba(15,42,68,0.14) !important;
+      background: transparent !important;
+      color: var(--navy-deep) !important;
       font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--gray-sophisticated);
+      font-size: 0.98rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      border-bottom: 3px solid transparent;
-      margin-bottom: -2px;
+      padding: 0.85rem 1.2rem;
+      border-radius: 12px;
+      line-height: 1;
+      transition: transform .15s ease, background-color .15s ease, border-color .15s ease, color .15s ease;
+      box-shadow: none !important;
     }
 
-    .year-tab:hover {
-      color: var(--navy-deep);
-      background: rgba(15,42,68,0.03);
+    .year-tab:hover{
+      transform: translateY(-1px);
+      background: rgba(15,42,68,0.04) !important;
+      border-color: rgba(15,42,68,0.26) !important;
     }
 
-    .year-tab.active {
-      color: var(--navy-deep);
-      border-bottom-color: var(--gold-accent);
+    .year-tab:focus-visible{
+      outline: 3px solid rgba(201,169,97,0.35);
+      outline-offset: 2px;
+    }
+
+    .year-tab.active{
+      background: var(--navy-deep) !important;
+      color: #fff !important;
+      border-color: var(--navy-deep) !important;
     }
 
     /* Paneles */
@@ -158,11 +217,11 @@
 
     .inpc-panel.active {
       display: block;
-      animation: fadeIn 0.3s ease;
+      animation: fadeIn 0.25s ease;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -170,16 +229,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
+      margin: 0 0 1.25rem;
+      padding-bottom: 0.9rem;
       border-bottom: 1px solid var(--border-subtle);
       gap: 1rem;
     }
 
     .panel-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-size: 1.45rem;
+      font-weight: 800;
       color: var(--navy-deep);
       margin: 0;
     }
@@ -189,23 +248,24 @@
       color: var(--gold-accent);
       background: rgba(201,169,97,0.12);
       padding: 0.4rem 0.9rem;
-      border-radius: 20px;
-      font-weight: 600;
+      border-radius: 999px;
+      font-weight: 700;
       white-space: nowrap;
     }
 
-    /* Tabla profesional */
+    /* Tabla */
     .table-container {
       background: #fff;
       border: 1px solid var(--border-subtle);
-      border-radius: 2px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(15,42,68,0.06);
+      box-shadow: 0 10px 28px rgba(15,42,68,0.08);
     }
 
     .inpc-table {
       width: 100%;
       border-collapse: collapse;
+      min-width: 720px; /* scroll en mobile */
     }
 
     .inpc-table thead {
@@ -218,7 +278,7 @@
       text-align: left;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.9rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.03em;
       text-transform: uppercase;
     }
@@ -239,62 +299,62 @@
     .inpc-table td {
       padding: 1rem;
       color: var(--navy-deep);
+      font-size: 0.98rem;
     }
 
     .inpc-table td:first-child {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--navy-mid);
     }
 
     .inpc-table td:nth-child(2) {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
+      font-weight: 800;
       color: var(--gold-accent);
+      white-space: nowrap;
     }
 
     .inpc-table td:last-child {
       color: var(--gray-sophisticated);
-      font-size: 0.95rem;
     }
 
-    /* Nota informativa */
     .inpc-note {
       max-width: 900px;
-      margin: 1.5rem auto 0;
+      margin: 1.2rem auto 0;
       padding: 1rem 1.25rem;
       background: rgba(201,169,97,0.08);
       border-left: 3px solid var(--gold-accent);
       color: var(--gray-sophisticated);
       font-size: 0.95rem;
       line-height: 1.6;
+      border-radius: 10px;
     }
 
     .inpc-note strong {
       color: var(--navy-deep);
-      font-weight: 600;
+      font-weight: 800;
     }
 
-    /* Información adicional */
     .info-box {
       max-width: 900px;
-      margin: 3rem auto 0;
+      margin: 2.4rem auto 0;
       background: var(--gray-light);
       padding: 2rem;
-      border-radius: 2px;
+      border-radius: 12px;
       border: 1px solid var(--border-subtle);
     }
 
     .info-box h3 {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.2rem;
-      font-weight: 600;
+      font-weight: 800;
       color: var(--navy-deep);
       margin: 0 0 1rem;
     }
 
     .info-box ul {
       margin: 0;
-      padding-left: 1.5rem;
+      padding-left: 1.25rem;
       color: var(--gray-sophisticated);
     }
 
@@ -303,13 +363,13 @@
       line-height: 1.6;
     }
 
-    /* Footer */
+    /* Footer (igual que tus otras páginas) */
     .footer {
       background: var(--navy-deep);
       color: rgba(255,255,255,0.8);
       padding: 3rem 0 2rem;
       border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 4rem;
+      margin-top: 3.5rem;
     }
 
     .footer-content {
@@ -325,21 +385,14 @@
       color: #fff;
       font-family: 'Montserrat', sans-serif;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 700;
       margin: 0 0 1rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
     }
 
-    .footer-links {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.5rem;
-    }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 0.5rem; }
 
     .footer-links a {
       color: rgba(255,255,255,0.7);
@@ -347,9 +400,7 @@
       transition: color 0.2s;
     }
 
-    .footer-links a:hover {
-      color: var(--gold-accent);
-    }
+    .footer-links a:hover { color: var(--gold-accent); }
 
     .footer-bottom {
       border-top: 1px solid rgba(255,255,255,0.1);
@@ -361,48 +412,31 @@
     /* Responsive */
     @media (max-width: 768px) {
       .page-hero {
-        padding: 3rem 0 2rem;
+        padding: calc(3.1rem + 95px) 0 2rem;
       }
 
       .inpc-section {
-        padding: 2.5rem 0;
+        padding: 2.4rem 0;
       }
 
-      .year-tabs {
-        flex-direction: column;
-        border-bottom: none;
+      .year-tabs{
+        gap: 0.6rem;
+        padding-bottom: 0.8rem;
       }
 
-      .year-tab {
-        border-bottom: 1px solid var(--border-subtle);
-        padding: 0.85rem 1rem;
+      .year-tab{
+        width: 100%;
         text-align: left;
-      }
-
-      .year-tab.active {
-        border-left: 3px solid var(--gold-accent);
-        border-bottom-color: var(--border-subtle);
-        background: var(--gray-light);
       }
 
       .panel-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.75rem;
+        gap: 0.7rem;
       }
 
       .table-container {
         overflow-x: auto;
-      }
-
-      .inpc-table {
-        min-width: 600px;
-      }
-
-      .inpc-table thead th,
-      .inpc-table td {
-        padding: 0.75rem;
-        font-size: 0.9rem;
       }
     }
   </style>
@@ -410,15 +444,14 @@
 
 <body>
 
-<header class="header">
+<header class="header header--light">
   <div class="container header-inner">
     <a href="index.html" class="logo" aria-label="Inicio">
-      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal" style="height: 48px;">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal" style="height: 52px; width:auto;">
     </a>
 
     <button id="hamburger" class="hamburger" aria-label="Menú">Menú</button>
 
-    <!-- ✅ Respeta tus rutas existentes -->
     <nav id="nav" class="nav" aria-label="Navegación principal">
       <a href="servicios.html">Servicios</a>
       <a href="Indicadores.html">Indicadores</a>
@@ -434,7 +467,9 @@
 <section class="page-hero">
   <div class="container">
     <h1>Índice Nacional de Precios al Consumidor</h1>
-    <p class="page-hero-subtitle">Consulta oficial de INPC por periodo, actualizada mensualmente con base en publicaciones del Diario Oficial de la Federación.</p>
+    <p class="page-hero-subtitle">
+      Consulta oficial de INPC por periodo, actualizada mensualmente con base en publicaciones del Diario Oficial de la Federación.
+    </p>
   </div>
 </section>
 
@@ -452,14 +487,23 @@
 
 <section class="inpc-section">
   <div class="container">
+
     <div class="inpc-intro">
       <h2>¿Qué es el INPC y para qué se utiliza?</h2>
-      <p>El Índice Nacional de Precios al Consumidor es el indicador oficial para medir la inflación en México. Se utiliza para actualizar contribuciones, multas, créditos fiscales y otras obligaciones conforme al Código Fiscal de la Federación. Los valores se publican mensualmente en el DOF.</p>
+      <p>
+        El Índice Nacional de Precios al Consumidor es el indicador oficial para medir la inflación en México.
+        Se utiliza para actualizar contribuciones, multas, créditos fiscales y otras obligaciones conforme al Código Fiscal de la Federación.
+        Los valores se publican mensualmente en el DOF.
+      </p>
     </div>
 
     <div class="year-tabs" role="tablist" aria-label="Selección de año INPC">
-      <button id="tab-2025" class="year-tab active" type="button" data-target="panel-2025" role="tab" aria-selected="true" aria-controls="panel-2025">Año 2025</button>
-      <button id="tab-2024" class="year-tab" type="button" data-target="panel-2024" role="tab" aria-selected="false" aria-controls="panel-2024">Año 2024</button>
+      <button id="tab-2025" class="year-tab active" type="button" data-target="panel-2025" role="tab" aria-selected="true" aria-controls="panel-2025">
+        Año 2025
+      </button>
+      <button id="tab-2024" class="year-tab" type="button" data-target="panel-2024" role="tab" aria-selected="false" aria-controls="panel-2024">
+        Año 2024
+      </button>
     </div>
 
     <!-- Panel 2025 -->
@@ -495,7 +539,8 @@
       </div>
 
       <p class="inpc-note">
-        <strong>Nota de actualización:</strong> Los valores se incorporan mensualmente conforme a la publicación oficial en el DOF. El periodo más reciente aparece en la primera fila de la tabla.
+        <strong>Nota de actualización:</strong> Los valores se incorporan mensualmente conforme a la publicación oficial en el DOF.
+        El periodo más reciente aparece en la primera fila de la tabla.
       </p>
     </div>
 
@@ -533,7 +578,8 @@
       </div>
 
       <p class="inpc-note">
-        <strong>Nota de actualización:</strong> En caso de correcciones oficiales publicadas en el DOF, se actualizan tanto el valor del INPC como la fecha de publicación correspondiente.
+        <strong>Nota de actualización:</strong> En caso de correcciones oficiales publicadas en el DOF,
+        se actualizan tanto el valor del INPC como la fecha de publicación correspondiente.
       </p>
     </div>
 
@@ -541,11 +587,12 @@
       <h3>Consideraciones técnicas</h3>
       <ul>
         <li>Los valores se actualizan el día 10 de cada mes, o el día hábil inmediato siguiente.</li>
-        <li>Para cálculos de actualización fiscal, debe utilizarse el INPC del mes en que debió pagarse la contribución y el del mes en que se efectúa el pago.</li>
-        <li>La fuente oficial es el Diario Oficial de la Federación (DOF), publicado por el Instituto Nacional de Estadística y Geografía (INEGI).</li>
-        <li>Esta tabla es de carácter informativo. Para efectos legales, consulte las publicaciones oficiales en el DOF.</li>
+        <li>Para cálculos de actualización fiscal, utiliza el INPC del mes en que debió pagarse y el del mes en que se efectúa el pago.</li>
+        <li>Fuente oficial: Diario Oficial de la Federación (DOF) con información del INEGI.</li>
+        <li>Tabla informativa. Para efectos legales, consulta la publicación oficial en el DOF.</li>
       </ul>
     </div>
+
   </div>
 </section>
 
@@ -594,6 +641,7 @@
 </footer>
 
 <script>
+  // Menú móvil
   const nav = document.getElementById("nav");
   const hamburger = document.getElementById("hamburger");
 
@@ -605,7 +653,7 @@
     a.addEventListener("click", () => nav.classList.remove("mobile-open"));
   });
 
-  // Tabs INPC (accesible + estable)
+  // Tabs INPC (estable)
   const tabButtons = document.querySelectorAll(".year-tab");
   const panels = document.querySelectorAll(".inpc-panel");
 
@@ -629,5 +677,4 @@
 
 </body>
 </html>
-
 
