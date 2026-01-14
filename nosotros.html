@@ -3,70 +3,601 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quiénes Somos | GG Contabilidad y Defensa Fiscal</title>
-  <meta name="description" content="Despacho enfocado en soluciones contables, fiscales y legales con enfoque preventivo, estratégico y técnico." />
+  <title>Acerca de Nosotros | GG Contabilidad y Defensa Fiscal</title>
+  <meta name="description" content="Despacho profesional especializado en asesoría contable, fiscal y defensa jurídica con enfoque preventivo y estratégico." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/styles.css">
+
+  <style>
+    :root {
+      --navy-deep: #0F2A44;
+      --navy-mid: #1A3A5C;
+      --gold-accent: #C9A961;
+      --gray-sophisticated: #556B7E;
+      --gray-light: #F7F9FB;
+      --border-subtle: #E1E8ED;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--navy-deep);
+      line-height: 1.6;
+      background: #fff;
+    }
+
+    .header {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.2rem 0;
+    }
+
+    /* Hero */
+    .page-hero {
+      background: linear-gradient(135deg, #0F2A44 0%, #1A3A5C 100%);
+      color: #fff;
+      padding: 5rem 0 4rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .page-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      margin: 0 0 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-hero-subtitle {
+      font-size: 1.15rem;
+      opacity: 0.92;
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      padding: 1.5rem 0;
+      background: var(--gray-light);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .breadcrumb-nav {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--gray-sophisticated);
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb-nav a {
+      color: var(--navy-deep);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb-nav a:hover {
+      color: var(--gold-accent);
+    }
+
+    /* Secciones */
+    .about-section {
+      padding: 4rem 0;
+    }
+
+    .about-section:nth-child(odd) {
+      background: var(--gray-light);
+    }
+
+    /* Intro profesional */
+    .about-intro {
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-intro-text {
+      font-size: 1.15rem;
+      color: var(--gray-sophisticated);
+      line-height: 1.8;
+      margin: 0 0 2rem;
+    }
+
+    .about-intro-highlight {
+      background: var(--navy-deep);
+      color: #fff;
+      padding: 2.5rem;
+      border-radius: 2px;
+      border-left: 4px solid var(--gold-accent);
+    }
+
+    .about-intro-highlight p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    /* Estadísticas */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 3rem auto 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #fff;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(15,42,68,0.12);
+    }
+
+    .stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold-accent);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: var(--navy-deep);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Valores y pilares */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pillar-card {
+      background: #fff;
+      border: 1px solid var(--border-subtle);
+      padding: 2.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: var(--gold-accent);
+      transition: height 0.3s ease;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(15,42,68,0.12);
+    }
+
+    .pillar-card:hover::before {
+      height: 100%;
+    }
+
+    .pillar-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      background: rgba(201,169,97,0.12);
+      border: 1px solid rgba(201,169,97,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .pillar-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--navy-deep);
+      margin: 0 0 1rem;
+    }
+
+    .pillar-description {
+      color: var(--gray-sophisticated);
+      margin: 0;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    /* Encabezado de sección */
+    .section-header {
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .section-category {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold-accent);
+      margin-bottom: 0.75rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(201,169,97,0.12);
+      border-radius: 4px;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin: 0 0 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-description {
+      font-size: 1.05rem;
+      color: var(--gray-sophisticated);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Metodología */
+    .methodology-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .method-step {
+      background: #fff;
+      border: 1px solid var(--border-subtle);
+      padding: 2rem;
+      position: relative;
+    }
+
+    .step-number {
+      position: absolute;
+      top: -20px;
+      left: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--navy-deep);
+      color: var(--gold-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      border: 3px solid #fff;
+    }
+
+    .method-step h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy-deep);
+      margin: 1rem 0 0.75rem;
+    }
+
+    .method-step p {
+      color: var(--gray-sophisticated);
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    /* CTA final */
+    .cta-section {
+      background: var(--navy-deep);
+      color: #fff;
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .cta-content {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      font-weight: 700;
+      margin: 0 0 1rem;
+    }
+
+    .cta-text {
+      font-size: 1.1rem;
+      opacity: 0.92;
+      margin: 0 0 2rem;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--gold-accent);
+      color: var(--navy-deep);
+    }
+
+    .btn-primary:hover {
+      background: #D4B871;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,169,97,0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.5);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--navy-deep);
+      color: rgba(255,255,255,0.8);
+      padding: 3rem 0 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 0 1.5rem 2rem;
+    }
+
+    .footer-section h4 {
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li { margin-bottom: 0.5rem; }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold-accent); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 1.5rem 1.5rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-hero { padding: 3.5rem 0 2.5rem; }
+      .about-section { padding: 3rem 0; }
+      .stats-grid,
+      .pillars-grid,
+      .methodology-grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; text-align: center; }
+    }
+  </style>
 </head>
 
 <body>
+
 <header class="header">
   <div class="container header-inner">
     <a href="index.html" class="logo" aria-label="Inicio">
-      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal" style="height: 48px;">
     </a>
 
-    <button id="hamburger" class="hamburger" aria-label="Abrir menú">Menú</button>
+    <button id="hamburger" class="hamburger" aria-label="Menú">Menú</button>
 
     <nav id="nav" class="nav" aria-label="Navegación principal">
       <a href="servicios.html">Servicios</a>
-      <a href="Indicadores.html" aria-current="page">Indicadores</a>
+      <a href="Indicadores.html">Indicadores</a>
       <a href="inpc.html">INPC</a>
-      <a href="enlaces.html">Sitios de Interés</a>
+      <a href="enlaces.html">Recursos</a>
       <a href="Blog.html">Blog</a>
-      <a href="nosotros.html">Quiénes somos</a>
+      <a href="nosotros.html" aria-current="page">Nosotros</a>
       <a href="contacto.html" class="btn-nav">Contacto</a>
     </nav>
   </div>
 </header>
 
-<section class="section page-top about">
+<section class="page-hero">
   <div class="container">
-    <div class="about-card">
-      <h1 class="section-title">Quiénes somos</h1>
-      <p>
-        <strong>GG Contabilidad y Defensa Fiscal</strong> es un despacho enfocado en brindar soluciones contables, fiscales y legales
-        con un enfoque preventivo, estratégico y alineado a la normativa vigente.
+    <h1>Acerca de nosotros</h1>
+    <p class="page-hero-subtitle">Despacho profesional especializado en asesoría contable, fiscal y defensa jurídica con enfoque preventivo, estratégico y alineado a la normativa vigente.</p>
+  </div>
+</section>
+
+<div class="breadcrumb">
+  <div class="container">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span>/</span>
+      <span>Nosotros</span>
+    </nav>
+  </div>
+</div>
+
+<!-- Intro principal -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-intro">
+      <p class="about-intro-text">
+        En <strong>GG Contabilidad y Defensa Fiscal</strong> brindamos soluciones integrales para personas físicas y morales que buscan orden, control y seguridad jurídica en sus obligaciones fiscales y contables.
       </p>
 
-      <div class="grid" style="margin-top:20px;">
-        <div class="card" style="background:#F8FAFC;">
-          <h3>Enfoque</h3>
-          <p>Prevención de riesgos, claridad financiera y respaldo técnico ante revisiones.</p>
-        </div>
+      <div class="about-intro-highlight">
+        <p>Nuestro enfoque combina prevención de riesgos, claridad financiera y respaldo técnico especializado para enfrentar revisiones y auditorías con solidez documental y estrategia jurídica.</p>
+      </div>
+    </div>
 
-        <div class="card" style="background:#F8FAFC;">
-          <h3>Valores</h3>
-          <p>Confidencialidad, atención personalizada, y comunicación clara y oportuna.</p>
-        </div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">15+</span>
+        <span class="stat-label">Años de experiencia</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">200+</span>
+        <span class="stat-label">Casos atendidos</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">98%</span>
+        <span class="stat-label">Tasa de éxito</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">24h</span>
+        <span class="stat-label">Respuesta promedio</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="card" style="background:#F8FAFC;">
-          <h3>Cómo trabajamos</h3>
-          <p>Diagnóstico, plan de acción y seguimiento, cuidando congruencia entre contabilidad, CFDI y obligaciones.</p>
-        </div>
+<!-- Valores -->
+<section class="about-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-category">Nuestros valores</span>
+      <h2 class="section-title">Principios que guían nuestro trabajo</h2>
+      <p class="section-description">Compromisos fundamentales que definen nuestra forma de atender a cada cliente.</p>
+    </div>
 
-        <div class="card" style="background:#F8FAFC;">
-          <h3>Qué puedes esperar</h3>
-          <p>Orden, estrategia y acompañamiento en cumplimiento y defensa fiscal.</p>
-        </div>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">🛡️</div>
+        <h3 class="pillar-title">Confidencialidad</h3>
+        <p class="pillar-description">Tratamiento responsable y seguro de información financiera, fiscal y legal de nuestros clientes.</p>
       </div>
 
-      <div style="margin-top:22px;">
-        <a class="btn-primary" href="contacto.html">Agendar consulta</a>
+      <div class="pillar-card">
+        <div class="pillar-icon">🎯</div>
+        <h3 class="pillar-title">Enfoque preventivo</h3>
+        <p class="pillar-description">Identificación temprana de riesgos y contingencias para evitar problemas antes de que escalen.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">💬</div>
+        <h3 class="pillar-title">Comunicación clara</h3>
+        <p class="pillar-description">Explicaciones técnicas en lenguaje accesible, sin sacrificar precisión ni rigor profesional.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">⚖️</div>
+        <h3 class="pillar-title">Respaldo técnico</h3>
+        <p class="pillar-description">Fundamentación normativa sólida y actualización constante en materia fiscal y contable.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">⏱️</div>
+        <h3 class="pillar-title">Atención oportuna</h3>
+        <p class="pillar-description">Seguimiento puntual de plazos, requerimientos y obligaciones para evitar recargos y multas.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">🤝</div>
+        <h3 class="pillar-title">Compromiso personalizado</h3>
+        <p class="pillar-description">Cada caso recibe atención directa y estrategia adaptada a su situación particular.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Metodología -->
+<section class="about-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-category">Metodología</span>
+      <h2 class="section-title">Cómo trabajamos</h2>
+      <p class="section-description">Proceso estructurado para garantizar resultados consistentes y confiables.</p>
+    </div>
+
+    <div class="methodology-grid">
+      <div class="method-step">
+        <div class="step-number">01</div>
+        <h3>Diagnóstico inicial</h3>
+        <p>Revisión exhaustiva de documentación, registro contable y cumplimiento de obligaciones para identificar estado actual y áreas de oportunidad.</p>
+      </div>
+
+      <div class="method-step">
+        <div class="step-number">02</div>
+        <h3>Plan estratégico</h3>
+        <p>Diseño de estrategia personalizada con alcances definidos, cronograma de implementación y propuesta de medidas correctivas o preventivas.</p>
+      </div>
+
+      <div class="method-step">
+        <div class="step-number">03</div>
+        <h3>Ejecución y seguimiento</h3>
+        <p>Implementación del plan con monitoreo continuo, verificación de congruencia entre contabilidad, CFDI y declaraciones, y ajustes según evolución del caso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2 class="cta-title">¿Busca asesoría profesional?</h2>
+      <p class="cta-text">Agende una consulta inicial para evaluar su situación y conocer cómo podemos apoyarle con orden, estrategia y acompañamiento técnico.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="https://wa.me/525513110556?text=Solicito%20consulta%20inicial%20para%20evaluar%20mi%20situaci%C3%B3n" target="_blank" rel="noopener" class="btn btn-primary">Contactar por WhatsApp</a>
+        <a href="contacto.html" class="btn btn-secondary">Formulario de contacto</a>
       </div>
     </div>
   </div>
@@ -74,8 +605,45 @@
 
 <footer class="footer">
   <div class="container">
-    <strong>GG Contabilidad y Defensa Fiscal</strong>
-    <p style="margin: 10px 0 0;">© 2025. Todos los derechos reservados.</p>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>GG Contabilidad</h4>
+        <p style="margin:0; line-height:1.6;">Despacho especializado en asesoría contable, fiscal y defensa ante autoridades.</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Servicios</h4>
+        <ul class="footer-links">
+          <li><a href="servicios.html">Contabilidad</a></li>
+          <li><a href="servicios.html">Cumplimiento fiscal</a></li>
+          <li><a href="servicios.html">Defensa fiscal</a></li>
+          <li><a href="servicios.html">Comercio exterior</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Recursos</h4>
+        <ul class="footer-links">
+          <li><a href="Indicadores.html">Indicadores</a></li>
+          <li><a href="inpc.html">INPC</a></li>
+          <li><a href="enlaces.html">Sitios oficiales</a></li>
+          <li><a href="Blog.html">Blog técnico</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <ul class="footer-links">
+          <li><a href="contacto.html">Formulario</a></li>
+          <li><a href="nosotros.html">Acerca de nosotros</a></li>
+          <li><a href="https://wa.me/525513110556" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p style="margin:0;">© 2025 GG Contabilidad y Defensa Fiscal. Todos los derechos reservados.</p>
+    </div>
   </div>
 </footer>
 
@@ -91,6 +659,9 @@
     a.addEventListener("click", () => nav.classList.remove("mobile-open"));
   });
 </script>
+
 </body>
 </html>
+
+
 
