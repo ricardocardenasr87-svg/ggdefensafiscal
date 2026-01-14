@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>INPC | GG Contabilidad y Defensa Fiscal</title>
-  <meta name="description" content="Índice Nacional de Precios al Consumidor actualizado. Consulta oficial para cálculos de actualización fiscal." />
+  <title>Indicadores | GG Contabilidad y Defensa Fiscal</title>
+  <meta name="description" content="Indicadores fiscales y financieros: UMA, salarios mínimos, recargos, ISR, INPC y más. Actualización y fuentes de consulta." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,13 +13,21 @@
   <link rel="stylesheet" href="assets/styles.css">
 
   <style>
-    :root {
-      --navy-deep: #0F2A44;
-      --navy-mid: #1A3A5C;
-      --gold-accent: #C9A961;
-      --gray-sophisticated: #556B7E;
-      --gray-light: #F7F9FB;
-      --border-subtle: #E1E8ED;
+    :root{
+      --navy-deep:#0F2A44;
+      --navy-mid:#1A3A5C;
+      --gold-accent:#C9A961;
+      --gray-sophisticated:#556B7E;
+      --gray-light:#F7F9FB;
+      --border-subtle:#E1E8ED;
+      
+      /* Colores usados en el contenido interno */
+      --gray-line: #E1E8ED;
+      --blue-navy: #0F2A44;
+      --gray-text: #333;
+      --gray-muted: #666;
+      --blue-main: #1A3A5C; 
+      --radius: 12px;
     }
 
     body {
@@ -27,34 +35,52 @@
       color: var(--navy-deep);
       line-height: 1.6;
       background: #fff;
+      margin: 0;
     }
 
     /* =========================
-       HEADER LIGHT (override seguro)
-       Usa: <header class="header header--light">
+       HEADER LIGHT (Estilos traídos del código INPC)
        ========================= */
     .header.header--light{
       background: rgba(255,255,255,0.98) !important;
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border-subtle) !important;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px; /* Ajuste de altura estándar */
     }
 
     /* Links visibles en header blanco */
     .header.header--light .nav a{
       color: var(--navy-deep) !important;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background 0.2s;
     }
     .header.header--light .nav a:hover{
       background: rgba(15,42,68,0.06) !important;
     }
     .header.header--light .nav a[aria-current="page"]{
       background: rgba(15,42,68,0.10) !important;
+      font-weight: 600;
     }
 
     /* Botón contacto del nav */
     .header.header--light .btn-nav{
       color: var(--navy-deep) !important;
-      border-color: rgba(201,169,97,0.85) !important;
+      border: 1px solid rgba(201,169,97,0.85) !important;
       background: transparent !important;
+      padding: 8px 20px !important;
     }
     .header.header--light .btn-nav:hover{
       background: rgba(201,169,97,0.12) !important;
@@ -66,378 +92,244 @@
       background: rgba(15,42,68,0.06) !important;
       border: 1px solid rgba(15,42,68,0.12) !important;
       color: var(--navy-deep) !important;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none; /* Oculto en desktop */
     }
 
-    @media (max-width: 760px){
-      .header.header--light .nav.mobile-open{
-        background:#fff !important;
-        border:1px solid var(--border-subtle) !important;
-        box-shadow: 0 14px 40px rgba(15,42,68,0.15) !important;
-      }
-      .header.header--light .nav.mobile-open a{
-        color: var(--navy-deep) !important;
-      }
+    /* Menú móvil */
+    @media (max-width: 900px){
+        .header.header--light .hamburger { display: block; }
+        
+        .header.header--light .nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: none;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .header.header--light .nav.mobile-open{
+            display: flex !important;
+        }
+        
+        .header.header--light .nav a {
+            display: block;
+            padding: 12px;
+            text-align: center;
+        }
     }
 
-    /* ===== Hero de página (compensa header fijo) ===== */
-    .page-hero {
+    /* ===== Hero (para que no se sienta "blanco" y compense header fijo) ===== */
+    .page-hero{
       background: linear-gradient(135deg, #0F2A44 0%, #1A3A5C 100%);
-      color: #fff;
-      padding: calc(3.6rem + 95px) 0 2.6rem; /* ✅ evita que el header tape el título */
-      text-align: center;
+      color:#fff;
+      padding: calc(3.75rem + 110px) 0 2.4rem; /* ✅ compensa header fijo */
       border-bottom: 1px solid rgba(255,255,255,0.10);
     }
-
-    .page-hero h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.9rem, 5vw, 2.6rem);
-      font-weight: 700;
-      margin: 0 0 1rem;
+    .page-hero h1{
+      font-family: Montserrat, Inter, sans-serif;
+      font-size: clamp(2rem, 4.6vw, 2.8rem);
+      margin: 0 0 10px;
       letter-spacing: -0.02em;
       line-height: 1.15;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.20);
+      text-align:center;
+    }
+    .page-hero p{
+      margin: 0 auto;
+      max-width: 78ch;
+      opacity: 0.92;
+      text-align:center;
+      font-size: 1.05rem;
+      line-height: 1.6;
       text-shadow: 0 10px 26px rgba(0,0,0,0.18);
     }
 
-    .page-hero-subtitle {
-      font-size: 1.08rem;
-      opacity: 0.92;
-      max-width: 760px;
-      margin: 0 auto;
-      line-height: 1.6;
-      text-shadow: 0 10px 22px rgba(0,0,0,0.16);
+    /* ====== Estilo "hub" de Indicadores (tipo directorio) ====== */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(12, 1fr); }
+    
+    /* Responsive Grid */
+    @media (max-width: 900px) {
+        .card[style*="span 6"] { grid-column: span 12 !important; }
     }
 
-    /* Breadcrumb */
-    .breadcrumb {
-      padding: 1.2rem 0;
-      background: var(--gray-light);
-      border-bottom: 1px solid var(--border-subtle);
+    .hub-grid .card{ background:#fff; border:1px solid var(--gray-line); border-radius: var(--radius); padding: 24px; }
+    .hub-head{
+      display:flex; align-items:center; gap:12px; margin-bottom:10px;
     }
-
-    .breadcrumb-nav {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      font-size: 0.92rem;
-      color: var(--gray-sophisticated);
-      flex-wrap: wrap;
+    .hub-icon{
+      width:44px; height:44px; border-radius:14px;
+      display:inline-flex; align-items:center; justify-content:center;
+      background: rgba(26,167,225,0.10);
+      border: 1px solid rgba(26,167,225,0.18);
+      color: var(--blue-navy);
+      font-size: 20px;
+      flex: 0 0 44px;
     }
-
-    .breadcrumb-nav a {
-      color: var(--navy-deep);
-      text-decoration: none;
-      transition: color 0.2s;
+    .hub-title{
+      margin:0;
+      font-family: Montserrat, Inter, sans-serif;
+      color: var(--blue-navy);
+      font-size: 1.05rem;
+      line-height: 1.15;
+      font-weight: 700;
+    }
+    .hub-links{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+    }
+    .hub-links a{
+      display:flex; align-items:center; justify-content:space-between;
+      text-decoration:none;
+      color: var(--gray-text);
+      background: #F8FAFC;
+      border: 1px solid rgba(15,42,68,0.08);
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: transform .15s ease, border-color .15s ease, background-color .15s ease;
+      font-size: .95rem;
+    }
+    .hub-links a:hover{
+      transform: translateY(-1px);
+      border-color: rgba(26,167,225,0.35);
+      background: #FFFFFF;
+    }
+    .hub-links a span{
+      color: var(--gray-muted);
       font-weight: 600;
+      margin-left: 10px;
     }
 
-    .breadcrumb-nav a:hover {
-      color: var(--gold-accent);
+    /* ====== Wrapper del contenido bajo el hero ====== */
+    .page-body{
+      padding: 46px 0 80px;
+      background: #fff;
     }
 
-    /* Contenido principal */
-    .inpc-section {
-      padding: 3.2rem 0;
+    /* ====== Secciones internas ====== */
+    .indicator-section{
+      padding: 40px 0 0;
     }
-
-    .inpc-intro {
-      max-width: 900px;
-      margin: 0 auto 2.2rem;
-      background: var(--gray-light);
-      padding: 2rem;
-      border-left: 4px solid var(--gold-accent);
-      border-radius: 2px;
+    .indicator-box{
+      background:#fff;
+      border:1px solid var(--gray-line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 12px 28px rgba(15,42,68,0.06);
     }
-
-    .inpc-intro h2 {
-      font-family: 'Montserrat', sans-serif;
+    .indicator-box h2{
+      margin:0 0 8px;
+      font-family: Montserrat, Inter, sans-serif;
+      color: var(--blue-navy);
       font-size: 1.25rem;
       font-weight: 700;
-      color: var(--navy-deep);
-      margin: 0 0 0.75rem;
     }
-
-    .inpc-intro p {
-      color: var(--gray-sophisticated);
-      margin: 0;
-      line-height: 1.7;
+    .indicator-box p{
+      margin:0 0 14px;
+      color: var(--gray-muted);
+      font-size: .95rem;
     }
-
-    /* ===== Tabs (arreglo del botón 2025) ===== */
-    .year-tabs {
-      display: flex;
-      gap: 0.75rem;
-      max-width: 900px;
-      margin: 0 auto 1.6rem;
-      border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 0.6rem;
-      flex-wrap: wrap;
-    }
-
-    /* Reset fuerte para que NO herede estilos globales de button */
-    .year-tab{
-      appearance: none;
-      -webkit-appearance: none;
-      border: 1px solid rgba(15,42,68,0.14) !important;
-      background: transparent !important;
-      color: var(--navy-deep) !important;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.98rem;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 0.85rem 1.2rem;
-      border-radius: 12px;
-      line-height: 1;
-      transition: transform .15s ease, background-color .15s ease, border-color .15s ease, color .15s ease;
-      box-shadow: none !important;
-    }
-
-    .year-tab:hover{
-      transform: translateY(-1px);
-      background: rgba(15,42,68,0.04) !important;
-      border-color: rgba(15,42,68,0.26) !important;
-    }
-
-    .year-tab:focus-visible{
-      outline: 3px solid rgba(201,169,97,0.35);
-      outline-offset: 2px;
-    }
-
-    .year-tab.active{
-      background: var(--navy-deep) !important;
-      color: #fff !important;
-      border-color: var(--navy-deep) !important;
-    }
-
-    /* Paneles */
-    .inpc-panel {
-      display: none;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .inpc-panel.active {
-      display: block;
-      animation: fadeIn 0.25s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0 0 1.25rem;
-      padding-bottom: 0.9rem;
-      border-bottom: 1px solid var(--border-subtle);
-      gap: 1rem;
-    }
-
-    .panel-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: var(--navy-deep);
-      margin: 0;
-    }
-
-    .update-badge {
-      font-size: 0.85rem;
-      color: var(--gold-accent);
-      background: rgba(201,169,97,0.12);
-      padding: 0.4rem 0.9rem;
-      border-radius: 999px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    /* Tabla */
-    .table-container {
-      background: #fff;
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 28px rgba(15,42,68,0.08);
-    }
-
-    .inpc-table {
+    .indicator-table{
       width: 100%;
       border-collapse: collapse;
-      min-width: 720px; /* scroll en mobile */
+      margin-top: 10px;
+      min-width: 640px;
     }
-
-    .inpc-table thead {
-      background: var(--navy-deep);
-      color: #fff;
-    }
-
-    .inpc-table thead th {
-      padding: 1rem;
+    .indicator-table th, .indicator-table td{
+      padding: 10px;
+      border-bottom: 1px solid var(--gray-line);
       text-align: left;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      vertical-align: top;
+      color: var(--gray-text);
+    }
+    .indicator-table th{
+      color: var(--blue-navy);
       font-weight: 700;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
+      background: #F8FAFC;
+      position: sticky;
+      top: 0;
+      z-index: 1;
     }
-
-    .inpc-table tbody tr {
-      border-bottom: 1px solid var(--border-subtle);
-      transition: background 0.2s ease;
+    .table-wrap{
+      overflow:auto;
+      border-radius: 14px;
+      border: 1px solid rgba(15,42,68,0.06);
     }
-
-    .inpc-table tbody tr:hover {
-      background: var(--gray-light);
-    }
-
-    .inpc-table tbody tr:last-child {
-      border-bottom: none;
-    }
-
-    .inpc-table td {
-      padding: 1rem;
-      color: var(--navy-deep);
-      font-size: 0.98rem;
-    }
-
-    .inpc-table td:first-child {
-      font-weight: 700;
-      color: var(--navy-mid);
-    }
-
-    .inpc-table td:nth-child(2) {
+    .value-highlight{
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      color: var(--gold-accent);
+      color: var(--blue-main);
       white-space: nowrap;
     }
-
-    .inpc-table td:last-child {
-      color: var(--gray-sophisticated);
+    .pill-note{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: .85rem;
+      color: var(--gray-muted);
+      background: rgba(15,42,68,0.06);
+      border: 1px solid rgba(15,42,68,0.08);
     }
-
-    .inpc-note {
-      max-width: 900px;
-      margin: 1.2rem auto 0;
-      padding: 1rem 1.25rem;
-      background: rgba(201,169,97,0.08);
-      border-left: 3px solid var(--gold-accent);
-      color: var(--gray-sophisticated);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      border-radius: 10px;
-    }
-
-    .inpc-note strong {
-      color: var(--navy-deep);
-      font-weight: 800;
-    }
-
-    .info-box {
-      max-width: 900px;
-      margin: 2.4rem auto 0;
-      background: var(--gray-light);
-      padding: 2rem;
+    .btn-inline{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      font-weight: 700;
       border-radius: 12px;
-      border: 1px solid var(--border-subtle);
+      padding: 12px 16px;
+      background: var(--blue-main);
+      color:#fff;
+      margin-top: 8px;
+      line-height: 1;
+      min-height: 46px;
+      white-space: nowrap;
+    }
+    .btn-inline:hover{ filter: brightness(0.96); }
+
+    .back-top{
+      display:inline-block;
+      margin-top: 14px;
+      color: var(--blue-navy);
+      text-decoration: underline;
+      font-weight: 600;
+      font-size: .92rem;
     }
 
-    .info-box h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--navy-deep);
-      margin: 0 0 1rem;
-    }
-
-    .info-box ul {
-      margin: 0;
-      padding-left: 1.25rem;
-      color: var(--gray-sophisticated);
-    }
-
-    .info-box li {
-      margin-bottom: 0.5rem;
-      line-height: 1.6;
-    }
-
-    /* Footer (igual que tus otras páginas) */
+    /* Footer Styles */
     .footer {
       background: var(--navy-deep);
       color: rgba(255,255,255,0.8);
-      padding: 3rem 0 2rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 3.5rem;
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      padding: 0 1.5rem 2rem;
-    }
-
-    .footer-section h4 {
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      margin: 0 0 1rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .footer-links { list-style: none; padding: 0; margin: 0; }
-    .footer-links li { margin-bottom: 0.5rem; }
-
-    .footer-links a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--gold-accent); }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 1.5rem 1.5rem 0;
-      text-align: center;
-      font-size: 0.9rem;
+      padding: 3rem 0;
+      margin-top: auto;
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
-      .page-hero {
-        padding: calc(3.1rem + 95px) 0 2rem;
-      }
-
-      .inpc-section {
-        padding: 2.4rem 0;
-      }
-
-      .year-tabs{
-        gap: 0.6rem;
-        padding-bottom: 0.8rem;
-      }
-
-      .year-tab{
-        width: 100%;
-        text-align: left;
-      }
-
-      .panel-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.7rem;
-      }
-
-      .table-container {
-        overflow-x: auto;
-      }
+    @media (max-width: 768px){
+      .page-hero{ padding: calc(3.1rem + 110px) 0 2rem; }
+      .indicator-table{ min-width: 560px; }
+      .btn-inline{ width:100%; }
     }
   </style>
 </head>
@@ -454,8 +346,8 @@
 
     <nav id="nav" class="nav" aria-label="Navegación principal">
       <a href="servicios.html">Servicios</a>
-      <a href="Indicadores.html">Indicadores</a>
-      <a href="inpc.html" aria-current="page">INPC</a>
+      <a href="Indicadores.html" aria-current="page">Indicadores</a>
+      <a href="inpc.html">INPC</a>
       <a href="enlaces.html">Recursos</a>
       <a href="Blog.html">Blog</a>
       <a href="nosotros.html">Nosotros</a>
@@ -464,133 +356,335 @@
   </div>
 </header>
 
-<section class="page-hero">
+<section class="page-hero" id="top">
   <div class="container">
-    <h1>Índice Nacional de Precios al Consumidor</h1>
-    <p class="page-hero-subtitle">
-      Consulta oficial de INPC por periodo, actualizada mensualmente con base en publicaciones del Diario Oficial de la Federación.
+    <h1>Indicadores</h1>
+    <p>
+      Directorio de consulta rápida. Navega por categorías y actualiza manualmente los valores cuando lo necesites.
     </p>
   </div>
 </section>
 
-<div class="breadcrumb">
-  <div class="container">
-    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-      <a href="index.html">Inicio</a>
-      <span>/</span>
-      <a href="Indicadores.html">Indicadores</a>
-      <span>/</span>
-      <span>INPC</span>
-    </nav>
-  </div>
-</div>
-
-<section class="inpc-section">
+<section class="page-body">
   <div class="container">
 
-    <div class="inpc-intro">
-      <h2>¿Qué es el INPC y para qué se utiliza?</h2>
-      <p>
-        El Índice Nacional de Precios al Consumidor es el indicador oficial para medir la inflación en México.
-        Se utiliza para actualizar contribuciones, multas, créditos fiscales y otras obligaciones conforme al Código Fiscal de la Federación.
-        Los valores se publican mensualmente en el DOF.
-      </p>
-    </div>
+    <div class="grid hub-grid">
 
-    <div class="year-tabs" role="tablist" aria-label="Selección de año INPC">
-      <button id="tab-2025" class="year-tab active" type="button" data-target="panel-2025" role="tab" aria-selected="true" aria-controls="panel-2025">
-        Año 2025
-      </button>
-      <button id="tab-2024" class="year-tab" type="button" data-target="panel-2024" role="tab" aria-selected="false" aria-controls="panel-2024">
-        Año 2024
-      </button>
-    </div>
-
-    <!-- Panel 2025 -->
-    <div id="panel-2025" class="inpc-panel active" role="tabpanel" aria-labelledby="tab-2025">
-      <div class="panel-header">
-        <h3 class="panel-title">Valores INPC 2025</h3>
-        <span class="update-badge">Actualización mensual</span>
+      <div class="card" style="grid-column: span 6;">
+        <div class="hub-head">
+          <div class="hub-icon">🧾</div>
+          <h3 class="hub-title">Impuestos Federales</h3>
+        </div>
+        <ul class="hub-links">
+          <li><a href="#multas-cff">Multas actualizadas CFF <span>→</span></a></li>
+          <li><a href="#isr-provisionales">Tarifas y tablas ISR (Pagos provisionales) <span>→</span></a></li>
+          <li><a href="#isr-anual">Tarifas y tablas ISR (Declaración anual) <span>→</span></a></li>
+          <li><a href="#recargos">Tasas de recargos <span>→</span></a></li>
+        </ul>
       </div>
 
-      <div class="table-container">
-        <table class="inpc-table">
-          <thead>
-            <tr>
-              <th>Periodo</th>
-              <th>INPC</th>
-              <th>Fecha de publicación DOF</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Noviembre</td><td>142.645</td><td>10 de diciembre de 2025</td></tr>
-            <tr><td>Octubre</td><td>141.708</td><td>10 de noviembre de 2025</td></tr>
-            <tr><td>Septiembre</td><td>141.197</td><td>10 de octubre de 2025</td></tr>
-            <tr><td>Agosto</td><td>140.867</td><td>10 de septiembre de 2025</td></tr>
-            <tr><td>Julio</td><td>140.780</td><td>08 de agosto de 2025</td></tr>
-            <tr><td>Junio</td><td>140.405</td><td>10 de julio de 2025</td></tr>
-            <tr><td>Mayo</td><td>140.012</td><td>10 de junio de 2025</td></tr>
-            <tr><td>Abril</td><td>139.620</td><td>09 de mayo de 2025</td></tr>
-            <tr><td>Marzo</td><td>139.161</td><td>10 de abril de 2025</td></tr>
-            <tr><td>Febrero</td><td>138.726</td><td>10 de marzo de 2025</td></tr>
-            <tr><td>Enero</td><td>138.343</td><td>10 de febrero de 2025</td></tr>
-          </tbody>
-        </table>
+      <div class="card" style="grid-column: span 6;">
+        <div class="hub-head">
+          <div class="hub-icon">📈</div>
+          <h3 class="hub-title">Financiero</h3>
+        </div>
+        <ul class="hub-links">
+          <li><a href="#tc-fix">Equivalencia del dólar (FIX) <span>↗</span></a></li>
+          <li><a href="#otras-monedas">Equivalencia de otras monedas <span>↗</span></a></li>
+          <li><a href="inpc.html">Índice Nacional de Precios al Consumidor (INPC) <span>↗</span></a></li>
+          <li><a href="#banxico">CETES / CPP / TIIE / UDIS <span>↗</span></a></li>
+          <li><a href="#uma">Unidad de medida y actualización (UMA) <span>→</span></a></li>
+          <li><a href="#inflacion">Tasa porcentual de inflación <span>↗</span></a></li>
+        </ul>
       </div>
 
-      <p class="inpc-note">
-        <strong>Nota de actualización:</strong> Los valores se incorporan mensualmente conforme a la publicación oficial en el DOF.
-        El periodo más reciente aparece en la primera fila de la tabla.
-      </p>
+      <div class="card" style="grid-column: span 6;">
+        <div class="hub-head">
+          <div class="hub-icon">🛡️</div>
+          <h3 class="hub-title">Seguridad Social</h3>
+        </div>
+        <ul class="hub-links">
+          <li><a href="#imss-infonavit">Cuotas IMSS e INFONAVIT <span>↗</span></a></li>
+          <li><a href="#sanciones-lss">Sanciones establecidas LSS <span>↗</span></a></li>
+          <li><a href="#sanciones-infonavit">Sanciones establecidas INFONAVIT <span>↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card" style="grid-column: span 6;">
+        <div class="hub-head">
+          <div class="hub-icon">🕵️‍♂️</div>
+          <h3 class="hub-title">Prevención de Lavado de Dinero (PLD)</h3>
+        </div>
+        <ul class="hub-links">
+          <li><a href="#actividades-vulnerables">Catálogo de actividades vulnerables <span>↗</span></a></li>
+          <li><a href="#multas-lfpiorpi">Multas establecidas en LFPIORPI <span>↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card" style="grid-column: span 6;">
+        <div class="hub-head">
+          <div class="hub-icon">👷‍♂️</div>
+          <h3 class="hub-title">Laboral</h3>
+        </div>
+        <ul class="hub-links">
+          <li><a href="#salarios">Salarios mínimos generales <span>→</span></a></li>
+          <li><a href="#salarios">Salarios mínimos profesionales <span>↗</span></a></li>
+          <li><a href="#sanciones-lft">Sanciones establecidas en la LFT <span>↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card" style="grid-column: span 6;">
+        <div class="hub-head">
+          <div class="hub-icon">🚢</div>
+          <h3 class="hub-title">Comercio Exterior</h3>
+        </div>
+        <ul class="hub-links">
+          <li><a href="#multas-ley-aduanera">Cantidades y multas actualizadas Ley Aduanera <span>↗</span></a></li>
+        </ul>
+      </div>
+
     </div>
 
-    <!-- Panel 2024 -->
-    <div id="panel-2024" class="inpc-panel" role="tabpanel" aria-labelledby="tab-2024">
-      <div class="panel-header">
-        <h3 class="panel-title">Valores INPC 2024</h3>
-        <span class="update-badge">Año completo</span>
-      </div>
+    <div class="indicator-section" id="uma">
+      <div class="indicator-box">
+        <h2>UMA (Unidad de Medida y Actualización)</h2>
+        <p>Referencia económica para determinar cuantías de obligaciones, multas y diversos conceptos.</p>
 
-      <div class="table-container">
-        <table class="inpc-table">
-          <thead>
-            <tr>
-              <th>Periodo</th>
-              <th>INPC</th>
-              <th>Fecha de publicación DOF</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Diciembre</td><td>137.949</td><td>10 de enero de 2025</td></tr>
-            <tr><td>Noviembre</td><td>137.424</td><td>10 de diciembre de 2024</td></tr>
-            <tr><td>Octubre</td><td>136.828</td><td>08 de noviembre de 2024</td></tr>
-            <tr><td>Septiembre</td><td>136.080</td><td>10 de octubre de 2024</td></tr>
-            <tr><td>Agosto</td><td>136.013</td><td>10 de septiembre de 2024</td></tr>
-            <tr><td>Julio</td><td>136.003</td><td>09 de agosto de 2024</td></tr>
-            <tr><td>Junio</td><td>134.594</td><td>10 de julio de 2024</td></tr>
-            <tr><td>Mayo</td><td>134.087</td><td>10 de junio de 2024</td></tr>
-            <tr><td>Abril</td><td>134.336</td><td>10 de mayo de 2024</td></tr>
-            <tr><td>Marzo</td><td>134.065</td><td>10 de abril de 2024</td></tr>
-            <tr><td>Febrero</td><td>133.681</td><td>08 de marzo de 2024</td></tr>
-            <tr><td>Enero</td><td>133.555</td><td>09 de febrero de 2024</td></tr>
-          </tbody>
-        </table>
-      </div>
+        <div class="table-wrap">
+          <table class="indicator-table">
+            <thead>
+              <tr>
+                <th>Periodo</th>
+                <th>Valor 2025*</th>
+                <th>Valor 2024</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Diario</td>
+                <td class="value-highlight">$113.88</td>
+                <td>$108.57</td>
+              </tr>
+              <tr>
+                <td>Mensual</td>
+                <td class="value-highlight">$3,463.15</td>
+                <td>$3,300.53</td>
+              </tr>
+              <tr>
+                <td>Anual</td>
+                <td class="value-highlight">$41,557.80</td>
+                <td>$39,606.36</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      <p class="inpc-note">
-        <strong>Nota de actualización:</strong> En caso de correcciones oficiales publicadas en el DOF,
-        se actualizan tanto el valor del INPC como la fecha de publicación correspondiente.
-      </p>
+        <div class="pill-note">*Actualiza este bloque cuando cambie el valor oficial.</div>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
     </div>
 
-    <div class="info-box">
-      <h3>Consideraciones técnicas</h3>
-      <ul>
-        <li>Los valores se actualizan el día 10 de cada mes, o el día hábil inmediato siguiente.</li>
-        <li>Para cálculos de actualización fiscal, utiliza el INPC del mes en que debió pagarse y el del mes en que se efectúa el pago.</li>
-        <li>Fuente oficial: Diario Oficial de la Federación (DOF) con información del INEGI.</li>
-        <li>Tabla informativa. Para efectos legales, consulta la publicación oficial en el DOF.</li>
-      </ul>
+    <div class="indicator-section" id="salarios">
+      <div class="indicator-box">
+        <h2>Salarios mínimos</h2>
+        <p>Vigentes a partir del 1 de enero. (Puedes actualizar manualmente cada año.)</p>
+
+        <div class="table-wrap">
+          <table class="indicator-table">
+            <thead>
+              <tr>
+                <th>Zona</th>
+                <th>2025</th>
+                <th>2024</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>General</td>
+                <td class="value-highlight">$278.88</td>
+                <td>$248.93</td>
+              </tr>
+              <tr>
+                <td>Zona Libre Frontera Norte</td>
+                <td class="value-highlight">$419.88</td>
+                <td>$374.89</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="recargos">
+      <div class="indicator-box">
+        <h2>Tasas de recargos</h2>
+        <p>Referencia común para cálculos fiscales (actualiza cuando cambie la publicación aplicable).</p>
+
+        <div class="table-wrap">
+          <table class="indicator-table">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Tasa mensual</th>
+                <th>Nota</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Prórroga (pago a plazos)</td>
+                <td class="value-highlight">0.98%</td>
+                <td>Aplicable sobre saldos insolutos.</td>
+              </tr>
+              <tr>
+                <td>Mora (falta de pago oportuno)</td>
+                <td class="value-highlight">1.47%</td>
+                <td>Aplicable sobre saldos insolutos.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="isr-provisionales">
+      <div class="indicator-box">
+        <h2>Tarifas y tablas ISR (Pagos provisionales)</h2>
+        <p>Fuente recomendada: Anexo 8 de la RMF (PDF). Puedes enlazar a la versión vigente.</p>
+        <a class="btn-inline" href="https://www.sat.gob.mx/minisitio/NormatividadRMFyRGCE/documentos2025/rmf/anexos/Anexo8_RMF2025-30122024.pdf" target="_blank" rel="noopener">
+          Ver Anexo 8 (SAT) ↗
+        </a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="isr-anual">
+      <div class="indicator-box">
+        <h2>Tarifas y tablas ISR (Declaración anual)</h2>
+        <p>Generalmente viene en el mismo Anexo 8 (RMF). Ajusta el enlace si usas otro documento.</p>
+        <a class="btn-inline" href="https://www.sat.gob.mx/minisitio/NormatividadRMFyRGCE/documentos2025/rmf/anexos/Anexo8_RMF2025-30122024.pdf" target="_blank" rel="noopener">
+          Ver Anexo 8 (SAT) ↗
+        </a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="multas-cff">
+      <div class="indicator-box">
+        <h2>Multas actualizadas CFF</h2>
+        <p>Recomendación: aquí puedes meter tu propia tabla o enlazar a la fuente que uses para consulta.</p>
+        <a class="btn-inline" href="https://omawww.sat.gob.mx/fichas_tematicas/declaracion_anual/Paginas/multas_sanciones_declaracion.aspx" target="_blank" rel="noopener">
+          Ver referencia SAT ↗
+        </a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="banxico">
+      <div class="indicator-box">
+        <h2>Banxico: CETES / CPP / TIIE / UDIS</h2>
+        <p>Para tasas e indicadores financieros, Banxico trae el “hub” más práctico.</p>
+        <a class="btn-inline" href="https://www.banxico.org.mx/Indicadores/" target="_blank" rel="noopener">
+          Abrir indicadores Banxico ↗
+        </a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="tc-fix">
+      <div class="indicator-box">
+        <h2>Equivalencia del dólar (FIX)</h2>
+        <p>Consulta el tipo de cambio en fuentes oficiales (Banxico / SIE).</p>
+        <a class="btn-inline" href="https://www.banxico.org.mx/" target="_blank" rel="noopener">Ir a Banxico ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="otras-monedas">
+      <div class="indicator-box">
+        <h2>Equivalencia de otras monedas</h2>
+        <p>Consulta tipos de cambio en fuentes oficiales (Banxico / SIE).</p>
+        <a class="btn-inline" href="https://www.banxico.org.mx/" target="_blank" rel="noopener">Ir a Banxico ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="inflacion">
+      <div class="indicator-box">
+        <h2>Tasa porcentual de inflación</h2>
+        <p>Te conviene enlazar a INEGI/Indicadores oficiales o tu propio cálculo con INPC.</p>
+        <a class="btn-inline" href="https://www.inegi.org.mx/" target="_blank" rel="noopener">Ir a INEGI ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="imss-infonavit">
+      <div class="indicator-box">
+        <h2>Cuotas IMSS e INFONAVIT</h2>
+        <p>Enlace sugerido a fuentes oficiales.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+          <a class="btn-inline" href="https://www.imss.gob.mx/" target="_blank" rel="noopener">Ir a IMSS ↗</a>
+          <a class="btn-inline" href="https://www.infonavit.org.mx/" target="_blank" rel="noopener">Ir a INFONAVIT ↗</a>
+        </div>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="sanciones-lss">
+      <div class="indicator-box">
+        <h2>Sanciones establecidas (LSS)</h2>
+        <p>Placeholder: aquí puedes poner tu resumen o enlazar a la legislación.</p>
+        <a class="btn-inline" href="https://www.gob.mx/" target="_blank" rel="noopener">Ir a gob.mx ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="sanciones-infonavit">
+      <div class="indicator-box">
+        <h2>Sanciones establecidas (INFONAVIT)</h2>
+        <p>Placeholder: aquí puedes poner tu resumen o enlazar a la legislación.</p>
+        <a class="btn-inline" href="https://www.infonavit.org.mx/" target="_blank" rel="noopener">Ir a INFONAVIT ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="actividades-vulnerables">
+      <div class="indicator-box">
+        <h2>Catálogo de actividades vulnerables (PLD)</h2>
+        <p>Placeholder: puedes enlazar a UIF o a la LFPIORPI según tu criterio.</p>
+        <a class="btn-inline" href="https://www.gob.mx/uif" target="_blank" rel="noopener">Ir a UIF ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="multas-lfpiorpi">
+      <div class="indicator-box">
+        <h2>Multas establecidas en la LFPIORPI</h2>
+        <p>Placeholder: aquí puedes poner tu tabla/resumen o enlazar a fuente legal.</p>
+        <a class="btn-inline" href="https://www.dof.gob.mx/" target="_blank" rel="noopener">Ir al DOF ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="sanciones-lft">
+      <div class="indicator-box">
+        <h2>Sanciones establecidas en la LFT</h2>
+        <p>Placeholder: puedes enlazar a la ley o publicar tu resumen.</p>
+        <a class="btn-inline" href="https://www.diputados.gob.mx/" target="_blank" rel="noopener">Ir a Diputados ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
+    </div>
+
+    <div class="indicator-section" id="multas-ley-aduanera">
+      <div class="indicator-box">
+        <h2>Cantidades y multas actualizadas (Ley Aduanera)</h2>
+        <p>Placeholder: aquí puedes publicar tu tabla o enlazar a la autoridad competente.</p>
+        <a class="btn-inline" href="https://www.dof.gob.mx/" target="_blank" rel="noopener">Ir al DOF ↗</a>
+        <a class="back-top" href="#top">Volver arriba</a>
+      </div>
     </div>
 
   </div>
@@ -598,50 +692,12 @@
 
 <footer class="footer">
   <div class="container">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>GG Contabilidad</h4>
-        <p style="margin:0; line-height:1.6;">Despacho especializado en asesoría contable, fiscal y defensa ante autoridades.</p>
-      </div>
-
-      <div class="footer-section">
-        <h4>Servicios</h4>
-        <ul class="footer-links">
-          <li><a href="servicios.html">Contabilidad</a></li>
-          <li><a href="servicios.html">Cumplimiento fiscal</a></li>
-          <li><a href="servicios.html">Defensa fiscal</a></li>
-          <li><a href="servicios.html">Comercio exterior</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-section">
-        <h4>Recursos</h4>
-        <ul class="footer-links">
-          <li><a href="Indicadores.html">Indicadores</a></li>
-          <li><a href="inpc.html">INPC</a></li>
-          <li><a href="enlaces.html">Sitios oficiales</a></li>
-          <li><a href="Blog.html">Blog técnico</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-section">
-        <h4>Contacto</h4>
-        <ul class="footer-links">
-          <li><a href="contacto.html">Formulario</a></li>
-          <li><a href="nosotros.html">Acerca de nosotros</a></li>
-          <li><a href="https://wa.me/525513110556" target="_blank" rel="noopener">WhatsApp</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p style="margin:0;">© 2025 GG Contabilidad y Defensa Fiscal. Todos los derechos reservados.</p>
-    </div>
+    <strong>GG Contabilidad y Defensa Fiscal</strong>
+    <p style="margin: 10px 0 0;">© 2025. Todos los derechos reservados.</p>
   </div>
 </footer>
 
 <script>
-  // Menú móvil
   const nav = document.getElementById("nav");
   const hamburger = document.getElementById("hamburger");
 
@@ -652,29 +708,7 @@
   nav.querySelectorAll("a").forEach(a => {
     a.addEventListener("click", () => nav.classList.remove("mobile-open"));
   });
-
-  // Tabs INPC (estable)
-  const tabButtons = document.querySelectorAll(".year-tab");
-  const panels = document.querySelectorAll(".inpc-panel");
-
-  tabButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const targetId = btn.getAttribute("data-target");
-
-      tabButtons.forEach(b => {
-        b.classList.remove("active");
-        b.setAttribute("aria-selected", "false");
-      });
-      btn.classList.add("active");
-      btn.setAttribute("aria-selected", "true");
-
-      panels.forEach(p => p.classList.remove("active"));
-      const targetPanel = document.getElementById(targetId);
-      if (targetPanel) targetPanel.classList.add("active");
-    });
-  });
 </script>
-
 </body>
 </html>
 
