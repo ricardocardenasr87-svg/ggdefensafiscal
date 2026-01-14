@@ -20,6 +20,7 @@
       --gray-sophisticated: #556B7E;
       --gray-light: #F7F9FB;
       --border-subtle: #E1E8ED;
+      --header-h: 86px; /* ✅ ajusta si tu header es más alto */
     }
 
     body {
@@ -29,20 +30,58 @@
       background: #fff;
     }
 
-    .header {
-      background: rgba(255, 255, 255, 0.98);
+    /* =========================
+       HEADER AZUL (consistente)
+       ========================= */
+    header.header{
+      background: rgba(15,42,68,0.98) !important;
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.10) !important;
+    }
+    header.header .nav a{
+      color: rgba(255,255,255,0.92) !important;
+    }
+    header.header .nav a:hover{
+      background: rgba(255,255,255,0.10) !important;
+      color: #fff !important;
+    }
+    header.header .nav a[aria-current="page"]{
+      background: rgba(255,255,255,0.14) !important;
+      color: #fff !important;
+    }
+    header.header .hamburger{
+      background: rgba(255,255,255,0.10) !important;
+      border: 1px solid rgba(255,255,255,0.18) !important;
+      color: #fff !important;
+    }
+    header.header .btn-nav{
+      background: transparent !important;
+      color: #fff !important;
+      border-color: rgba(201,169,97,0.95) !important;
+    }
+    header.header .btn-nav:hover{
+      background: rgba(201,169,97,0.14) !important;
+      border-color: rgba(201,169,97,1) !important;
+    }
+
+    @media (max-width: 760px){
+      header.header .nav.mobile-open{
+        background: rgba(15,42,68,0.98) !important;
+        border: 1px solid rgba(255,255,255,0.12) !important;
+        box-shadow: 0 14px 40px rgba(0,0,0,0.28) !important;
+      }
+      header.header .nav.mobile-open a{
+        color: rgba(255,255,255,0.92) !important;
+      }
     }
 
     /* Hero */
     .page-hero {
       background: linear-gradient(135deg, #0F2A44 0%, #1A3A5C 100%);
       color: #fff;
-      padding: 4rem 0 3rem;
+      padding: calc(3.6rem + var(--header-h)) 0 3rem; /* ✅ evita que el hero quede “cortado” */
       text-align: center;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
     }
 
     .page-hero h1 {
@@ -51,19 +90,22 @@
       font-weight: 700;
       margin: 0 0 1rem;
       letter-spacing: -0.02em;
+      line-height: 1.12;
+      text-shadow: 0 10px 26px rgba(0,0,0,0.18);
     }
 
     .page-hero-subtitle {
       font-size: 1.1rem;
       opacity: 0.92;
-      max-width: 680px;
+      max-width: 760px;
       margin: 0 auto;
       line-height: 1.6;
+      text-shadow: 0 10px 22px rgba(0,0,0,0.16);
     }
 
     /* Breadcrumb */
     .breadcrumb {
-      padding: 1.5rem 0;
+      padding: 1.2rem 0;
       background: var(--gray-light);
       border-bottom: 1px solid var(--border-subtle);
     }
@@ -72,7 +114,7 @@
       display: flex;
       gap: 0.5rem;
       align-items: center;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--gray-sophisticated);
       flex-wrap: wrap;
     }
@@ -81,6 +123,7 @@
       color: var(--navy-deep);
       text-decoration: none;
       transition: color 0.2s;
+      font-weight: 600;
     }
 
     .breadcrumb-nav a:hover {
@@ -96,6 +139,7 @@
       max-width: 800px;
       margin: 0 auto 3rem;
       text-align: center;
+      padding: 0 1.5rem;
     }
 
     .blog-intro p {
@@ -112,18 +156,19 @@
       justify-content: center;
       flex-wrap: wrap;
       margin-bottom: 3rem;
+      padding: 0 1.5rem;
     }
 
     .filter-tag {
       padding: 0.6rem 1.25rem;
       border: 1px solid var(--border-subtle);
-      border-radius: 20px;
+      border-radius: 999px;
       background: #fff;
       color: var(--navy-deep);
       font-size: 0.9rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
     }
 
     .filter-tag:hover,
@@ -140,6 +185,7 @@
       gap: 2rem;
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
     .blog-card {
@@ -150,6 +196,7 @@
       display: flex;
       flex-direction: column;
       position: relative;
+      text-decoration: none;
     }
 
     .blog-card::before {
@@ -169,9 +216,7 @@
       box-shadow: 0 12px 32px rgba(15,42,68,0.15);
     }
 
-    .blog-card:hover::before {
-      height: 100%;
-    }
+    .blog-card:hover::before { height: 100%; }
 
     .blog-image {
       width: 100%;
@@ -181,7 +226,7 @@
       align-items: center;
       justify-content: center;
       font-size: 3rem;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.35);
       position: relative;
       overflow: hidden;
     }
@@ -190,7 +235,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(15,42,68,0.8) 0%, rgba(26,167,225,0.4) 100%);
+      background: linear-gradient(135deg, rgba(15,42,68,0.80) 0%, rgba(26,167,225,0.35) 100%);
     }
 
     .blog-content {
@@ -213,11 +258,11 @@
       background: rgba(201,169,97,0.12);
       color: var(--gold-accent);
       padding: 0.35rem 0.85rem;
-      border-radius: 4px;
+      border-radius: 999px;
       font-size: 0.75rem;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
 
     .blog-date {
@@ -226,12 +271,13 @@
       display: flex;
       align-items: center;
       gap: 0.35rem;
+      font-weight: 600;
     }
 
     .blog-title {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.3rem;
-      font-weight: 600;
+      font-weight: 700;
       margin: 0 0 1rem;
       color: var(--navy-deep);
       line-height: 1.3;
@@ -258,7 +304,7 @@
     .read-more {
       color: var(--navy-deep);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 800;
       font-size: 0.9rem;
       display: inline-flex;
       align-items: center;
@@ -266,10 +312,7 @@
       transition: all 0.2s;
     }
 
-    .read-more:hover {
-      color: var(--gold-accent);
-      gap: 0.75rem;
-    }
+    .read-more:hover { color: var(--gold-accent); gap: 0.75rem; }
 
     .read-time {
       font-size: 0.85rem;
@@ -277,6 +320,7 @@
       display: flex;
       align-items: center;
       gap: 0.35rem;
+      font-weight: 600;
     }
 
     /* Artículo destacado */
@@ -285,7 +329,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0;
-      max-height: 400px;
+      max-height: 420px;
     }
 
     .featured-image {
@@ -294,7 +338,7 @@
       align-items: center;
       justify-content: center;
       font-size: 4rem;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.35);
       position: relative;
       overflow: hidden;
       min-height: 260px;
@@ -304,7 +348,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(15,42,68,0.9) 0%, rgba(26,167,225,0.5) 100%);
+      background: linear-gradient(135deg, rgba(15,42,68,0.90) 0%, rgba(26,167,225,0.45) 100%);
     }
 
     .featured-content {
@@ -319,24 +363,17 @@
       background: var(--gold-accent);
       color: var(--navy-deep);
       padding: 0.4rem 0.9rem;
-      border-radius: 4px;
+      border-radius: 999px;
       font-size: 0.75rem;
-      font-weight: 700;
+      font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 1rem;
       width: fit-content;
     }
 
-    .featured-content .blog-title {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .featured-content .blog-excerpt {
-      font-size: 1.05rem;
-      margin-bottom: 1.5rem;
-    }
+    .featured-content .blog-title { font-size: 1.8rem; margin-bottom: 1rem; }
+    .featured-content .blog-excerpt { font-size: 1.05rem; margin-bottom: 1.5rem; }
 
     /* Nota informativa */
     .blog-note {
@@ -345,20 +382,19 @@
       background: var(--gray-light);
       padding: 2rem;
       border-left: 4px solid var(--gold-accent);
-      border-radius: 2px;
+      border-radius: 12px;
       border: 1px solid var(--border-subtle);
+      box-shadow: 0 10px 24px rgba(15,42,68,0.08);
     }
 
     .blog-note p {
       color: var(--gray-sophisticated);
       margin: 0;
       line-height: 1.7;
+      padding: 0 1.5rem;
     }
 
-    .blog-note strong {
-      color: var(--navy-deep);
-      font-weight: 600;
-    }
+    .blog-note strong { color: var(--navy-deep); font-weight: 800; }
 
     /* Footer */
     .footer {
@@ -382,31 +418,21 @@
       color: #fff;
       font-family: 'Montserrat', sans-serif;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 800;
       margin: 0 0 1rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
     }
 
-    .footer-links {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.5rem;
-    }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 0.5rem; }
 
     .footer-links a {
       color: rgba(255,255,255,0.7);
       text-decoration: none;
       transition: color 0.2s;
     }
-
-    .footer-links a:hover {
-      color: var(--gold-accent);
-    }
+    .footer-links a:hover { color: var(--gold-accent); }
 
     .footer-bottom {
       border-top: 1px solid rgba(255,255,255,0.1);
@@ -417,15 +443,10 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .page-hero { padding: 3rem 0 2rem; }
+      .page-hero { padding: calc(3rem + var(--header-h)) 0 2rem; }
       .blog-section { padding: 3rem 0; }
       .blog-grid { grid-template-columns: 1fr; }
-
-      .featured-article {
-        grid-template-columns: 1fr;
-        max-height: none;
-      }
-
+      .featured-article { grid-template-columns: 1fr; max-height: none; }
       .featured-content { padding: 2rem; }
       .featured-content .blog-title { font-size: 1.4rem; }
     }
@@ -437,7 +458,7 @@
 <header class="header">
   <div class="container header-inner">
     <a href="index.html" class="logo" aria-label="Inicio">
-      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal" style="height: 48px;">
+      <img src="Logo.jpeg" alt="GG Contabilidad y Defensa Fiscal" style="height: 52px; width:auto;">
     </a>
 
     <button id="hamburger" class="hamburger" aria-label="Menú">Menú</button>
@@ -477,7 +498,6 @@
       <p>Contenido actualizado sobre reformas fiscales, criterios del SAT, jurisprudencia relevante y mejores prácticas en cumplimiento normativo.</p>
     </div>
 
-    <!-- Filtros por categoría -->
     <div class="blog-filters">
       <button class="filter-tag active" type="button" data-filter="all">Todos</button>
       <button class="filter-tag" type="button" data-filter="sat">SAT y CFDI</button>
@@ -511,11 +531,8 @@
         </div>
       </article>
 
-      <!-- Artículo regular 1 -->
       <article class="blog-card" data-category="defensa">
-        <div class="blog-image">
-          <span style="z-index: 1;">⚖️</span>
-        </div>
+        <div class="blog-image"><span style="z-index: 1;">⚖️</span></div>
         <div class="blog-content">
           <div class="blog-meta">
             <span class="blog-category">Defensa Fiscal</span>
@@ -532,11 +549,8 @@
         </div>
       </article>
 
-      <!-- Artículo regular 2 -->
       <article class="blog-card" data-category="ss">
-        <div class="blog-image">
-          <span style="z-index: 1;">👥</span>
-        </div>
+        <div class="blog-image"><span style="z-index: 1;">👥</span></div>
         <div class="blog-content">
           <div class="blog-meta">
             <span class="blog-category">Seguridad Social</span>
@@ -553,11 +567,8 @@
         </div>
       </article>
 
-      <!-- Artículo regular 3 -->
       <article class="blog-card" data-category="conta">
-        <div class="blog-image">
-          <span style="z-index: 1;">📊</span>
-        </div>
+        <div class="blog-image"><span style="z-index: 1;">📊</span></div>
         <div class="blog-content">
           <div class="blog-meta">
             <span class="blog-category">Contabilidad</span>
@@ -574,11 +585,8 @@
         </div>
       </article>
 
-      <!-- Artículo regular 4 -->
       <article class="blog-card" data-category="ce">
-        <div class="blog-image">
-          <span style="z-index: 1;">🚢</span>
-        </div>
+        <div class="blog-image"><span style="z-index: 1;">🚢</span></div>
         <div class="blog-content">
           <div class="blog-meta">
             <span class="blog-category">Comercio Exterior</span>
@@ -595,11 +603,8 @@
         </div>
       </article>
 
-      <!-- Artículo regular 5 -->
       <article class="blog-card" data-category="sat">
-        <div class="blog-image">
-          <span style="z-index: 1;">📈</span>
-        </div>
+        <div class="blog-image"><span style="z-index: 1;">📈</span></div>
         <div class="blog-content">
           <div class="blog-meta">
             <span class="blog-category">SAT y CFDI</span>
@@ -618,7 +623,6 @@
 
     </div>
 
-    <!-- Nota informativa -->
     <div class="blog-note">
       <p><strong>Nota:</strong> Los artículos publicados en este blog tienen carácter informativo y no constituyen asesoría fiscal o legal específica. Para casos particulares, recomendamos consultar directamente con nuestro equipo de especialistas.</p>
     </div>
@@ -685,7 +689,7 @@
     a.addEventListener("click", () => nav.classList.remove("mobile-open"));
   });
 
-  // Sistema de filtros (simple)
+  // Filtros (simple)
   const filterButtons = document.querySelectorAll('.filter-tag');
   const posts = document.querySelectorAll('.blog-card[data-category]');
 
@@ -698,8 +702,7 @@
 
       posts.forEach(post => {
         const cat = post.getAttribute('data-category');
-        const show = (filter === 'all') || (cat === filter);
-        post.style.display = show ? '' : 'none';
+        post.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
       });
     });
   });
@@ -707,4 +710,3 @@
 
 </body>
 </html>
-
