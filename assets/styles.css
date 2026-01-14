@@ -612,3 +612,26 @@ table.inpc tbody tr:nth-child(odd) td { background: #F8FAFC; }
   .hero-video { display: none; }
 }
 
+header.header{
+  background: rgba(15,42,68,0.98) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.10) !important;
+  backdrop-filter: blur(10px);
+}
+
+header.header .nav a{ color: rgba(255,255,255,0.92) !important; }
+header.header .nav a:hover{ background: rgba(255,255,255,0.10) !important; color:#fff !important; }
+
+header.header .hamburger{
+  background: rgba(255,255,255,0.10) !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  color:#fff !important;
+}
+
+header.header .btn-nav{
+  background: transparent !important;
+  color:#fff !important;
+  border-color: rgba(201,169,97,0.95) !important;
+}
+
+
+
